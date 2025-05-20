@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    List<account> accounts = ViewBag.accounts;
+}
+
+<div class="text-center">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>編號</th>
+                <th>帳號</th>
+                <th>密碼</th>
+                <th>姓名</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (account user in accounts)
+            {
+                <tr>
+                    <th>@user.ID</th>
+                    <th>@user.userName</th>
+                    <th>@user.passwd</th>
+                    <th>@user.name</th>
+                </tr>
+            }            
+        </tbody>
+    </table>
+
+    <p>@Html.ActionLink("新增帳戶","addAccount")</p>
+   
+</div>

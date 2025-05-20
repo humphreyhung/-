@@ -1,0 +1,4 @@
+# .gitignore
+# Ignore Visual Studio user-specific files
+.vs/
+
