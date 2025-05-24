@@ -1,5 +1,4 @@
 # .gitignore
 # Ignore Visual Studio user-specific files
 .vs/
-MVC(DB)/Models/DBmanager.cs
 

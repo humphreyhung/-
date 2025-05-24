@@ -1,0 +1,39 @@
+﻿@page
+
+@* @model MVC_DB_.Views.Campaign.IndexModel *@
+@* @{ *@
+@* } *@
+
+@{
+	ViewData["Title"] = "募資專案列表1";
+}
+@model IEnumerable<MVC_DB_.Models.Campaign>
+
+<h2>募資專案列表</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">新增專案</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>標題</th>
+            <th>目標金額</th>
+            <th>已募金額</th>
+            <th>建立時間</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Title</td>
+                <td>@c.TargetAmount</td>
+                <td>@c.CollectedAmount</td>
+                <td>@c.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

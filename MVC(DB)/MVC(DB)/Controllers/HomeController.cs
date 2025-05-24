@@ -12,18 +12,29 @@ namespace MVC_DB_.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DBmanager _dbManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DBmanager dbManager)
         {
             _logger = logger;
+            _dbManager = dbManager;
         }
 
         public IActionResult Index()
         {
-            DBmanager dbmanager = new DBmanager();
-            List<account> accounts = dbmanager.getAccounts();
-            ViewBag.accounts = accounts;
-            return View();
+            try
+            {
+                _logger.LogInformation("Fetching accounts for Index page");
+                List<account> accounts = _dbManager.getAccounts();
+                ViewBag.accounts = accounts;
+                _logger.LogInformation($"Successfully retrieved {accounts.Count} accounts");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching accounts");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
 
         public IActionResult addAccount()
@@ -34,19 +45,25 @@ namespace MVC_DB_.Controllers
         [HttpPost]
         public IActionResult addAccount(account user)
         {
-
-            DBmanager dbmanager = new DBmanager();
             try
             {
-                dbmanager.newAccount(user);
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogWarning("Invalid model state when adding account");
+                    return View(user);
+                }
+
+                _logger.LogInformation($"Attempting to add new account for user: {user.userName}");
+                _dbManager.newAccount(user);
+                _logger.LogInformation($"Successfully added new account for user: {user.userName}");
+                return RedirectToAction("Index");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                _logger.LogError(e, $"Error adding new account for user: {user.userName}");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
-            return RedirectToAction("Index");
         }        
-
 
         public IActionResult Privacy()
         {
