@@ -1,0 +1,102 @@
+@model MVC_DB_.Models.Campaign
+
+@{
+    ViewData["Title"] = "新增募資專案";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">@ViewData["Title"]</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" id="createForm">
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                <h5 class="alert-heading">請修正以下錯誤：</h5>
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                            </div>
+                        }
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" placeholder="請輸入專案標題" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                            <small class="form-text text-muted">標題長度不能超過100個字元</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="5" 
+                                    placeholder="請詳細描述您的募資專案"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                            <small class="form-text text-muted">描述至少需要10個字元，最多2000個字元</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TargetAmount" class="form-label"></label>
+                            <div class="input-group">
+                                <span class="input-group-text">NT$</span>
+                                <input asp-for="TargetAmount" class="form-control" type="number" 
+                                       min="1000" max="10000000" step="1000" 
+                                       placeholder="請輸入目標金額" />
+                            </div>
+                            <span asp-validation-for="TargetAmount" class="text-danger"></span>
+                            <small class="form-text text-muted">目標金額必須在NT$1,000到NT$10,000,000之間</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Status" class="form-label"></label>
+                            <select asp-for="Status" class="form-select">
+                                <option value="">請選擇狀態</option>
+                                <option value="Draft">草稿</option>
+                                <option value="Active">進行中</option>
+                                <option value="Completed">已完成</option>
+                                <option value="Cancelled">已取消</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-secondary me-md-2">
+                                <i class="fas fa-arrow-left"></i> 返回列表
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> 建立專案
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function() {
+            // 自動格式化金額輸入
+            $("#TargetAmount").on("input", function() {
+                var value = $(this).val();
+                if (value < 1000) {
+                    $(this).val(1000);
+                } else if (value > 10000000) {
+                    $(this).val(10000000);
+                }
+            });
+
+            // 表單提交前驗證
+            $("#createForm").on("submit", function(e) {
+                if (!$(this).valid()) {
+                    e.preventDefault();
+                    // 顯示驗證錯誤摘要
+                    $(".validation-summary-errors").closest(".alert").show();
+                }
+            });
+        });
+    </script>
+} 

@@ -1,33 +1,38 @@
-﻿@{
+﻿@model List<MVC_DB_.Models.account>
+
+@{
     ViewData["Title"] = "Home Page";
-    List<account> accounts = ViewBag.accounts;
 }
 
 <div class="text-center">
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>編號</th>
-                <th>帳號</th>
-                <th>密碼</th>
-                <th>姓名</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (account user in accounts)
-            {
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <th>@user.ID</th>
-                    <th>@user.userName</th>
-                    <th>@user.passwd</th>
-                    <th>@user.name</th>
+                    <th>編號</th>
+                    <th>帳號</th>
+                    <th>密碼</th>
+                    <th>姓名</th>
                 </tr>
-            }            
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.ID</td>
+                        <td>@user.userName</td>
+                        <td>@user.passwd</td>
+                        <td>@user.name</td>
+                    </tr>
+                }            
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert alert-info">No accounts found.</p>
+    }
 
-    <p>@Html.ActionLink("新增帳戶","addAccount")</p>
-   
+    <p>@Html.ActionLink("新增帳戶", "addAccount", null, new { @class = "btn btn-primary" })</p>
 </div>

@@ -25,10 +25,9 @@ namespace MVC_DB_.Controllers
             try
             {
                 _logger.LogInformation("Fetching accounts for Index page");
-                List<account> accounts = _dbManager.getAccounts();
-                ViewBag.accounts = accounts;
+                var accounts = _dbManager.getAccounts();
                 _logger.LogInformation($"Successfully retrieved {accounts.Count} accounts");
-                return View();
+                return View(accounts);
             }
             catch (Exception ex)
             {
@@ -39,7 +38,7 @@ namespace MVC_DB_.Controllers
 
         public IActionResult addAccount()
         {
-            return View();
+            return View(new account());
         }
 
         [HttpPost]
@@ -58,10 +57,11 @@ namespace MVC_DB_.Controllers
                 _logger.LogInformation($"Successfully added new account for user: {user.userName}");
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                _logger.LogError(e, $"Error adding new account for user: {user.userName}");
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                _logger.LogError(ex, $"Error adding new account for user: {user.userName}");
+                ModelState.AddModelError("", "An error occurred while adding the account. Please try again.");
+                return View(user);
             }
         }        
 
