@@ -1,0 +1,143 @@
+@model MVC_DB_.Models.SponsorConfirmViewModel
+@{
+    ViewData["Title"] = "贊助確認";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                        <h2 class="mt-3">贊助成功！</h2>
+                        <p class="text-muted">感謝您的贊助，您的支持是我們最大的動力</p>
+                    </div>
+
+                    <div class="confirmation-details">
+                        <h4 class="mb-3">贊助專案：@Model.ProjectTitle</h4>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>交易編號：</strong></p>
+                                <p class="text-primary">@Model.TransactionId</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>交易時間：</strong></p>
+                                <p>@Model.TransactionTime.ToString("yyyy/MM/dd HH:mm:ss")</p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>贊助金額：</strong></p>
+                                <p class="text-primary">$@Model.Amount.ToString("N0")</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>付款方式：</strong></p>
+                                <p>@Model.PaymentMethodDisplay</p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>贊助者姓名：</strong></p>
+                                <p>@Model.Name</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>電子郵件：</strong></p>
+                                <p>@Model.Email</p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>聯絡電話：</strong></p>
+                                <p>@Model.Phone</p>
+                            </div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.Message))
+                        {
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <p class="mb-2"><strong>留言：</strong></p>
+                                    <p>@Model.Message</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a asp-action="project" asp-route-id="@Model.ProjectId" class="btn btn-outline-primary me-2">
+                            <i class="fas fa-arrow-left"></i> 返回專案
+                        </a>
+                        <a asp-action="Index" class="btn btn-primary">
+                            <i class="fas fa-home"></i> 返回首頁
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .text-success {
+            color: #A7C957 !important;
+        }
+
+        .text-primary {
+            color: #6A994E !important;
+        }
+
+        .confirmation-details {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .btn-primary {
+            background-color: #A7C957;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #6A994E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: #A7C957;
+            border-color: #A7C957;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #A7C957;
+            border-color: #A7C957;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3);
+        }
+    </style>
+} 

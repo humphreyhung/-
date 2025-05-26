@@ -1,0 +1,164 @@
+@model MVC_DB_.Models.SponsorPlanViewModel
+@{
+    ViewData["Title"] = "贊助方案";
+}
+
+<div class="sponsor-container">
+    <div class="sponsor-header">
+        <h1>選擇您的贊助方案</h1>
+        <p class="subtitle">您的每一份支持，都是我們前進的動力</p>
+    </div>
+
+    <div class="sponsor-options">
+        @foreach (var plan in Model.Plans)
+        {
+            <div class="sponsor-card @(plan.IsFeatured ? "featured" : "")">
+                <div class="sponsor-amount">
+                    <h3 style="color: #6A994E;">NT$ @plan.Amount.ToString("N0")</h3>
+                    <p class="sponsor-title">@plan.Title</p>
+                </div>
+                <div class="sponsor-content">
+                    <ul>
+                        @foreach (var benefit in plan.Benefits)
+                        {
+                            <li><i class="fas fa-check"></i> @benefit</li>
+                        }
+                    </ul>
+                    <a asp-action="Sponsor" asp-route-id="@Model.ProjectId" asp-route-amount="@plan.Amount" class="sponsor-btn @(plan.IsFeatured ? "featured" : "")">
+                        <i class="fas fa-heart"></i>
+                        立即贊助
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .sponsor-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .sponsor-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sponsor-header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .sponsor-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .sponsor-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .sponsor-card.featured {
+            border: 2px solid #606C38;
+        }
+
+        .sponsor-amount {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sponsor-amount h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .sponsor-title {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .sponsor-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sponsor-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            flex: 1;
+        }
+
+        .sponsor-content li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .sponsor-content li i {
+            color: #6A994E;
+            margin-right: 10px;
+        }
+
+        .sponsor-btn {
+            width: 100%;
+            padding: 12px;
+            background: #6A994E;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+            text-decoration: none;
+        }
+
+        .sponsor-btn:hover {
+            background: #85B36B;
+            transform: translateY(-2px);
+        }
+
+        .sponsor-btn.featured {
+            background: #85B36B;
+        }
+
+        .sponsor-btn.featured:hover {
+            background: #85B36B;
+        }
+
+        @@media (max-width: 768px) {
+            .sponsor-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+} 
