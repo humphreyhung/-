@@ -41,7 +41,7 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult addAccount(account user)
         {

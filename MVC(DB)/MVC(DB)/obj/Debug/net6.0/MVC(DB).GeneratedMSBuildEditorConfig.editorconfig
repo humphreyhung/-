@@ -9,53 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MVC_DB_
 build_property.RootNamespace = MVC_DB_
-build_property.ProjectDir = D:\Github\FinalProject\-\MVC(DB)\MVC(DB)\
+build_property.ProjectDir = C:\Users\gtr49\Source\Repos\-\MVC(DB)\MVC(DB)\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Github\FinalProject\-\MVC(DB)\MVC(DB)
+build_property.MSBuildProjectDirectory = C:\Users\gtr49\Source\Repos\-\MVC(DB)\MVC(DB)
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 6.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Campaign/Index.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Campaign/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcGFpZ25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Campaign/Index1.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Campaign/Index1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcGFpZ25cSW5kZXgxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Home/addAccount.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Home/addAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhZGRBY2NvdW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Home/Index.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Home/Privacy.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Shared/Error.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Login/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2lnbnVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Shared/_Layout.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/_ViewImports.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Github/FinalProject/-/MVC(DB)/MVC(DB)/Views/_ViewStart.cshtml]
+[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
