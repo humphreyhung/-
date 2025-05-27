@@ -38,6 +38,9 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .nav-link {
             font-size: 1.2rem;
@@ -202,6 +205,20 @@
             max-height: 50px;
             margin-right: 1rem;
         }
+        .nav-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+            object-fit: contain;
+        }
+        
+        .logo-img {
+            height: 50px;
+            margin-right: 15px;
+            vertical-align: middle;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -216,16 +233,28 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/images/ttesttt.png" alt="首頁" class="nav-icon" />
+                                Home
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                
+                                Privacy
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Campaign" asp-action="Index">募資專案</a>
+                            <a class="nav-link text-dark" asp-controller="Campaign" asp-action="Index">
+                              
+                                募資專案
+                            </a>
                         </li>
                     </ul>
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="project">想不到名子要取甚麼的募資網站</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="project">
+                        
+                        想不到名子要取甚麼的募資網站
+                    </a>
                     <div class="d-flex">
                         <a asp-controller="Home" asp-action="Register" class="register-btn">
                             <span class="register-icon">📝</span>
