@@ -166,9 +166,45 @@
             <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Type your password" />
         </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Type your email" />
+            </div>
         <button type="submit" class="login-btn">Sign Up</button>
         </form>
 
     </div>
 </body>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        let errorMessages = [];
+
+        // Username & Password 長度限制
+        if (username.length < 8 || username.length > 20) {
+            errorMessages.push("Username must be between 8 and 20 characters.");
+        }
+
+        if (password.length < 8 || password.length > 20) {
+            errorMessages.push("Password must be between 8 and 20 characters.");
+        }
+
+        // Email 格式驗證
+        const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+        if (!emailRegex.test(email)) {
+            errorMessages.push("Email format is invalid.");
+        }
+
+        // 若有錯誤就中止送出，並顯示錯誤訊息
+        if (errorMessages.length > 0) {
+            e.preventDefault(); // 阻止表單送出
+            alert(errorMessages.join("\n"));
+        }
+    });
+</script>
+
 </html>

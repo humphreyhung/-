@@ -27,6 +27,7 @@ namespace MVC_DB_
             // 3) 注册你的 CampaignService
             builder.Services.AddScoped<ICampaignService, CampaignService>();
             builder.Services.AddScoped<DBmanager>();
+            builder.Services.AddSession();
             builder.Services.AddControllersWithViews(options =>
             {
                 options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
@@ -81,6 +82,7 @@ namespace MVC_DB_
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
             app.UseAuthorization();
 
             app.MapControllerRoute(
