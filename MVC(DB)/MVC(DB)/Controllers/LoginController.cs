@@ -45,7 +45,7 @@ namespace MVC_DB_.Controllers
 
                             // 根據角色導向
                             if (role == "Admin")
-                                return RedirectToAction("AdminDashboard", "Home");
+                                return RedirectToAction("AllAccounts", "Account");
                             else
                                 return RedirectToAction("Index", "Home");
                         }
