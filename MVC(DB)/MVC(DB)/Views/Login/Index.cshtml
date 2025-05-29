@@ -183,11 +183,11 @@
         <form method="post" action="/Login/login">
         <div class="form-group">
             <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Type your username" />
+                <input type="text" id="username" name="username" placeholder="Type your username" maxlength="20" required />
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Type your password" />
+                <input type="password" id="password" name="password" placeholder="Type your password" maxlength="20" required />
         </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
@@ -218,4 +218,21 @@
         </form>
     </div>
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (e) {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (username.length < 8 || password.length < 8) {
+                alert("帳號與密碼需至少 8 個字元");
+                e.preventDefault(); // 阻止表單提交
+            }
+        });
+    });
+</script>
+
+
 </html>

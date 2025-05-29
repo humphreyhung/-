@@ -155,20 +155,20 @@
         <form method="post" action="/Login/Signupp">
         <div class="form-group">
             <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Type your name" />
+                <input type="text" id="name" name="name" placeholder="Type your name" maxlength="20" required />
         </div>
         
         <div class="form-group">
             <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Type your username" />
+                <input type="text" id="username" name="username" placeholder="Type your username" maxlength="20" required />
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Type your password" />
+                <input type="password" id="password" name="password" placeholder="Type your password" maxlength="20" required />
         </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Type your email" />
+                <input type="text" id="email" name="email" placeholder="Type your email" maxlength="40" required />
             </div>
         <button type="submit" class="login-btn">Sign Up</button>
         </form>
@@ -186,11 +186,11 @@
 
         // Username & Password 長度限制
         if (username.length < 8 || username.length > 20) {
-            errorMessages.push("Username must be between 8 and 20 characters.");
+            errorMessages.push("帳號需介於 8 至 20 個字元");
         }
 
         if (password.length < 8 || password.length > 20) {
-            errorMessages.push("Password must be between 8 and 20 characters.");
+            errorMessages.push("密碼需介於 8 至 20 個字元");
         }
 
         // Email 格式驗證

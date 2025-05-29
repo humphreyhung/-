@@ -39,7 +39,64 @@ namespace MVC_DB_.Controllers
 
             return View(accountList);
         }
+
+        [HttpPost]
+        public IActionResult UpdateRole(string username, string role)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(role))
+                return BadRequest("資料不完整");
+
+            if (HttpContext.Session.GetString("role") != "Admin")
+            {
+                return Unauthorized("您沒有權限執行此操作");
+            }
+
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "UPDATE accountInformation SET role = @r WHERE userName = @u";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@r", role);
+                    cmd.Parameters.AddWithValue("@u", username);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            return RedirectToAction("AllAccounts");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAccount(string username)
+        {
+            if (HttpContext.Session.GetString("role") != "Admin")
+                return Unauthorized("您沒有權限執行此操作");
+
+            string currentUser = HttpContext.Session.GetString("username");
+            if (username == currentUser)
+                return BadRequest("不能刪除目前登入的帳號");
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "DELETE FROM accountInformation WHERE userName = @u";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@u", username);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            return RedirectToAction("AllAccounts");
+        }
+
+
     }
+
+
 
     public class AccountInfo
     {
@@ -48,4 +105,7 @@ namespace MVC_DB_.Controllers
         public string Email { get; set; }
         public string Role { get; set; }
     }
+
+    
+
 }
