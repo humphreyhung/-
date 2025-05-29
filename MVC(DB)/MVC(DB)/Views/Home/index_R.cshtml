@@ -117,6 +117,8 @@
             position: fixed;
             top: 0;
             left: 0;
+            /* width: 100%;
+            max-width: 100%; 跑版*/
             width: 1100px;
             z-index: 1000;
         }
@@ -151,28 +153,28 @@
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
 
-        .sidebar h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+            .sidebar h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
 
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
 
-        .sidebar li {
-            margin-bottom: 10px;
-        }
+            .sidebar li {
+                margin-bottom: 10px;
+            }
 
-        .sidebar a {
-            text-decoration: none;
-            color: #2a6b2a;
-        }
+            .sidebar a {
+                text-decoration: none;
+                color: #2a6b2a;
+            }
 
-        .sidebar a:hover {
-            text-decoration: underline;
-        }
+                .sidebar a:hover {
+                    text-decoration: underline;
+                }
 
         .content {
             display: flex;
@@ -200,7 +202,8 @@
             gap: 30px;
             padding: 20px;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /*多行換行 */
+            padding: 20px;
         }
 
         .project {
@@ -212,11 +215,11 @@
             width: 350px;
         }
 
-        /* 進度條 */
-        .project progress {
-            width: 100%;
-            height: 18px;
-        }
+            /* 進度條 */
+            .project progress {
+                width: 100%;
+                height: 18px;
+            }
 
         progress::-webkit-progress-bar {
             background-color: #ffffff;
@@ -231,13 +234,13 @@
         /* 區塊點選 */
         .project-link {
             text-decoration: none;
-            color: inherit;
-            display: block;
+            color: inherit; /*保留原色*/
+            display: block; /*整區都可以點擊*/
         }
 
-        .project-link:hover {
-            opacity: 0.6;
-        }
+            .project-link:hover {
+                opacity: 0.6; /*加深強調*/
+            }
 
         /* 專案圖片 */
         .project img {
