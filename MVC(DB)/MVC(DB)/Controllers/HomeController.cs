@@ -319,6 +319,11 @@ namespace MVC_DB_.Controllers
             // TODO: 處理贊助訂單
             return RedirectToAction("SponsorConfirm", new { projectId = model.ProjectId });
         }
+
+        public IActionResult ProductDetail()
+        {
+            return View();
+        }
     }
 }
 

@@ -26,7 +26,7 @@
             padding: 20px 0;
         }
         .navbar-brand {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 600;
             letter-spacing: 2px;
             margin-right: 3rem;
@@ -43,8 +43,8 @@
             justify-content: center;
         }
         .nav-link {
-            font-size: 1.2rem;
-            padding: 1rem 2rem !important;
+            font-size: 1.0rem;
+            padding: 1rem 1rem !important;
             margin: 0 1rem;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -59,8 +59,8 @@
             z-index: 1;
         }
         .login-btn {
-            margin-left: 2rem;
-            padding: 12px 35px;
+            margin-left: 1rem;
+            padding: 6px 17px;
             background-color: #A7C957;
             color: white;
             border: none;
@@ -73,7 +73,7 @@
             box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 6px;
             white-space: nowrap;
         }
         .login-btn:hover {
@@ -159,8 +159,8 @@
             font-size: 14px;
         }
         .register-btn {
-            margin-left: 1.5rem;
-            padding: 12px 35px;
+            margin-left: 1rem;
+            padding: 6px 17px;
             background-color: #A7C957;
             color: white;
             border: none;
@@ -173,7 +173,7 @@
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 6px;
             white-space: nowrap;
         }
         .register-btn:hover {
@@ -194,9 +194,9 @@
             z-index: 2;
         }
         .d-flex {
-            gap: 1.5rem;
+            gap: 1rem;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
         .container {
             max-width: 1400px;
@@ -206,9 +206,9 @@
             margin-right: 1rem;
         }
         .nav-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
+           
+            height: 80px;
+            margin-right: 5px;
             vertical-align: middle;
             object-fit: contain;
         }
@@ -232,9 +232,10 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav">
+                        <img src="~/images/logoamabay.png" alt="首頁" class="nav-icon" />
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                                <img src="~/images/ttesttt.png" alt="首頁" class="nav-icon" />
+                               
                                 Home
                             </a>
                         </li>
@@ -288,25 +289,40 @@
     </button>
 
     <script>
-        // 回到頂部按鈕功能
-        $(document).ready(function() {
-            var backToTop = $("#backToTop");
-            
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 300) {
-                    backToTop.fadeIn();
-                } else {
-                    backToTop.fadeOut();
+        // 確保 jQuery 已正確載入
+        if (typeof jQuery != 'undefined') {
+            // 等待 DOM 完全載入
+            $(document).ready(function() {
+                try {
+                    // 回到頂部按鈕功能
+                    var backToTop = $("#backToTop");
+                    
+                    $(window).scroll(function() {
+                        if ($(this).scrollTop() > 300) {
+                            backToTop.fadeIn();
+                        } else {
+                            backToTop.fadeOut();
+                        }
+                    });
+
+                    backToTop.click(function() {
+                        $("html, body").animate({
+                            scrollTop: 0
+                        }, 800);
+                        return false;
+                    });
+
+                    // 添加錯誤處理
+                    $(window).on('error', function(e) {
+                        console.error('jQuery 錯誤:', e);
+                    });
+                } catch (error) {
+                    console.error('初始化時發生錯誤:', error);
                 }
             });
-
-            backToTop.click(function() {
-                $("html, body").animate({
-                    scrollTop: 0
-                }, 800);
-                return false;
-            });
-        });
+        } else {
+            console.error('jQuery 未正確載入');
+        }
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)

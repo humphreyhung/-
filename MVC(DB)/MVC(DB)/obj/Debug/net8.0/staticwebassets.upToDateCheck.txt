@@ -2,7 +2,18 @@ wwwroot\css\bulma-custom.css
 wwwroot\css\custom.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\images\Logo (1).png
+wwwroot\images\108_img_1.jpg
+wwwroot\images\138_img_1.jpg
+wwwroot\images\800x xxx.webp
+wwwroot\images\800x xxxxx.webp
+wwwroot\images\800x.webp
+wwwroot\images\91_img_1.jpg
+wwwroot\images\92324_img_1.png
+wwwroot\images\93_img_1.jpg
+wwwroot\images\99_img_1.jpg
+wwwroot\images\cake.webp
+wwwroot\images\egg.webp
+wwwroot\images\logoamabay.png
 wwwroot\images\ttesttt.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -38,3 +49,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\video\candybaby.mp4
