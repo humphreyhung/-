@@ -14,6 +14,8 @@ wwwroot\images\99_img_1.jpg
 wwwroot\images\cake.webp
 wwwroot\images\egg.webp
 wwwroot\images\logoamabay.png
+wwwroot\images\pic1.png
+wwwroot\images\pic2.png
 wwwroot\images\ttesttt.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
