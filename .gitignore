@@ -2,3 +2,4 @@
 # Ignore Visual Studio user-specific files
 .vs/
 
+/MVC(DB)/MVC(DB)/MVC(DB).csproj
