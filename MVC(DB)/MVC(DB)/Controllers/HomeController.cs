@@ -38,6 +38,11 @@ namespace MVC_DB_.Controllers
             }
         }
 
+        public IActionResult index_R()
+        {
+            return View();
+        }
+
         public IActionResult addAccount()
         {
             return View();
