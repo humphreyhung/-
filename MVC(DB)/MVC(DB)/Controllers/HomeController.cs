@@ -239,9 +239,16 @@ namespace MVC_DB_.Controllers
                         {
                             "感謝卡一張",
                             "電子感謝函",
-                            "專案進度更新"
+                            "專案進度更新",
+                            "蛋捲一盒"
                         },
-                        IsFeatured = false
+                        IsFeatured = false,
+                        EggRollFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶"
+                        }
                     },
                     new SponsorPlan
                     {
@@ -253,9 +260,29 @@ namespace MVC_DB_.Controllers
                             "電子感謝函",
                             "專案進度更新",
                             "限量紀念品",
-                            "贊助者名單刊登"
+                            "贊助者名單刊登",
+                            "蛋捲一盒",
+                            "餅乾一盒"
                         },
-                        IsFeatured = true
+                        IsFeatured = true,
+                        EggRollFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "咖啡",
+                            "芝麻",
+                            "紅茶",
+                            "草莓"
+                        },
+                        CookieFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "蔓越莓",
+                            "杏仁"
+                        }
                     },
                     new SponsorPlan
                     {
@@ -268,46 +295,200 @@ namespace MVC_DB_.Controllers
                             "專案進度更新",
                             "限量紀念品",
                             "贊助者名單刊登",
-                            "專屬活動邀請"
+                            "專屬活動邀請",
+                            "蛋捲一盒",
+                            "餅乾一盒",
+                            "蛋糕一盒"
                         },
-                        IsFeatured = false
+                        IsFeatured = false,
+                        EggRollFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "咖啡",
+                            "芝麻",
+                            "紅茶",
+                            "草莓"
+                        },
+                        CookieFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "蔓越莓",
+                            "杏仁",
+                            "咖啡",
+                            "檸檬",
+                            "椰子"
+                        },
+                        CakeFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "草莓",
+                            "芒果",
+                            "藍莓",
+                            "提拉米蘇",
+                            "起司"
+                        }
                     }
                 }
             };
             return View(viewModel);
         }
 
-        public IActionResult RewardCart(int projectId)
+        public IActionResult RewardCart(int id, decimal amount)
         {
-            // 模擬從資料庫獲取數據
+            // 根據 id 和 amount 找到對應的贊助方案
+            var sponsorPlan = new SponsorPlanViewModel
+            {
+                ProjectId = id,
+                ProjectTitle = "地方的孩子需要吃飯",
+                ProjectTargetAmount = 500000,
+                ProjectCurrentAmount = 150000,
+                Plans = new List<SponsorPlan>
+                {
+                    new SponsorPlan
+                    {
+                        Title = "基本贊助",
+                        Amount = 1000,
+                        Benefits = new List<string>
+                        {
+                            "感謝卡一張",
+                            "電子感謝函",
+                            "專案進度更新",
+                            "蛋捲一盒"
+                        },
+                        IsFeatured = false,
+                        EggRollFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "咖啡",
+                            "芝麻",
+                            "紅茶",
+                            "草莓"
+                        },
+                        CookieFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "蔓越莓",
+                            "杏仁",
+                            "咖啡",
+                            "檸檬",
+                            "椰子"
+                        }
+                    },
+                    new SponsorPlan
+                    {
+                        Title = "進階贊助",
+                        Amount = 3000,
+                        Benefits = new List<string>
+                        {
+                            "感謝卡一張",
+                            "電子感謝函",
+                            "專案進度更新",
+                            "限量紀念品",
+                            "贊助者名單刊登",
+                            "蛋捲一盒",
+                            "餅乾一盒"
+                        },
+                        IsFeatured = true,
+                        EggRollFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "咖啡",
+                            "芝麻",
+                            "紅茶",
+                            "草莓"
+                        },
+                        CookieFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "蔓越莓",
+                            "杏仁",
+                            "咖啡",
+                            "檸檬",
+                            "椰子"
+                        }
+                    },
+                    new SponsorPlan
+                    {
+                        Title = "高級贊助",
+                        Amount = 5000,
+                        Benefits = new List<string>
+                        {
+                            "感謝卡一張",
+                            "電子感謝函",
+                            "專案進度更新",
+                            "限量紀念品",
+                            "贊助者名單刊登",
+                            "專屬活動邀請",
+                            "蛋捲一盒",
+                            "餅乾一盒",
+                            "蛋糕一盒"
+                        },
+                        IsFeatured = false,
+                        EggRollFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "咖啡",
+                            "芝麻",
+                            "紅茶",
+                            "草莓"
+                        },
+                        CookieFlavors = new List<string>
+                        {
+                            "原味",
+                            "巧克力",
+                            "抹茶",
+                            "蔓越莓",
+                            "杏仁",
+                            "咖啡",
+                            "檸檬",
+                            "椰子"
+                        }
+                    }
+                }
+            }.Plans.FirstOrDefault(p => p.Amount == amount);
+
+            if (sponsorPlan == null)
+            {
+                return RedirectToAction("SponsorPlan", new { id = id });
+            }
+
             var viewModel = new RewardCartViewModel
             {
-                ProjectId = projectId,
-                ProjectTitle = "示例專案",
-                ProjectImage = "/images/project.jpg",
+                ProjectId = id,
+                ProjectTitle = "地方的孩子需要吃飯",
+                ProjectImage = "~/images/pic1.png",
                 Rewards = new List<RewardItem>
                 {
                     new RewardItem
                     {
                         RewardId = 1,
-                        Title = "早鳥優惠方案",
-                        Description = "限時優惠，包含所有基本回饋",
-                        Price = 1000,
+                        Title = sponsorPlan.Title,
+                        Description = "感謝您的贊助",
+                        Price = sponsorPlan.Amount,
                         Quantity = 1,
-                        EstimatedDelivery = "2024年12月",
-                        Benefits = new List<string>
-                        {
-                            "專案紀念品",
-                            "感謝卡片",
-                            "專案進度報告"
-                        }
+                        EstimatedDelivery = "贊助後立即發送",
+                        Benefits = sponsorPlan.Benefits,
+                        EggRollFlavors = sponsorPlan.EggRollFlavors,
+                        CookieFlavors = sponsorPlan.CookieFlavors
                     }
                 },
-                TotalAmount = 1000,
-                ShippingAddress = "",
-                ContactName = "",
-                ContactPhone = "",
-                ContactEmail = ""
+                TotalAmount = sponsorPlan.Amount
             };
 
             return View(viewModel);

@@ -59,13 +59,42 @@
                     </div>
                     <div class="progress-percentage">30%</div>
                 </div>
+                <div class="progress-visualization">
+                    <div class="circular-progress">
+                        <div class="circular-progress-value">30%</div>
+                        <svg class="circular-progress-svg">
+                            <circle class="circular-progress-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="circular-progress-bar" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                    </div>
+                    <div class="countdown-container">
+                        <div class="countdown-title">距離募資結束還有</div>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span id="days">00</span>
+                                <span class="countdown-label">天</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="hours">00</span>
+                                <span class="countdown-label">時</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes">00</span>
+                                <span class="countdown-label">分</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds">00</span>
+                                <span class="countdown-label">秒</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 30%"></div>
                 </div>
                 <div class="progress-footer">
                     <div class="progress-info">
                         <div class="info-item">
-                            
                             <span class="info-label">贊助人數</span>
                             <span class="info-value">128 人</span>
                         </div>
@@ -73,33 +102,6 @@
                             <span class="info-label">剩餘天數</span>
                             <span class="info-value">15 天</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-    <div class="container">
-        <div class="progress-container">
-            <div class="countdown-container">
-                <div class="countdown-title">距離活動結束還有</div>
-                <div class="countdown-timer">
-                    <div class="countdown-item">
-                        <span id="days">00</span>
-                        <span class="countdown-label">天</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="hours">00</span>
-                        <span class="countdown-label">時</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="minutes">00</span>
-                        <span class="countdown-label">分</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="seconds">00</span>
-                        <span class="countdown-label">秒</span>
                     </div>
                 </div>
             </div>
@@ -682,6 +684,54 @@
             border-radius: 20px;
         }
 
+        .progress-visualization {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 0 2rem;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+        }
+
+        .circular-progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6A994E;
+        }
+
+        .circular-progress-svg {
+            transform: rotate(-90deg);
+            width: 120px;
+            height: 120px;
+        }
+
+        .circular-progress-bg,
+        .circular-progress-bar {
+            fill: none;
+            stroke-width: 8;
+        }
+
+        .circular-progress-bg {
+            stroke: #f0f0f0;
+        }
+
+        .circular-progress-bar {
+            stroke: #6A994E;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
         .progress-bar-container {
             height: 12px;
             background: #F5F6F7;
@@ -752,22 +802,24 @@
         }
 
         .countdown-container {
+            flex-grow: 1;
             text-align: center;
-            padding: 20px;
+            padding: 1rem;
             background: #f8f9f8;
             border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .countdown-title {
             font-size: 1.2rem;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
 
         .countdown-timer {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 1.5rem;
         }
 
         .countdown-item {
@@ -776,51 +828,38 @@
             align-items: center;
         }
 
-            .countdown-item span:first-child {
-                font-size: 2rem;
-                font-weight: bold;
-                color: #6A994E;
-                background: white;
-                padding: 10px 15px;
-                border-radius: 8px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            }
+        .countdown-item span:first-child {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #6A994E;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-width: 60px;
+        }
 
         .countdown-label {
-            margin-top: 5px;
+            margin-top: 0.5rem;
             color: #666;
             font-size: 0.9rem;
         }
 
         @@media (max-width: 768px) {
-            .progress-container {
-                grid-template-columns: 1fr;
-            }
-
-            .progress-header {
+            .progress-visualization {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+                align-items: center;
+                padding: 0 1rem;
             }
 
-            .progress-stats {
-                flex-direction: column;
-                gap: 8px;
+            .countdown-timer {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
-            .progress-info {
-                flex-direction: column;
-                gap: 20px;
+            .countdown-item {
+                flex: 1 1 calc(50% - 1rem);
             }
-
-            .info-item {
-                padding: 10px 0;
-                border-bottom: 1px solid rgba(0,0,0,0.05);
-            }
-
-                .info-item:last-child {
-                    border-bottom: none;
-                }
         }
 
         .main-container {
@@ -1192,6 +1231,18 @@
                     document.getElementById(tabId).classList.add('is-active');
                 });
             });
+
+            // 設定環形進度條
+            const progress = 30; // 進度百分比
+            const circle = document.querySelector('.circular-progress-bar');
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            const offset = circumference - (progress / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
         });
     </script>
 </body>

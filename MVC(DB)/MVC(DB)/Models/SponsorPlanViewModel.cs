@@ -17,5 +17,8 @@ namespace MVC_DB_.Models
         public decimal Amount { get; set; }
         public List<string> Benefits { get; set; }
         public bool IsFeatured { get; set; }
+        public List<string> EggRollFlavors { get; set; }
+        public List<string> CookieFlavors { get; set; }
+        public List<string> CakeFlavors { get; set; }
     }
 } 

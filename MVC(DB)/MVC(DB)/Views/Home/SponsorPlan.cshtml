@@ -24,7 +24,7 @@
                             <li><i class="fas fa-check"></i> @benefit</li>
                         }
                     </ul>
-                    <a asp-action="Sponsor" asp-route-id="@Model.ProjectId" asp-route-amount="@plan.Amount" class="sponsor-btn @(plan.IsFeatured ? "featured" : "")">
+                    <a asp-action="RewardCart" asp-route-id="@Model.ProjectId" asp-route-amount="@plan.Amount" class="sponsor-btn @(plan.IsFeatured ? "featured" : "")">
                         <i class="fas fa-heart"></i>
                         立即贊助
                     </a>

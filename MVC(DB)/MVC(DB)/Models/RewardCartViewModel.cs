@@ -24,5 +24,8 @@ namespace MVC_DB_.Models
         public int Quantity { get; set; }
         public string EstimatedDelivery { get; set; }
         public List<string> Benefits { get; set; }
+        public List<string> EggRollFlavors { get; set; }
+        public List<string> CookieFlavors { get; set; }
+        public List<string> CakeFlavors { get; set; }
     }
 } 
