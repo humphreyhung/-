@@ -3,78 +3,106 @@
     ViewData["Title"] = "贊助確認";
 }
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-5">
+<div class="container-fluid mt-5 px-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card confirmation-card">
+                <div class="card-header text-center">
+                    <i class="fas fa-check-circle text-success mb-3" style="font-size: 3rem;"></i>
+                    <h3 class="mb-0">贊助確認</h3>
+                </div>
                 <div class="card-body">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
-                        <h2 class="mt-3">贊助成功！</h2>
-                        <p class="text-muted">感謝您的贊助，您的支持是我們最大的動力</p>
-                    </div>
-
-                    <div class="confirmation-details">
-                        <h4 class="mb-3">贊助專案：@Model.ProjectTitle</h4>
-                        
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>交易編號：</strong></p>
-                                <p class="text-primary">@Model.TransactionId</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>交易時間：</strong></p>
-                                <p>@Model.TransactionTime.ToString("yyyy/MM/dd HH:mm:ss")</p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>贊助金額：</strong></p>
-                                <p class="text-primary">$@Model.Amount.ToString("N0")</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>付款方式：</strong></p>
-                                <p>@Model.PaymentMethodDisplay</p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>贊助者姓名：</strong></p>
-                                <p>@Model.Name</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>電子郵件：</strong></p>
-                                <p>@Model.Email</p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <p class="mb-2"><strong>聯絡電話：</strong></p>
-                                <p>@Model.Phone</p>
-                            </div>
-                        </div>
-
-                        @if (!string.IsNullOrEmpty(Model.Message))
-                        {
-                            <div class="row mb-4">
-                                <div class="col-12">
-                                    <p class="mb-2"><strong>留言：</strong></p>
-                                    <p>@Model.Message</p>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="info-section">
+                                <h5><i class="fas fa-project-diagram me-2"></i>專案資訊</h5>
+                                <div class="info-content">
+                                    <p><strong>專案名稱：</strong> @Model.ProjectTitle</p>
+                                    <p><strong>贊助金額：</strong> <span class="text-primary">NT$ @Model.Amount.ToString("N0")</span></p>
                                 </div>
                             </div>
-                        }
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-section">
+                                <h5><i class="fas fa-receipt me-2"></i>交易資訊</h5>
+                                <div class="info-content">
+                                    <p><strong>交易編號：</strong> <span class="text-primary">@Model.TransactionId</span></p>
+                                    <p><strong>交易時間：</strong> @Model.TransactionTime.ToString("yyyy/MM/dd HH:mm:ss")</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="info-section">
+                                <h5><i class="fas fa-user me-2"></i>贊助者資訊</h5>
+                                <div class="info-content">
+                                    <p><strong>姓名：</strong> @Model.Name</p>
+                                    <p><strong>電子郵件：</strong> @Model.Email</p>
+                                    <p><strong>電話：</strong> @Model.Phone</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-section">
+                                <h5><i class="fas fa-map-marker-alt me-2"></i>收件地址</h5>
+                                <div class="info-content">
+                                    <p><strong>縣市：</strong> @Model.City</p>
+                                    <p><strong>鄉鎮市區：</strong> @Model.District</p>
+                                    <p><strong>詳細地址：</strong> @Model.Address</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="info-section">
+                                <h5><i class="fas fa-comment me-2"></i>備註</h5>
+                                <div class="info-content">
+                                    <p>@(string.IsNullOrEmpty(Model.Message) ? "無" : Model.Message)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="info-section">
+                                <h5><i class="fas fa-credit-card me-2"></i>付款方式</h5>
+                                <div class="info-content">
+                                    <p>
+                                        @switch (Model.PaymentMethod.ToLower())
+                                        {
+                                            case "credit":
+                                                <text><i class="fas fa-credit-card me-2"></i>信用卡</text>
+                                                break;
+                                            case "atm":
+                                                <text><i class="fas fa-university me-2"></i>ATM轉帳</text>
+                                                break;
+                                            case "line":
+                                                <text><i class="fab fa-line me-2"></i>LINE Pay</text>
+                                                break;
+                                            default:
+                                                <text>@Model.PaymentMethod</text>
+                                                break;
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="text-center mt-4">
-                        <a asp-action="project" asp-route-id="@Model.ProjectId" class="btn btn-outline-primary me-2">
-                            <i class="fas fa-arrow-left"></i> 返回專案
+                        <a href="@Url.Action("Index_R", "Home")" class="btn btn-secondary me-2">
+                            <i class="fas fa-home me-2"></i>返回首頁
                         </a>
-                        <a asp-action="Index" class="btn btn-primary">
-                            <i class="fas fa-home"></i> 返回首頁
-                        </a>
+                        <!-- 
+                        <button type="button" class="btn btn-primary" onclick="window.print()">
+                            <i class="fas fa-print me-2"></i>列印確認單
+                        </button>
+                        -->
                     </div>
                 </div>
             </div>
@@ -84,60 +112,297 @@
 
 @section Styles {
     <style>
-        .card {
+        .confirmation-card {
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border: none;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            max-width: 1400px;
         }
 
-        .card-body {
-            padding: 2rem;
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 2rem 1rem;
+            border-radius: 15px 15px 0 0 !important;
         }
 
         .text-success {
-            color: #A7C957 !important;
+            color: #6A994E !important;
+        }
+
+        .info-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h5 {
+            color: #6A994E;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #6A994E;
+            padding-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .info-content {
+            color: #666;
+        }
+
+        .info-content p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .text-primary {
             color: #6A994E !important;
+            font-weight: 600;
         }
 
-        .confirmation-details {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 1.5rem;
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .btn-primary {
-            background-color: #A7C957;
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            background-color: #6A994E;
+            border-color: #6A994E;
         }
 
         .btn-primary:hover {
-            background-color: #6A994E;
+            background-color: #718355;
+            border-color: #718355;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3);
         }
 
-        .btn-outline-primary {
-            color: #A7C957;
-            border-color: #A7C957;
-            padding: 0.75rem 2rem;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
         }
 
-        .btn-outline-primary:hover {
-            background-color: #A7C957;
-            border-color: #A7C957;
-            color: white;
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(167, 201, 87, 0.3);
+        }
+
+        @@media print {
+            .btn {
+                display: none;
+            }
+
+            .confirmation-card {
+                box-shadow: none;
+            }
+
+            .info-section {
+                box-shadow: none;
+            }
+
+            .info-section:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .progress-container {
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .funding-progress {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .progress-title h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .current-amount {
+            color: #6A994E;
+            font-weight: 600;
+        }
+
+        .target-amount {
+            color: #666;
+        }
+
+        .progress-percentage {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6A994E;
+        }
+
+        .progress-visualization {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 3rem;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .circular-progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #6A994E;
+        }
+
+        .circular-progress-svg {
+            transform: rotate(-90deg);
+        }
+
+        .circular-progress-bg {
+            fill: none;
+            stroke: #e9ecef;
+            stroke-width: 8;
+        }
+
+        .circular-progress-bar {
+            fill: none;
+            stroke: #6A994E;
+            stroke-width: 8;
+            stroke-dasharray: 339.292;
+            stroke-dashoffset: 237.504;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .countdown-container {
+            flex: 1;
+        }
+
+        .countdown-title {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-item span:first-child {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .countdown-label {
+            display: block;
+            margin-top: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            background: #6A994E;
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-info {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            display: block;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        @@media (max-width: 768px) {
+            .progress-visualization {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .countdown-timer {
+                justify-content: center;
+            }
+
+            .progress-info {
+                gap: 2rem;
+            }
         }
     </style>
 } 

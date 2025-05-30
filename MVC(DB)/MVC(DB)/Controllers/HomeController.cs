@@ -198,12 +198,16 @@ namespace MVC_DB_.Controllers
                 name = model.Name,
                 email = model.Email,
                 phone = model.Phone,
+                city = model.City,
+                district = model.District,
+                address = model.Address,
                 message = model.Message,
                 paymentMethod = model.PaymentMethod
             });
         }
 
-        public IActionResult SponsorConfirm(int projectId, decimal amount, string name, string email, string phone, string message, string paymentMethod)
+        public IActionResult SponsorConfirm(int projectId, decimal amount, string name, string email, string phone, 
+            string city, string district, string address, string message, string paymentMethod)
         {
             var viewModel = new SponsorConfirmViewModel
             {
@@ -213,6 +217,9 @@ namespace MVC_DB_.Controllers
                 Name = name,
                 Email = email,
                 Phone = phone,
+                City = city,
+                District = district,
+                Address = address,
                 Message = message,
                 PaymentMethod = paymentMethod,
                 TransactionId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper(),

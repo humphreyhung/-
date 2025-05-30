@@ -46,7 +46,7 @@
             <span class="tag is-primary">New</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
     </div>
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="progress-container">
             <div class="funding-progress">
                 <div class="progress-header">
@@ -302,7 +302,7 @@
             </div>
         </div>
         <div class="intro column is-8 is-offset-2">
-            <h2 class="title">Perfect for developers or designers!</h2><br>
+            <h2 class="title">回饋產品</h2><br>
             <p class="subtitle">Vel fringilla est ullamcorper eget nulla facilisi. Nulla facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus.</p>
         </div>
         <div class="sandbox">
@@ -620,84 +620,88 @@
         <script src="../js/bulma.js"></script>
     </footer>
     <style>
-        .container {
-            max-width: 1200px;
+        .container-fluid {
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         .progress-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin: 40px auto;
-            max-width: 1000px;
+            width: 100%;
+            margin: 2rem auto;
         }
 
         .funding-progress {
-            background: white;
+            background: #fff;
             border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid rgba(106, 153, 78, 0.1);
+            padding: 2.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
         }
 
         .progress-title h3 {
+            font-size: 2rem;
             color: #2C3E50;
-            font-size: 1.4rem;
-            margin: 0 0 8px 0;
-            font-weight: 600;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .progress-stats {
             display: flex;
-            gap: 15px;
+            gap: 2rem;
+            font-size: 1.3rem;
             align-items: baseline;
         }
 
         .current-amount {
             color: #6A994E;
+            font-weight: 700;
             font-size: 1.8rem;
-            font-weight: bold;
             text-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
         .target-amount {
-            color: #7F8C8D;
-            font-size: 1rem;
+            color: #666;
+            font-size: 1.2rem;
             font-weight: 500;
         }
 
         .progress-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
             color: #6A994E;
-            font-size: 1.4rem;
-            font-weight: bold;
             background: rgba(106, 153, 78, 0.1);
-            padding: 8px 15px;
+            padding: 0.8rem 1.5rem;
             border-radius: 20px;
+            letter-spacing: 1px;
         }
 
         .progress-visualization {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 2rem;
-            margin: 2rem 0;
-            padding: 0 2rem;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            gap: 4rem;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
         }
 
         .circular-progress {
             position: relative;
-            width: 120px;
-            height: 120px;
-            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            background: #fff;
+            border-radius: 50%;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .circular-progress-value {
@@ -705,115 +709,46 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 2rem;
+            font-weight: 600;
             color: #6A994E;
         }
 
         .circular-progress-svg {
             transform: rotate(-90deg);
-            width: 120px;
-            height: 120px;
-        }
-
-        .circular-progress-bg,
-        .circular-progress-bar {
-            fill: none;
-            stroke-width: 8;
+            width: 100%;
+            height: 100%;
         }
 
         .circular-progress-bg {
-            stroke: #f0f0f0;
+            fill: none;
+            stroke: #e9ecef;
+            stroke-width: 10;
         }
 
         .circular-progress-bar {
+            fill: none;
             stroke: #6A994E;
+            stroke-width: 10;
             stroke-linecap: round;
             transition: stroke-dashoffset 0.5s ease;
         }
 
-        .progress-bar-container {
-            height: 12px;
-            background: #F5F6F7;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #BC4749 0%, #DFA5A6 100%);
-            border-radius: 6px;
-            transition: width 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-            .progress-bar::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient( 45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent );
-                background-size: 30px 30px;
-                animation: move 2s linear infinite;
-            }
-
-        @@keyframes move {
-            0% {
-                background-position: 0 0;
-            }
-
-            100% {
-                background-position: 30px 30px;
-            }
-        }
-
-        .progress-footer {
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 20px;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .info-item {
-            text-align: center;
-            padding: 0 15px;
-        }
-
-        .info-label {
-            display: block;
-            color: #7F8C8D;
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .info-value {
-            color: #2C3E50;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
         .countdown-container {
-            flex-grow: 1;
-            text-align: center;
-            padding: 1rem;
-            background: #f8f9f8;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            flex: 1;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .countdown-title {
-            font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #2C3E50;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .countdown-timer {
@@ -823,42 +758,113 @@
         }
 
         .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
+            min-width: 80px;
         }
 
         .countdown-item span:first-child {
-            font-size: 2rem;
-            font-weight: bold;
+            display: block;
+            font-size: 2.4rem;
+            font-weight: 700;
             color: #6A994E;
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-width: 60px;
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .countdown-label {
-            margin-top: 0.5rem;
+            display: block;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            margin: 2.5rem 1rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #6A994E 0%, #B5C99A 100%);
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 30px 30px;
+            animation: move 2s linear infinite;
+        }
+
+        @@keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 30px 30px;
+            }
         }
 
         @@media (max-width: 768px) {
-            .progress-visualization {
+            .progress-header {
                 flex-direction: column;
-                align-items: center;
-                padding: 0 1rem;
+                text-align: center;
+                gap: 1.5rem;
             }
 
-            .countdown-timer {
-                flex-wrap: wrap;
-                gap: 1rem;
+            .progress-title h3 {
+                font-size: 1.8rem;
             }
 
-            .countdown-item {
-                flex: 1 1 calc(50% - 1rem);
+            .progress-stats {
+                justify-content: center;
+            }
+
+            .progress-percentage {
+                font-size: 2rem;
+            }
+
+            .countdown-title {
+                font-size: 1.3rem;
+            }
+
+            .countdown-item span:first-child {
+                font-size: 2rem;
+                padding: 1rem;
+            }
+
+            .info-label {
+                font-size: 1.1rem;
+            }
+
+            .info-value {
+                font-size: 1.4rem;
             }
         }
 
@@ -1181,6 +1187,58 @@
 
         .button.is-primary:hover {
             background-color: #718355;
+        }
+
+        .intro {
+            position: relative;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100%;
+            background: linear-gradient(135deg, #718355 0%, #B5C99A 100%);
+            z-index: -1;
+        }
+
+        .intro .title {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro .subtitle {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @@media (max-width: 768px) {
+            .intro {
+                padding: 3rem 0;
+                margin: 3rem 0;
+            }
+
+            .intro .title {
+                font-size: 2rem;
+            }
+
+            .intro .subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
         }
     </style>
     <script>
