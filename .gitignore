@@ -1,8 +1,8 @@
 # .gitignore
 # Ignore Visual Studio user-specific files
 .vs/
-MVC(DB)/bin/Release/
-MVC(DB)/obj/Release/
+MVC(DB)/bin/
+MVC(DB)/obj/
 *.suo
 *.user
 *.pdb
