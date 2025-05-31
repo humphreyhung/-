@@ -3365,23 +3365,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Users\\user\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\OneDrive\\桌面\\mvc\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
+      "projectUniqueName": "C:\\Users\\user\\git\\project2\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
       "projectName": "MVC(DB)",
-      "projectPath": "C:\\Users\\USER\\OneDrive\\桌面\\mvc\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\OneDrive\\桌面\\mvc\\-\\MVC(DB)\\MVC(DB)\\obj\\",
+      "projectPath": "C:\\Users\\user\\git\\project2\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\git\\project2\\-\\MVC(DB)\\MVC(DB)\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3390,7 +3390,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

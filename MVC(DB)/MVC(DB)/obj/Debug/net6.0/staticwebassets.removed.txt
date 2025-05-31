@@ -1,0 +1,16 @@
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\108_img_1.jpg
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\138_img_1.jpg
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\800x xxx.webp
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\800x xxxxx.webp
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\800x.webp
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\91_img_1.jpg
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\92324_img_1.png
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\93_img_1.jpg
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\99_img_1.jpg
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\cake.webp
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\egg.webp
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\logoamabay.png
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\pic1.png
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\pic2.png
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\site.css
+C:\Users\user\git\project2\-\MVC(DB)\MVC(DB)\wwwroot\images\ttesttt.png
