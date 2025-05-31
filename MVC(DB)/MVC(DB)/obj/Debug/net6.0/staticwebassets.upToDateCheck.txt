@@ -1,22 +1,22 @@
 wwwroot\css\bulma-custom.css
 wwwroot\css\custom.css
 wwwroot\favicon.ico
-wwwroot\js\images\108_img_1.jpg
-wwwroot\js\images\138_img_1.jpg
-wwwroot\js\images\800x xxx.webp
-wwwroot\js\images\800x xxxxx.webp
-wwwroot\js\images\800x.webp
-wwwroot\js\images\91_img_1.jpg
-wwwroot\js\images\92324_img_1.png
-wwwroot\js\images\93_img_1.jpg
-wwwroot\js\images\99_img_1.jpg
-wwwroot\js\images\cake.webp
-wwwroot\js\images\egg.webp
-wwwroot\js\images\logoamabay.png
-wwwroot\js\images\pic1.png
-wwwroot\js\images\pic2.png
-wwwroot\js\images\site.css
-wwwroot\js\images\ttesttt.png
+wwwroot\images\108_img_1.jpg
+wwwroot\images\138_img_1.jpg
+wwwroot\images\800x xxx.webp
+wwwroot\images\800x xxxxx.webp
+wwwroot\images\800x.webp
+wwwroot\images\91_img_1.jpg
+wwwroot\images\92324_img_1.png
+wwwroot\images\93_img_1.jpg
+wwwroot\images\99_img_1.jpg
+wwwroot\images\cake.webp
+wwwroot\images\egg.webp
+wwwroot\images\logoamabay.png
+wwwroot\images\pic1.png
+wwwroot\images\pic2.png
+wwwroot\images\site.css
+wwwroot\images\ttesttt.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
