@@ -25,14 +25,10 @@ namespace MVC_DB_
             //                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // 3) 注册你的 CampaignService
-<<<<<<< HEAD
             builder.Services.AddScoped<ICampaignService, CampaignService>();
             builder.Services.AddScoped<DBmanager>();
             builder.Services.AddSession();
-=======
-            //builder.Services.AddScoped<ICampaignService, CampaignService>();
-            //builder.Services.AddScoped<DBmanager>();
->>>>>>> origin/QQ
+
             builder.Services.AddControllersWithViews(options =>
             {
                 options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
