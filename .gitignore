@@ -1,4 +1,5 @@
 # .gitignore
 # Ignore Visual Studio user-specific files
 .vs/
-
+MVC(DB)/bin/
+MVC(DB)/obj/
