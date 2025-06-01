@@ -3,3 +3,8 @@
 .vs/
 MVC(DB)/bin/
 MVC(DB)/obj/
+*.suo
+*.user
+*.pdb
+*.log
+*.tmp

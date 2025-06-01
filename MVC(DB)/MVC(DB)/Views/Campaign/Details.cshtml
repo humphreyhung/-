@@ -1,0 +1,89 @@
+@model MVC_DB_.Models.Campaign
+
+@{
+    ViewData["Title"] = "專案詳情";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">@Model.Title</h3>
+            <span class="badge bg-@(Model.Status switch {
+                "Draft" => "secondary",
+                "Active" => "success",
+                "Completed" => "primary",
+                "Cancelled" => "danger",
+                _ => "info"
+            })">@Model.Status</span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>專案描述</h5>
+                    <p class="text-muted">@Model.Description</p>
+
+                    <h5 class="mt-4">募資進度</h5>
+                    <div class="progress" style="height: 25px;">
+                        @{
+                            var percentage = Model.TargetAmount > 0 
+                                ? (Model.CollectedAmount / Model.TargetAmount) * 100 
+                                : 0;
+                        }
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: @Math.Min(percentage, 100)%;" 
+                             aria-valuenow="@percentage" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                            @percentage.ToString("F1")%
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span>已募集: @Model.CollectedAmount.ToString("C")</span>
+                        <span>目標: @Model.TargetAmount.ToString("C")</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>專案資訊</h5>
+                            <dl class="row">
+                                <dt class="col-sm-5">建立時間</dt>
+                                <dd class="col-sm-7">@Model.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</dd>
+
+                                <dt class="col-sm-5">建立者</dt>
+                                <dd class="col-sm-7">@Model.Owner.UserName</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group">
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> 返回列表
+                </a>
+                @if (User.Identity?.Name == Model.Owner.UserName)
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> 編輯
+                    </a>
+                    @if (Model.Status == "Draft")
+                    {
+                        <form asp-action="Delete" asp-route-id="@Model.Id" method="post" style="display: inline;">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger" 
+                                    onclick="return confirm('確定要刪除這個專案嗎？');">
+                                <i class="fas fa-trash"></i> 刪除
+                            </button>
+                        </form>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+} 
