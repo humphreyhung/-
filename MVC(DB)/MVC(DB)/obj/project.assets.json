@@ -2809,23 +2809,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gtr49\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gtr49\\Source\\Repos\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
+      "projectUniqueName": "D:\\Github\\FinalProject_main\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
       "projectName": "MVC(DB)",
-      "projectPath": "C:\\Users\\gtr49\\Source\\Repos\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
-      "packagesPath": "C:\\Users\\gtr49\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gtr49\\Source\\Repos\\-\\MVC(DB)\\MVC(DB)\\obj\\",
+      "projectPath": "D:\\Github\\FinalProject_main\\-\\MVC(DB)\\MVC(DB)\\MVC(DB).csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Github\\FinalProject_main\\-\\MVC(DB)\\MVC(DB)\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\gtr49\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2888,6 +2888,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.36, 6.0.36]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

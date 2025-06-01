@@ -9,65 +9,65 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MVC_DB_
 build_property.RootNamespace = MVC_DB_
-build_property.ProjectDir = C:\Users\gtr49\Source\Repos\-\MVC(DB)\MVC(DB)\
+build_property.ProjectDir = D:\Github\FinalProject_main\-\MVC(DB)\MVC(DB)\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\gtr49\Source\Repos\-\MVC(DB)\MVC(DB)
+build_property.MSBuildProjectDirectory = D:\Github\FinalProject_main\-\MVC(DB)\MVC(DB)
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 6.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Account/AllAccounts.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Account/AllAccounts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBbGxBY2NvdW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Campaign/Index.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Campaign/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcGFpZ25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Campaign/Index1.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Campaign/Index1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcGFpZ25cSW5kZXgxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Home/addAccount.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Home/addAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhZGRBY2NvdW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Home/Index.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Home/Privacy.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Login/Index.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Login/Signup.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Login/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2lnbnVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Shared/Error.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Shared/_Layout.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/_ViewImports.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/gtr49/Source/Repos/-/MVC(DB)/MVC(DB)/Views/_ViewStart.cshtml]
+[D:/Github/FinalProject_main/-/MVC(DB)/MVC(DB)/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
