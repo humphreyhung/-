@@ -25,53 +25,26 @@ namespace MVC_DB_
             //                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // 3) 注册你的 CampaignService
+<<<<<<< HEAD
             builder.Services.AddScoped<ICampaignService, CampaignService>();
             builder.Services.AddScoped<DBmanager>();
             builder.Services.AddSession();
+=======
+            //builder.Services.AddScoped<ICampaignService, CampaignService>();
+            //builder.Services.AddScoped<DBmanager>();
+>>>>>>> origin/QQ
             builder.Services.AddControllersWithViews(options =>
             {
                 options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
-            });
+            })
+            .AddRazorRuntimeCompilation();
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline
             if (app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler(errorApp =>
-                {
-                    errorApp.Run(async context =>
-                    {
-                        var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
-                        var exception = exceptionHandlerPathFeature?.Error;
-
-                        context.Response.StatusCode = 500;
-                        context.Response.ContentType = "text/html";
-                        await context.Response.WriteAsync("<html><body style='padding: 20px; font-family: Arial, sans-serif;'>\r\n");
-                        await context.Response.WriteAsync($"<h2 style='color: #d32f2f;'>Error: {exception?.Message}</h2><br>\r\n");
-                        
-                        if (exception is SqlException sqlException)
-                        {
-                            await context.Response.WriteAsync($"<div style='background-color: #fff3f3; padding: 15px; border-radius: 4px; margin: 10px 0;'>\r\n");
-                            await context.Response.WriteAsync($"<h3 style='color: #d32f2f;'>Database Error Details:</h3>\r\n");
-                            await context.Response.WriteAsync($"<p><strong>Error Number:</strong> {sqlException.Number}</p>\r\n");
-                            await context.Response.WriteAsync($"<p><strong>Error State:</strong> {sqlException.State}</p>\r\n");
-                            await context.Response.WriteAsync($"<p><strong>Error Class:</strong> {sqlException.Class}</p>\r\n");
-                            await context.Response.WriteAsync($"</div>\r\n");
-                        }
-
-                        if (exception != null)
-                        {
-                            await context.Response.WriteAsync("<div style='background-color: #f5f5f5; padding: 15px; border-radius: 4px; margin: 10px 0;'>\r\n");
-                            await context.Response.WriteAsync("<h3>Stack Trace:</h3>\r\n");
-                            await context.Response.WriteAsync($"<pre style='overflow-x: auto; background-color: #fff; padding: 10px; border-radius: 4px;'>{exception.StackTrace}</pre>\r\n");
-                            await context.Response.WriteAsync("</div>\r\n");
-                        }
-                        
-                        await context.Response.WriteAsync("<br><a href='/' style='display: inline-block; padding: 10px 20px; background-color: #1976d2; color: white; text-decoration: none; border-radius: 4px;'>Back to Home</a><br>\r\n");
-                        await context.Response.WriteAsync("</body></html>\r\n");
-                    });
-                });
+                app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -87,7 +60,7 @@ namespace MVC_DB_
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=index_R}/{id?}");
 
             app.Run();
         }
