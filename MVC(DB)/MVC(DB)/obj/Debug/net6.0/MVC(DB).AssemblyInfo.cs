@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVC(DB)")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ef54ecc1efd7f92228a3caefed4e865159bf8f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a268487e1b70911eb4e93318e64680bb5bd2fc46")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVC(DB)")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVC(DB)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
