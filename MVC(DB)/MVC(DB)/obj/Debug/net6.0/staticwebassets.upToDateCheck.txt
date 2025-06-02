@@ -15,7 +15,6 @@ wwwroot\images\egg.webp
 wwwroot\images\logoamabay.png
 wwwroot\images\pic1.png
 wwwroot\images\pic2.png
-wwwroot\images\site.css
 wwwroot\images\ttesttt.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -52,3 +51,4 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\video\candybaby.mp4
+wwwroot\css\site.css
