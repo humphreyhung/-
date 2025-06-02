@@ -8,29 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
+        
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-color: #dcae66;
+            background-color: #f7f8f3;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
-        /* 幾何背景圖形 */
+        label {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #3a3a3a;
+        }
+
+        /* 幾何背景圖形 - 改為和首頁相近色 */
         .shape-circle {
             position: absolute;
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background-color: #c4772c;
+            background-color: #90a07c;
             top: -80px;
             left: -80px;
         }
@@ -49,7 +53,7 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background-color: #7a8939;
+            background-color: #f0f2ea;
             bottom: -80px;
             left: -80px;
             clip-path: polygon(0 0, 100% 100%, 0 100%);
@@ -59,52 +63,74 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background-color: #d5912e;
+            background-color: #f5f5f0;
             bottom: -80px;
             right: -80px;
             clip-path: polygon(100% 0, 100% 100%, 0 100%);
         }
 
         .login-container {
-            background-color: #f7ebd7;
+            background-color: #f5ede3; /* 柔和奶茶色 */
+            border: 1px solid #e0d6cc;
             border-radius: 20px;
             padding: 40px;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            max-width: 90vw;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             z-index: 10;
             position: relative;
         }
 
+        .form-group {
+            width: 100%;
+            margin-bottom: 24px;
+        }
             .login-container h2 {
                 text-align: center;
-                color: #5a2c0d;
-                margin-bottom: 30px;
+                color: #4f5b2c;
+                margin-bottom: 35px;
             }
 
-        .form-group {
-            margin-bottom: 20px;
+        .login-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+            border-radius: 20px;
+            z-index: -1;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #333;
+        .login-container::after {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 6px;
+            background-color: #cbbfa3;
+            border-radius: 3px;
         }
+
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
-            padding: 12px;
+            width: 92%;
+            margin: 0 auto;
+            display: block;
+            padding: 14px 16px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 16px;
+            background-color: #fff;
+            box-sizing: border-box;
         }
 
         .login-btn {
             width: 100%;
             padding: 12px;
-            background-color: #a4571e;
+            background-color: #9e572a; /* 深橘棕色，更穩重 */
+            transition: background-color 0.3s;
             color: white;
             font-weight: bold;
             border: none;
@@ -113,6 +139,27 @@
             margin-top: 10px;
             cursor: pointer;
         }
+
+            .login-btn:hover {
+                background-color: #7d3f1c;
+            }
+
+        .signup {
+            width: 100%;
+            padding: 12px;
+            background-color: #71803c;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+            .signup:hover {
+                background-color: #5c6a2f;
+            }
 
         .line-btn {
             width: 100%;
@@ -127,24 +174,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-            .line-btn img {
-                height: 20px;
-                margin-right: 10px;
-            }
-
-        .signup {
-            width: 100%;
-            padding: 12px;
-            background-color: #7a8939;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
         }
 
         .social-btn {
@@ -168,6 +197,11 @@
                 background-color: white;
                 padding: 2px;
             }
+
+        .login-btn, .signup {
+            margin-top: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* 微陰影讓白底更有層次 */
+        }
     </style>
 </head>
 <body>
@@ -179,17 +213,17 @@
 
     <!-- 登入表單 -->
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>登入</h2>
         <form method="post" action="/Login/login">
         <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">帳號</label>
                 <input type="text" id="username" name="username" placeholder="Type your username" maxlength="20" required />
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">密碼</label>
                 <input type="password" id="password" name="password" placeholder="Type your password" maxlength="20" required />
         </div>
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" class="login-btn">登入</button>
         </form>
         <div style="text-align: center; margin: 20px 0 10px;">Or sign up using</div>
 
@@ -214,7 +248,7 @@
         </div>
 
         <form method="get" action="/Login/Signup">
-            <input type="submit" class="signup" value="SIGN UP" />
+            <input type="submit" class="signup" value="註冊" />
         </form>
     </div>
 </body>
