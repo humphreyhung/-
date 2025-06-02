@@ -14,12 +14,12 @@ namespace MVC_DB_.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly DBmanager _dbManager;
+        private readonly DBmanager _dbManager; // 修正：新增 _dbManager 欄位
 
-        public HomeController(ILogger<HomeController> logger/*, DBmanager dbManager*/)
+        public HomeController(ILogger<HomeController> logger, DBmanager dbManager) // 修正：加入 dbManager 參數
         {
             _logger = logger;
-            //_dbManager = dbManager;
+            _dbManager = dbManager; // 修正：初始化 _dbManager
         }
 
         public IActionResult Index()
@@ -27,7 +27,7 @@ namespace MVC_DB_.Controllers
             try
             {
                 _logger.LogInformation("Fetching accounts for Index page");
-                var accounts = _dbManager.getAccounts();
+                var accounts = _dbManager.getAccounts(); // 修正：確保 _dbManager 已正確初始化
                 _logger.LogInformation($"Successfully retrieved {accounts.Count} accounts");
                 return View(accounts);
             }
