@@ -1,0 +1,238 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #dcae66;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 幾何背景圖形 */
+        .shape-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #c4772c;
+            top: -80px;
+            left: -80px;
+        }
+
+        .shape-diamond {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: #4f5b2c;
+            transform: rotate(45deg);
+            top: 60px;
+            right: -60px;
+        }
+
+        .shape-bottom-left {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #7a8939;
+            bottom: -80px;
+            left: -80px;
+            clip-path: polygon(0 0, 100% 100%, 0 100%);
+        }
+
+        .shape-bottom-right {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #d5912e;
+            bottom: -80px;
+            right: -80px;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        }
+
+        .login-container {
+            background-color: #f7ebd7;
+            border-radius: 20px;
+            padding: 40px;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            position: relative;
+        }
+
+            .login-container h2 {
+                text-align: center;
+                color: #5a2c0d;
+                margin-bottom: 30px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #a4571e;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .line-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #06c755;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .line-btn img {
+                height: 20px;
+                margin-right: 10px;
+            }
+
+        .signup {
+            width: 100%;
+            padding: 12px;
+            background-color: #7a8939;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .social-btn {
+            padding: 10px 15px;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .social-btn img {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background-color: white;
+                padding: 2px;
+            }
+    </style>
+</head>
+<body>
+    <!-- 幾何背景 -->
+    <div class="shape-circle"></div>
+    <div class="shape-diamond"></div>
+    <div class="shape-bottom-left"></div>
+    <div class="shape-bottom-right"></div>
+
+    <!-- 登入表單 -->
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" action="/Login/login">
+        <div class="form-group">
+            <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Type your username" maxlength="20" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Type your password" maxlength="20" required />
+        </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <div style="text-align: center; margin: 20px 0 10px;">Or sign up using</div>
+
+        <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 20px; justify-content: center;">
+            <!-- LINE -->
+            <button class="social-btn" style="background-color: #06c755;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" />
+                LINE
+            </button>
+
+            <!-- Google -->
+            <button class="social-btn" style="background-color: #db4437;">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" />
+                Google
+            </button>
+
+            <!-- Facebook -->
+            <button class="social-btn" style="background-color: #4267B2;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" />
+                Facebook
+            </button>
+        </div>
+
+        <form method="get" action="/Login/Signup">
+            <input type="submit" class="signup" value="SIGN UP" />
+        </form>
+    </div>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (e) {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (username.length < 8 || password.length < 8) {
+                alert("帳號與密碼需至少 8 個字元");
+                e.preventDefault(); // 阻止表單提交
+            }
+        });
+    });
+</script>
+
+
+</html>

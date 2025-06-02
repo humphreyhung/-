@@ -1,0 +1,56 @@
+﻿@model List<MVC_DB_.Controllers.AccountInfo>
+
+@{
+    ViewData["Title"] = "所有帳號資訊";
+    var currentUser = Context.Session.GetString("username");
+    var currentRole = Context.Session.GetString("role");
+}
+
+<h2>所有帳號資訊</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>帳號</th>
+            <th>姓名</th>
+            <th>Email</th>
+            <th>角色</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.UserName</td>
+                <td>@account.Name</td>
+                <td>@account.Email</td>
+                <td>
+                    <strong>@account.Role</strong>
+                    <form method="post" asp-action="UpdateRole" class="d-flex mt-1">
+                        <input type="hidden" name="username" value="@account.UserName" />
+                        <select name="role" class="form-select me-2">
+                            <option value="User" @@(account.Role == "User" ? "selected" : "")>User</option>
+                            <option value="Admin" @@(account.Role == "Admin" ? "selected" : "")>Admin</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm">更新</button>
+                    </form>
+                </td>
+
+                <td>
+                    @if (account.UserName != currentUser)  // 不允許刪除自己
+                    {
+                        <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
+                            <input type="hidden" name="username" value="@account.UserName" />
+                            <button type="submit" class="btn btn-danger btn-sm">刪除</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-muted">（目前使用者）</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

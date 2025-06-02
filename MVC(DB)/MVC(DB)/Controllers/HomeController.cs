@@ -6,18 +6,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MVC_DB_.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly DBmanager _dbManager;
+        private readonly DBmanager _dbManager; // 修正：新增 _dbManager 欄位
 
-        public HomeController(ILogger<HomeController> logger/*, DBmanager dbManager*/)
+        public HomeController(ILogger<HomeController> logger, DBmanager dbManager) // 修正：加入 dbManager 參數
         {
             _logger = logger;
-            //_dbManager = dbManager;
+            _dbManager = dbManager; // 修正：初始化 _dbManager
         }
 
         public IActionResult Index()
@@ -25,11 +27,9 @@ namespace MVC_DB_.Controllers
             try
             {
                 _logger.LogInformation("Fetching accounts for Index page");
-                //List<account> accounts = _dbManager.getAccounts();
-                //ViewBag.accounts = accounts;
-                //_logger.LogInformation($"Successfully retrieved {accounts.Count} accounts");
-                ViewBag.accounts = new List<account>(); // 初始化一個空列表
-                return View();
+                var accounts = _dbManager.getAccounts(); // 修正：確保 _dbManager 已正確初始化
+                _logger.LogInformation($"Successfully retrieved {accounts.Count} accounts");
+                return View(accounts);
             }
             catch (Exception ex)
             {
@@ -45,9 +45,9 @@ namespace MVC_DB_.Controllers
 
         public IActionResult addAccount()
         {
-            return View();
+            return View(new account());
         }
-
+        
         [HttpPost]
         public IActionResult addAccount(account user)
         {
@@ -70,12 +70,21 @@ namespace MVC_DB_.Controllers
                 _logger.LogInformation($"Successfully added new account for user: {user.userName}");
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                _logger.LogError(e, $"Error adding new account for user: {user?.userName ?? "unknown"}");
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                _logger.LogError(ex, $"Error adding new account for user: {user.userName}");
+                ModelState.AddModelError("", "An error occurred while adding the account. Please try again.");
+                return View(user);
             }
         }        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Privacy()
         {
