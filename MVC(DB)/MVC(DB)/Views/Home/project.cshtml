@@ -1,0 +1,1307 @@
+﻿@model MVC_DB_.Models.ProjectViewModel
+@{
+    ViewData["Title"] = "募資專案";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hero - Free Bulma template</title>
+    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- Bulma Version 1-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/hero.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+</head>
+<body>
+    <section class="section" style="padding-top: 100px;">
+    
+        <div class="main-container">
+        <div class="content-wrapper">
+            <div class="video-section">
+                <video width="560" height="315" controls>
+                    <source src="~/video/candybaby.mp4" type="video/mp4">
+                    您的瀏覽器不支援影片播放。
+                </video>
+                
+            </div>
+            <div class="text-section">
+                <h1 class="title">
+                    「愛的回報：加入唐寶寶社區計畫，讓您的投資為未來播種！」
+                </h1>
+                <h2 class="subtitle">
+                    在唐寶寶社區，我們相信每一個孩子都是未來的希望，每一個家庭都是社區的基石。為了促進社區內部的團結與成長，我們推出了「唐寶寶社區計畫」，旨在為家庭和孩子們提供一個安全、友善和充滿愛的環境。
+                </h2>
+            </div>
+        </div>
+    </div>
+        </section>
+    <div class="box cta">
+        <p class="has-text-centered">
+            <span class="tag is-primary">New</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+    </div>
+    <div class="container-fluid px-5">
+        <div class="progress-container">
+            <div class="funding-progress">
+                <div class="progress-header">
+                    <div class="progress-title">
+                        <h3>募資進度</h3>
+                        <div class="progress-stats">
+                            <span class="current-amount">NT$ 150,000</span>
+                            <span class="target-amount">目標 NT$ 500,000</span>
+                        </div>
+                    </div>
+                    <div class="progress-percentage">30%</div>
+                </div>
+                <div class="progress-visualization">
+                    <div class="circular-progress">
+                        <div class="circular-progress-value">30%</div>
+                        <svg class="circular-progress-svg">
+                            <circle class="circular-progress-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="circular-progress-bar" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                    </div>
+                    <div class="countdown-container">
+                        <div class="countdown-title">距離募資結束還有</div>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span id="days">00</span>
+                                <span class="countdown-label">天</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="hours">00</span>
+                                <span class="countdown-label">時</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes">00</span>
+                                <span class="countdown-label">分</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds">00</span>
+                                <span class="countdown-label">秒</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 30%"></div>
+                </div>
+                <div class="progress-footer">
+                    <div class="progress-info">
+                        <div class="info-item">
+                            <span class="info-label">贊助人數</span>
+                            <span class="info-value">128 人</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">剩餘天數</span>
+                            <span class="info-value">15 天</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columns mt-6">
+        <div class="column is-12">
+            <div class="tabs">
+                <ul>
+                    <li class="is-active" data-tab="detail"><a>專案介紹</a></li>
+                    <li data-tab="news"><a>最新消息</a></li>
+                    <li data-tab="faq"><a>常見問題</a></li>
+                    <li data-tab="message"><a>留言</a></li>
+                    <li data-tab="notice"><a>專案須知</a></li>
+                    <li data-tab="info"><a>資訊接露與承諾</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        
+        <div id="detail" class="tab-pane is-active">
+            <div class="content">
+                <h3>專案介紹</h3>
+                <p>在唐寶寶社區，我們相信每一個孩子都是未來的希望，每一個家庭都是社區的基石。為了促進社區內部的團結與成長，我們推出了「唐寶寶社區計畫」，旨在為家庭和孩子們提供一個安全、友善和充滿愛的環境。</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4>親子活動</h4>
+                        <p>定期舉辦親子互動活動，增進家庭間的聯繫，讓孩子們在遊戲中學習與成長。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>教育資源</h4>
+                        <p>提供免費的課後輔導和學習資源，幫助孩子們在學業上取得更好的成績。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>健康講座</h4>
+                        <p>邀請專家進行健康講座，提升家長對兒童健康的認識，促進家庭健康生活方式。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        <div id="news" class="tab-pane">
+            <div class="content">
+                <h3>最新消息</h3>
+                <div class="news-list">
+                    <div class="news-item">
+                        <h4>2024年春季親子活動開始報名</h4>
+                        <p class="date">2024-03-15</p>
+                        <p>我們將舉辦一系列精彩的親子活動，包括手工藝製作、戶外探索等，歡迎家長和孩子們踴躍報名參加。</p>
+                    </div>
+                    <div class="news-item">
+                        <h4>社區義工招募</h4>
+                        <p class="date">2024-03-10</p>
+                        <p>我們正在招募熱心的社區義工，一起為孩子們創造更好的成長環境。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="faq" class="tab-pane">
+            <div class="content">
+                <h3>常見問題</h3>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h4>如何參與社區活動？</h4>
+                        <p>您可以通過我們的網站或直接聯繫社區中心報名參加活動。所有活動都會提前在網站上公佈。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>活動費用如何計算？</h4>
+                        <p>大部分基礎活動都是免費的，部分特殊活動可能會收取材料費用，具體費用會在活動公告中說明。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="message" class="tab-pane">
+            <div class="content">
+                <h3>留言板</h3>
+                <div class="message-form">
+                    <div class="field">
+                        <label class="label">姓名</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="請輸入您的姓名">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">留言內容</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="請輸入您的留言"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary">送出留言</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notice" class="tab-pane">
+            <div class="content">
+                <h3>專案須知</h3>
+                <div class="notice-list">
+                    <div class="notice-item">
+                        <h4>活動參與須知</h4>
+                        <ul>
+                            <li>請提前報名參加活動</li>
+                            <li>活動當天請準時到達</li>
+                            <li>請遵守活動規則和秩序</li>
+                        </ul>
+                    </div>
+                    <div class="notice-item">
+                        <h4>贊助須知</h4>
+                        <ul>
+                            <li>所有贊助款項將用於社區活動和設施改善</li>
+                            <li>贊助者可獲得相應的回饋禮品</li>
+                            <li>贊助金額可抵稅</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="info" class="tab-pane">
+            <div class="content">
+                <h3>資訊接露與承諾</h3>
+                <div class="info-content">
+                    <h4>我們的承諾</h4>
+                    <p>我們承諾所有贊助款項將透明公開，定期公佈使用情況，確保每一分錢都用在最需要的地方。</p>
+                    <h4>資訊公開</h4>
+                    <p>我們將定期在網站上公佈：</p>
+                    <ul>
+                        <li>贊助款項使用明細</li>
+                        <li>活動成果報告</li>
+                        <li>財務報表</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="columns features">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4>地方的孩子需要吃飯.</h4>
+                            <p>賞口飯吃好嗎(๑•́ ₃ •̀๑).</p>
+                            <a asp-controller="Home" asp-action="SponsorConfirm" asp-route-id="1" class="btn btn-custom" style="background-color: #A7C957; color: white;">
+                                <i class="fa-solid fa-gift"></i>
+                                前往贊助
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4>地方的孩子需要教材.</h4>
+                            <p>知識就是力量(╬☉д⊙)</p>
+                            <a asp-controller="Home" asp-action="SponsorPlan" asp-route-id="2" class="btn btn-custom" style="background-color: #A7C957; color: white;">
+                                <i class="fa-solid fa-gift"></i>
+                                前往贊助
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4>地方的孩子需要家.</h4>
+                            <p>(:3[___]=.</p>
+                            <a asp-controller="Home" asp-action="RewardCart" asp-route-id="3" class="btn btn-custom" style="background-color: #A7C957; color: white;">
+                                <i class="fa-solid fa-gift"></i>
+                                前往贊助
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="intro column is-8 is-offset-2">
+            <h2 class="title">回饋產品</h2><br>
+            <p class="subtitle">Vel fringilla est ullamcorper eget nulla facilisi. Nulla facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus.</p>
+        </div>
+        <div class="sandbox">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Hello World</p>
+                        <p class="subtitle">What is up?</p>
+                    </article>
+                </div>
+                <div class="tile is-parent is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Foo</p>
+                        <p class="subtitle">Bar</p>
+                    </article>
+                </div>
+                <div class="tile is-parent is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title"> 唐寶寶社區計畫</p>
+                        <p class="subtitle"> 讓愛與關懷在社區中蔓延</p>
+                        <div class="content">
+                            <p>
+                               
+                               
+                                
+
+                                計畫亮點：
+                                親子活動：
+
+                                定期舉辦親子互動活動，增進家庭間的聯繫，讓孩子們在遊戲中學習與成長。
+                                教育資源：
+
+                                提供免費的課後輔導和學習資源，幫助孩子們在學業上取得更好的成績。
+                                健康講座：
+
+                                邀請專家進行健康講座，提升家長對兒童健康的認識，促進家庭健康生活方式。
+                                志願者計畫：
+                                2
+                                鼓勵社區成員參與志願服務，為有需要的家庭提供支持，讓愛心在社區中延續。
+                                社區聚會：
+
+                                定期舉辦社區聚會，促進鄰里交流，建立互助的社區氛圍。.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-8">
+                    <div class="tile">
+                        <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-white">
+                                <a href="@Url.Action("ProductDetail", "Home")" class="product-link">
+                                <p class="title">我是蛋捲</p>
+                                <div class="egg-container">
+                                    <div class="egg-image-container">
+                                        <img src="~/images/egg.webp" alt="蛋捲">
+                                    </div>
+                                    <div class="egg-content">
+                                        <p class="subtitle">
+                                           唐寶寶蛋捲是一款專為孩子和家庭設計的美味零食，融合了天然食材與獨特工藝，為每一位顧客帶來無與倫比的口感享受。無論是作為日常零食，還是聚會分享，唐寶寶蛋捲都是您的最佳選擇。
+
+                                            天然食材
+                                            我們的蛋捲選用新鮮的雞蛋和優質的麵粉，絕不添加人工色素和防腐劑，讓您可以放心享用。                                        
+                                            蛋捲富含蛋白質和營養成分，是孩子們健康成長的理想零食。
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                                </a>
+                            </article>
+                            <article class="tile is-child notification is-white">
+                                <p class="title">我是餅乾</p>
+                                <div class="cookie-container">
+                                    <div class="cookie-image-container">
+                                        <img src="~/images/800x.webp" alt="餅乾">
+                                    </div>
+                                    <div class="cookie-content">
+                                        <p class="subtitle">
+                                            產品特色
+                                            天然原料：
+
+                                            我們的餅乾採用新鮮的天然食材，無添加人工色素和防腐劑，讓每一口都安心。
+                                            多樣化口味：
+
+                                            提供多種口味選擇，包括：
+                                            香草
+                                            巧克力
+                                            水果
+                                            燕麥
+                                            奶酪
+                                            每一種口味都經過精心調配，滿足不同孩子的口味需求。
+                                            健康配方：
+
+                                            餅乾中添加了豐富的纖維素和維他命，幫助孩子們健康成長，適合各種年齡層的小朋友。
+                                            可愛造型：
+
+                                            每款餅乾都以可愛的造型呈現，吸引孩子的目光，讓吃餅乾變成一種樂趣。
+                                            便捷包裝：
+
+                                            提供單獨包裝，方便攜帶，無論是在學校、戶外活動還是家庭聚會，隨時隨地都能享用。產品規格
+                                            口味選擇：
+
+                                            香草
+                                            巧克力
+                                            水果
+                                            燕麥
+                                            奶酪
+                                            尺寸與包裝：
+
+                                            單片餅乾：
+                                            每片餅乾約 5 公分直徑
+                                            包裝形式：
+                                            個別包裝：每片餅乾獨立包裝，方便攜帶
+                                            家庭裝包：每包含 10 片餅乾，適合家庭分享
+                                            保存期限
+                                            常溫保存：
+
+                                            在室溫下可保存約 1-2 個月，建議放置在陰涼乾燥處，避免陽光直射。
+                                            冷藏保存：
+
+                                            若需延長保存期限，建議將餅乾放入冰箱，可保存約 3-4 個月。使用密封容器或保鮮袋包裝，以防潮濕。
+                                            冷凍保存：
+
+                                            餅乾可冷凍保存，保存期限約為 6 個月。食用前請提前在冰箱內解凍，並在 24 小時內食用完畢。
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        
+                       
+                            <article class="tile is-child notification is-white">
+                                <a href="@Url.Action("ProductDetail", "Home")" class="product-link">
+                                    <p class="title">我是蛋糕</p>
+                                    <div class="cake-container">
+                                        <div class="cake-image">
+                                            <img src="~/images/cake.webp" alt="蛋糕">
+                                        </div>
+                                        <div class="cake-content">
+                                            <p class="subtitle">
+                                                天然食材：
+
+                                                我們堅持使用新鮮、天然的食材，無添加人工色素和防腐劑，讓每一口都安心美味。
+                                                多樣化口味：
+
+                                                提供多種口味選擇，包括經典香草、濃郁巧克力、水果風味及特製奶油，滿足不同顧客的需求。
+                                                可愛造型：
+
+                                                每款蛋糕均由專業烘焙師精心設計，造型可愛，適合各種主題派對，讓孩子們愛不釋手。
+                                                客製化服務：
+
+                                                提供客製化蛋糕服務，無論是生日、慶典還是其他特別場合，我們都能根據您的需求設計獨一無二的蛋糕。
+                                                健康選擇：
+
+                                                除了傳統蛋糕，我們還提供低糖、無麩質和素食選擇，讓每位小朋友都能享用。
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                        
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="event-container">
+                                <img src="~/images/93_img_1.jpg" alt="義賣活動">
+                                <p class="title">義賣活動</p>
+                                <p class="subtitle">
+                                    唐寶寶舉辦義賣活動 我是超連結
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="event-container">
+                                <img src="~/images/108_img_1.jpg" alt="義賣活動">
+                                <p class="title">義賣活動</p>
+                                <p class="subtitle">
+                                    唐寶寶舉辦義賣活動 我是超連結
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="event-container">
+                                <img src="~/images/138_img_1.jpg" alt="義賣活動">
+                                <p class="title">義賣活動</p>
+                                <p class="subtitle">
+                                    唐寶寶舉辦義賣活動 我是超連結
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile is-parent is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Tall column</p>
+                        <p class="subtitle">With even more content</p>
+                        <div class="content">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula
+                                eleifend, nunc dui porta orci, quis semper odio felis ut quam.
+                            </p>
+                            <p>
+                                Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet
+                                felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.
+                            </p>
+                            <p>
+                                Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam
+                                ut aliquet lacus, quis faucibus libero. Quisque non semper leo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Side column</p>
+                        <p class="subtitle">With some content</p>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent is-8 is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Main column</p>
+                        <p class="subtitle">With some content</p>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-8 is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Murphy's law</p>
+                        <p class="subtitle">Anything that can go wrong will go wrong</p>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent is-shady">
+                    <article class="tile is-child notification is-white">
+                        <p class="title">Main column</p>
+                        <p class="subtitle">With some content</p>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3 is-offset-2">
+                    <h2><strong>Category</strong></h2>
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Vestibulum errato isse</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Aisia caisia</a></li>
+                        <li><a href="#">Murphy's law</a></li>
+                        <li><a href="#">Flimsy Lavenrock</a></li>
+                        <li><a href="#">Maven Mousie Lavender</a></li>
+                    </ul>
+                </div>
+                <div class="column is-3">
+                    <h2><strong>Category</strong></h2>
+                    <ul>
+                        <li><a href="#">Labore et dolore magna aliqua</a></li>
+                        <li><a href="#">Kanban airis sum eschelor</a></li>
+                        <li><a href="#">Modular modern free</a></li>
+                        <li><a href="#">The king of clubs</a></li>
+                        <li><a href="#">The Discovery Dissipation</a></li>
+                        <li><a href="#">Course Correction</a></li>
+                        <li><a href="#">Better Angels</a></li>
+                    </ul>
+                </div>
+                <div class="column is-4">
+                    <h2><strong>Category</strong></h2>
+                    <ul>
+                        <li><a href="#">Objects in space</a></li>
+                        <li><a href="#">Playing cards with coyote</a></li>
+                        <li><a href="#">Goodbye Yellow Brick Road</a></li>
+                        <li><a href="#">The Garden of Forking Paths</a></li>
+                        <li><a href="#">Future Shock</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content has-text-centered">
+                <p>
+                    <a class="icon" href="https://github.com/BulmaTemplates/bulma-templates">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </p>
+                <div class="control level-item">
+                    <a href="https://github.com/BulmaTemplates/bulma-templates">
+                        <div class="tags has-addons">
+                            <span class="tag is-dark">Bulma Templates</span>
+                            <span class="tag is-info">MIT license</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script src="../js/bulma.js"></script>
+    </footer>
+    <style>
+        .container-fluid {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .progress-container {
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .funding-progress {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .progress-title h3 {
+            font-size: 2rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.3rem;
+            align-items: baseline;
+        }
+
+        .current-amount {
+            color: #6A994E;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .target-amount {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .progress-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #6A994E;
+            background: rgba(106, 153, 78, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .progress-visualization {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            gap: 4rem;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            background: #fff;
+            border-radius: 50%;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .circular-progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6A994E;
+        }
+
+        .circular-progress-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .circular-progress-bg {
+            fill: none;
+            stroke: #e9ecef;
+            stroke-width: 10;
+        }
+
+        .circular-progress-bar {
+            fill: none;
+            stroke: #6A994E;
+            stroke-width: 10;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .countdown-container {
+            flex: 1;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-title {
+            font-size: 1.4rem;
+            color: #2C3E50;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .countdown-item span:first-child {
+            display: block;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #6A994E;
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .countdown-label {
+            display: block;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            margin: 2.5rem 1rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #6A994E 0%, #B5C99A 100%);
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 30px 30px;
+            animation: move 2s linear infinite;
+        }
+
+        @@keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 30px 30px;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .progress-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .progress-title h3 {
+                font-size: 1.8rem;
+            }
+
+            .progress-stats {
+                justify-content: center;
+            }
+
+            .progress-percentage {
+                font-size: 2rem;
+            }
+
+            .countdown-title {
+                font-size: 1.3rem;
+            }
+
+            .countdown-item span:first-child {
+                font-size: 2rem;
+                padding: 1rem;
+            }
+
+            .info-label {
+                font-size: 1.1rem;
+            }
+
+            .info-value {
+                font-size: 1.4rem;
+            }
+        }
+
+        .main-container {
+            background: linear-gradient(135deg, #718355 0%, #B5C99A 100%);
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .video-section {
+            flex: 1.2;
+            min-width: 0;
+        }
+
+        .egg-image {
+            width: 300px;
+            height: auto;
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .egg-image:hover {
+            transform: scale(1.05);
+        }
+
+        .text-section {
+            flex: 0.8;
+            text-align: left;
+        }
+
+        .main-container video {
+            width: 100%;
+            height: auto;
+            min-height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-container .title {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .main-container .subtitle {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        @@media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .text-section {
+                text-align: center;
+            }
+
+            .main-container .title {
+                font-size: 2rem;
+            }
+        }
+
+        .cake-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .cake-image {
+            flex: 0 0 300px;
+            width: 300px;
+            height: auto;
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cake-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cake-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .cake-content {
+            flex: 1;
+        }
+
+        @@media (max-width: 768px) {
+            .cake-container {
+                flex-direction: column;
+            }
+            
+            .cake-image {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        .egg-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .egg-image-container {
+            flex: 0 0 300px;
+        }
+
+        .egg-content {
+            flex: 1;
+        }
+
+        .egg-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .egg-image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        @@media (max-width: 768px) {
+            .egg-container {
+                flex-direction: column;
+            }
+            
+            .egg-image-container {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        .cookie-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .cookie-image-container {
+            flex: 0 0 300px;
+        }
+
+        .cookie-content {
+            flex: 1;
+        }
+
+        .cookie-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        @@media (max-width: 768px) {
+            .cookie-container {
+                flex-direction: column;
+            }
+            
+            .cookie-image-container {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        .tile.is-child.notification.is-white {
+            margin-bottom: 2rem;
+        }
+
+        .tile.is-child.notification.is-white:last-child {
+            margin-bottom: 0;
+        }
+
+        .event-container {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .event-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-container .title {
+            margin-bottom: 1rem;
+        }
+
+        .event-container .subtitle {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .product-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .product-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-link:hover .title {
+            color: #6A994E;
+        }
+
+        .tab-content {
+            margin-top: 2rem;
+        }
+
+        .tab-pane {
+            display: none;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-pane.is-active {
+            display: block;
+        }
+
+        .tabs ul {
+            border-bottom-color: #6A994E;
+        }
+
+        .tabs a {
+            color: #6A994E;
+            border-bottom-color: #6A994E;
+        }
+
+        .tabs li.is-active a {
+            color: #6A994E;
+            border-bottom-color: #6A994E;
+            border-bottom-width: 3px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6A994E;
+        }
+
+        .news-item, .faq-item, .notice-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child, .faq-item:last-child, .notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .message-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .button.is-primary {
+            background-color: #6A994E;
+        }
+
+        .button.is-primary:hover {
+            background-color: #718355;
+        }
+
+        .intro {
+            position: relative;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100%;
+            background: linear-gradient(135deg, #718355 0%, #B5C99A 100%);
+            z-index: -1;
+        }
+
+        .intro .title {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro .subtitle {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @@media (max-width: 768px) {
+            .intro {
+                padding: 3rem 0;
+                margin: 3rem 0;
+            }
+
+            .intro .title {
+                font-size: 2rem;
+            }
+
+            .intro .subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+    <script>
+        // 設定目標日期（這裡設定為30天後）
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 30);
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const difference = targetDate - currentDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector('.countdown-container').innerHTML = '<div class="countdown-title">活動已結束</div>';
+            }
+        }
+
+        // 立即更新一次
+        updateCountdown();
+        // 每秒更新一次
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tabs li');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有標籤的活動狀態
+                    tabs.forEach(t => t.classList.remove('is-active'));
+                    // 移除所有內容面板的活動狀態
+                    tabPanes.forEach(pane => pane.classList.remove('is-active'));
+
+                    // 添加當前標籤的活動狀態
+                    this.classList.add('is-active');
+                    // 顯示對應的內容面板
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('is-active');
+                });
+            });
+
+            // 設定環形進度條
+            const progress = 30; // 進度百分比
+            const circle = document.querySelector('.circular-progress-bar');
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            const offset = circumference - (progress / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        });
+    </script>
+</body>
+</html>

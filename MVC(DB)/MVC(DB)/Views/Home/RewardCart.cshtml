@@ -1,0 +1,406 @@
+@model MVC_DB_.Models.RewardCartViewModel
+@{
+    ViewData["Title"] = "贊助確認";
+}
+
+<div class="reward-cart-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="project-info">
+                    <h2>@Model.ProjectTitle</h2>
+                    <div class="rewards-list">
+                        @foreach (var reward in Model.Rewards)
+                        {
+                            <div class="reward-item">
+                                <div class="reward-header">
+                                    <h3>@reward.Title</h3>
+                                    <span class="price">NT$ @reward.Price.ToString("N0")</span>
+                                </div>
+                                <p class="reward-description">@reward.Description</p>
+                                <div class="reward-benefits">
+                                    <h4>回饋內容：</h4>
+                                    <ul>
+                                        @foreach (var benefit in reward.Benefits)
+                                        {
+                                            <li><i class="fas fa-check"></i> @benefit</li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="reward-delivery">
+                                    <p><i class="fas fa-clock"></i> @reward.EstimatedDelivery</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @foreach (var reward in Model.Rewards)
+                    {
+                        if (reward.Benefits.Contains("蛋捲一盒"))
+                        {
+                            <div class="form-group">
+                                <label>蛋捲口味選擇</label>
+                                <select name="eggRollFlavor" class="form-control" required>
+                                    <option value="">請選擇口味</option>
+                                    @if (reward.Title == "基本贊助")
+                                    {
+                                        <option value="原味">原味</option>
+                                        <option value="巧克力">巧克力</option>
+                                        <option value="抹茶">抹茶</option>
+                                    }
+                                    else if (reward.Title == "進階贊助")
+                                    {
+                                        <option value="原味">原味</option>
+                                        <option value="巧克力">巧克力</option>
+                                        <option value="抹茶">抹茶</option>
+                                        <option value="咖啡">咖啡</option>
+                                        <option value="芝麻">芝麻</option>
+                                        <option value="紅茶">紅茶</option>
+                                        <option value="草莓">草莓</option>
+                                    }
+                                    else if (reward.Title == "高級贊助")
+                                    {
+                                        <option value="原味">原味</option>
+                                        <option value="巧克力">巧克力</option>
+                                        <option value="抹茶">抹茶</option>
+                                        <option value="咖啡">咖啡</option>
+                                        <option value="芝麻">芝麻</option>
+                                        <option value="紅茶">紅茶</option>
+                                        <option value="草莓">草莓</option>
+                                    }
+                                </select>
+                            </div>
+                        }
+                        if (reward.Benefits.Contains("餅乾一盒"))
+                        {
+                            <div class="form-group">
+                                <label>餅乾口味選擇</label>
+                                <select name="cookieFlavor" class="form-control" required>
+                                    <option value="">請選擇口味</option>
+                                    @if (reward.Title == "進階贊助")
+                                    {
+                                        <option value="原味">原味</option>
+                                        <option value="巧克力">巧克力</option>
+                                        <option value="抹茶">抹茶</option>
+                                        <option value="蔓越莓">蔓越莓</option>
+                                        <option value="杏仁">杏仁</option>
+                                    }
+                                    else if (reward.Title == "高級贊助")
+                                    {
+                                        <option value="原味">原味</option>
+                                        <option value="巧克力">巧克力</option>
+                                        <option value="抹茶">抹茶</option>
+                                        <option value="蔓越莓">蔓越莓</option>
+                                        <option value="杏仁">杏仁</option>
+                                        <option value="咖啡">咖啡</option>
+                                        <option value="檸檬">檸檬</option>
+                                        <option value="椰子">椰子</option>
+                                    }
+                                </select>
+                            </div>
+                        }
+                        if (reward.Benefits.Contains("蛋糕一盒"))
+                        {
+                            <div class="form-group">
+                                <label>蛋糕口味選擇</label>
+                                <select name="cakeFlavor" class="form-control" required>
+                                    <option value="">請選擇口味</option>
+                                    @if (reward.Title == "高級贊助")
+                                    {
+                                        <option value="原味">原味</option>
+                                        <option value="巧克力">巧克力</option>
+                                        <option value="抹茶">抹茶</option>
+                                        <option value="草莓">草莓</option>
+                                        <option value="芒果">芒果</option>
+                                        <option value="藍莓">藍莓</option>
+                                        <option value="提拉米蘇">提拉米蘇</option>
+                                        <option value="起司">起司</option>
+                                    }
+                                </select>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="order-summary">
+                    <h3>訂單摘要</h3>
+                    <div class="summary-item">
+                        <span>贊助方案</span>
+                        <span>NT$ @Model.TotalAmount.ToString("N0")</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>總金額</span>
+                        <span>NT$ @Model.TotalAmount.ToString("N0")</span>
+                    </div>
+                    <form asp-action="SponsorConfirm" method="post">
+                        <input type="hidden" name="projectId" value="@Model.ProjectId" />
+                        <input type="hidden" name="amount" value="@Model.TotalAmount" />
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" name="name" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>電子郵件</label>
+                            <input type="email" name="email" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>電話</label>
+                            <input type="tel" name="phone" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>收件地址</label>
+                            <div class="row address-row">
+                                <div class="col-md-4">
+                                    <select name="city" class="form-control" required>
+                                        <option value="">縣市</option>
+                                        <option value="台北市">台北市</option>
+                                        <option value="新北市">新北市</option>
+                                        <option value="桃園市">桃園市</option>
+                                        <option value="台中市">台中市</option>
+                                        <option value="台南市">台南市</option>
+                                        <option value="高雄市">高雄市</option>
+                                        <option value="基隆市">基隆市</option>
+                                        <option value="新竹市">新竹市</option>
+                                        <option value="嘉義市">嘉義市</option>
+                                        <option value="新竹縣">新竹縣</option>
+                                        <option value="苗栗縣">苗栗縣</option>
+                                        <option value="彰化縣">彰化縣</option>
+                                        <option value="南投縣">南投縣</option>
+                                        <option value="雲林縣">雲林縣</option>
+                                        <option value="嘉義縣">嘉義縣</option>
+                                        <option value="屏東縣">屏東縣</option>
+                                        <option value="宜蘭縣">宜蘭縣</option>
+                                        <option value="花蓮縣">花蓮縣</option>
+                                        <option value="台東縣">台東縣</option>
+                                        <option value="澎湖縣">澎湖縣</option>
+                                        <option value="金門縣">金門縣</option>
+                                        <option value="連江縣">連江縣</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="district" class="form-control" required>
+                                        <option value="">鄉鎮市區</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <input type="text" name="address" class="form-control" placeholder="詳細地址" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>留言</label>
+                            <textarea name="message" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>付款方式</label>
+                            <select name="paymentMethod" class="form-control payment-select" required>
+                                <option value="credit">信用卡</option>
+                                <option value="atm">ATM轉帳</option>
+                                <option value="line">LINE Pay</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">確認贊助</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .reward-cart-container {
+            padding: 40px 0;
+        }
+
+        .project-info {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .reward-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .reward-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #6A994E;
+            font-weight: bold;
+        }
+
+        .reward-benefits {
+            margin: 15px 0;
+        }
+
+        .reward-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reward-benefits li {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        .reward-benefits i {
+            color: #6A994E;
+            margin-right: 8px;
+        }
+
+        .reward-delivery {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .order-summary {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-weight: 500;
+
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            min-width: 200px;
+            height:50px;
+        }
+
+        .address-row {
+            margin: 0 -5px;
+        }
+
+        .address-row .col-md-4,
+        .address-row .col-md-12 {
+            padding: 0 5px;
+        }
+
+        .address-row select.form-control,
+        .address-row input.form-control {
+            height: 45px;
+            margin-bottom: 10px;
+            min-width: 250px;
+        }
+
+        .address-row .col-md-4 {
+            min-width: 250px;
+        }
+
+        .address-row .col-md-12 {
+            min-width: 100%;
+        }
+
+        .btn-primary {
+            background-color: #6A994E;
+            border-color: #6A994E;
+            padding: 12px;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #718355;
+            border-color: #718355;
+        }
+
+        .payment-select {
+            min-width: 300px;
+            width: 100%;
+            height: 50px;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        // 縣市與鄉鎮市區對應資料
+        const districtData = {
+            "台北市": ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
+            "新北市": ["板橋區", "三重區", "中和區", "永和區", "新莊區", "新店區", "樹林區", "鶯歌區", "三峽區", "淡水區", "汐止區", "瑞芳區", "土城區", "蘆洲區", "五股區", "泰山區", "林口區", "深坑區", "石碇區", "坪林區", "三芝區", "石門區", "八里區", "平溪區", "雙溪區", "貢寮區", "金山區", "萬里區", "烏來區"],
+            "桃園市": ["桃園區", "中壢區", "大溪區", "楊梅區", "蘆竹區", "大園區", "龜山區", "八德區", "龍潭區", "平鎮區", "新屋區", "觀音區", "復興區"],
+            "台中市": ["中區", "東區", "南區", "西區", "北區", "北屯區", "西屯區", "南屯區", "太平區", "大里區", "霧峰區", "烏日區", "豐原區", "后里區", "石岡區", "東勢區", "和平區", "新社區", "潭子區", "大雅區", "神岡區", "大肚區", "沙鹿區", "龍井區", "梧棲區", "清水區", "大甲區", "外埔區", "大安區"],
+            "台南市": ["中西區", "東區", "南區", "北區", "安平區", "安南區", "永康區", "歸仁區", "新化區", "左鎮區", "玉井區", "楠西區", "南化區", "仁德區", "關廟區", "龍崎區", "官田區", "麻豆區", "佳里區", "西港區", "七股區", "將軍區", "學甲區", "北門區", "新營區", "後壁區", "白河區", "東山區", "六甲區", "下營區", "柳營區", "鹽水區", "善化區", "大內區", "山上區", "新市區", "安定區"],
+            "高雄市": ["楠梓區", "左營區", "鼓山區", "三民區", "鹽埕區", "前金區", "新興區", "苓雅區", "前鎮區", "旗津區", "小港區", "鳳山區", "大寮區", "鳥松區", "林園區", "仁武區", "大樹區", "大社區", "岡山區", "路竹區", "橋頭區", "梓官區", "彌陀區", "永安區", "燕巢區", "田寮區", "阿蓮區", "茄萣區", "湖內區", "旗山區", "美濃區", "內門區", "杉林區", "甲仙區", "六龜區", "茂林區", "桃源區", "那瑪夏區"],
+            "基隆市": ["仁愛區", "信義區", "中正區", "中山區", "安樂區", "暖暖區", "七堵區"],
+            "新竹市": ["東區", "北區", "香山區"],
+            "嘉義市": ["東區", "西區"],
+            "新竹縣": ["竹北市", "湖口鄉", "新豐鄉", "新埔鎮", "關西鎮", "芎林鄉", "寶山鄉", "竹東鎮", "五峰鄉", "橫山鄉", "尖石鄉", "北埔鄉", "峨眉鄉"],
+            "苗栗縣": ["苗栗市", "頭份市", "竹南鎮", "後龍鎮", "通霄鎮", "苑裡鎮", "卓蘭鎮", "造橋鄉", "西湖鄉", "頭屋鄉", "公館鄉", "大湖鄉", "泰安鄉", "銅鑼鄉", "三義鄉", "西湖鄉", "南庄鄉", "頭屋鄉"],
+            "彰化縣": ["彰化市", "員林市", "和美鎮", "鹿港鎮", "溪湖鎮", "二林鎮", "田中鎮", "北斗鎮", "花壇鄉", "芬園鄉", "大村鄉", "永靖鄉", "伸港鄉", "線西鄉", "福興鄉", "秀水鄉", "埔心鄉", "埔鹽鄉", "大城鄉", "芳苑鄉", "竹塘鄉", "社頭鄉", "二水鄉", "田尾鄉", "埤頭鄉", "溪州鄉"],
+            "南投縣": ["南投市", "埔里鎮", "草屯鎮", "竹山鎮", "集集鎮", "名間鄉", "鹿谷鄉", "中寮鄉", "魚池鄉", "國姓鄉", "水里鄉", "信義鄉", "仁愛鄉"],
+            "雲林縣": ["斗六市", "斗南鎮", "虎尾鎮", "西螺鎮", "土庫鎮", "北港鎮", "古坑鄉", "大埤鄉", "莿桐鄉", "林內鄉", "二崙鄉", "崙背鄉", "麥寮鄉", "東勢鄉", "褒忠鄉", "台西鄉", "元長鄉", "四湖鄉", "口湖鄉", "水林鄉"],
+            "嘉義縣": ["太保市", "朴子市", "布袋鎮", "大林鎮", "民雄鄉", "溪口鄉", "新港鄉", "六腳鄉", "東石鄉", "義竹鄉", "鹿草鄉", "水上鄉", "中埔鄉", "竹崎鄉", "梅山鄉", "番路鄉", "大埔鄉", "阿里山鄉"],
+            "屏東縣": ["屏東市", "潮州鎮", "東港鎮", "恆春鎮", "萬丹鄉", "長治鄉", "麟洛鄉", "九如鄉", "里港鄉", "鹽埔鄉", "高樹鄉", "萬巒鄉", "內埔鄉", "竹田鄉", "新埤鄉", "枋寮鄉", "新園鄉", "崁頂鄉", "林邊鄉", "南州鄉", "佳冬鄉", "琉球鄉", "車城鄉", "滿州鄉", "枋山鄉", "三地門鄉", "霧台鄉", "瑪家鄉", "泰武鄉", "來義鄉", "春日鄉", "獅子鄉", "牡丹鄉"],
+            "宜蘭縣": ["宜蘭市", "羅東鎮", "蘇澳鎮", "頭城鎮", "礁溪鄉", "壯圍鄉", "員山鄉", "冬山鄉", "五結鄉", "三星鄉", "大同鄉", "南澳鄉"],
+            "花蓮縣": ["花蓮市", "鳳林鎮", "玉里鎮", "新城鄉", "吉安鄉", "壽豐鄉", "光復鄉", "豐濱鄉", "瑞穗鄉", "富里鄉", "秀林鄉", "萬榮鄉", "卓溪鄉"],
+            "台東縣": ["台東市", "成功鎮", "關山鎮", "卑南鄉", "鹿野鄉", "池上鄉", "東河鄉", "長濱鄉", "太麻里鄉", "大武鄉", "綠島鄉", "海端鄉", "延平鄉", "金峰鄉", "達仁鄉", "蘭嶼鄉"],
+            "澎湖縣": ["馬公市", "湖西鄉", "白沙鄉", "西嶼鄉", "望安鄉", "七美鄉"],
+            "金門縣": ["金城鎮", "金湖鎮", "金沙鎮", "金寧鄉", "烈嶼鄉", "烏坵鄉"],
+            "連江縣": ["南竿鄉", "北竿鄉", "莒光鄉", "東引鄉"]
+        };
+
+        // 當選擇縣市時更新鄉鎮市區選項
+        document.querySelector('select[name="city"]').addEventListener('change', function() {
+            const districtSelect = document.querySelector('select[name="district"]');
+            const selectedCity = this.value;
+            
+            // 清空現有選項
+            districtSelect.innerHTML = '<option value="">鄉鎮市區</option>';
+            
+            if (selectedCity && districtData[selectedCity]) {
+                // 添加新的選項
+                districtData[selectedCity].forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+} 

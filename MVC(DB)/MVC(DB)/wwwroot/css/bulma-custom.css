@@ -1,0 +1,182 @@
+/* 基礎樣式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.has-text-centered {
+    text-align: center;
+}
+
+/* Hero 區塊樣式 */
+.hero {
+    position: relative;
+    padding: 3rem 0;
+}
+
+.hero-body {
+    padding: 3rem 1.5rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.125;
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+/* Box 樣式 */
+.box {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    padding: 1.25rem;
+}
+
+.cta {
+    margin: 2rem 0;
+}
+
+/* 欄位系統 */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.75rem;
+}
+
+.column {
+    flex: 1;
+    padding: 0.75rem;
+}
+
+.is-4 {
+    flex: none;
+    width: 33.33333%;
+}
+
+/* 卡片樣式 */
+.card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    position: relative;
+}
+
+.card-image {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+/* 標籤樣式 */
+.tag {
+    align-items: center;
+    background-color: #A98467;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-flex;
+    font-size: 0.75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    white-space: nowrap;
+}
+
+.tag.is-primary {
+    background-color: #A98467;
+    color: #fff;
+}
+
+/* Tile 系統 */
+.tile {
+    align-items: stretch;
+    display: flex;
+    flex: 1;
+    margin: -0.75rem;
+    flex-wrap: wrap;
+}
+
+.tile.is-ancestor {
+    margin: -0.75rem;
+}
+
+.tile.is-parent {
+    padding: 0.75rem;
+}
+
+.tile.is-child {
+    margin: 0 !important;
+}
+
+.notification {
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 1.25rem;
+    position: relative;
+}
+
+/* 頁腳樣式 */
+.footer {
+    background-color: #fafafa;
+    padding: 3rem 1.5rem;
+}
+
+/* 通用工具類 */
+.is-bold {
+    font-weight: 700;
+}
+
+.is-medium {
+    font-size: 1.25rem;
+}
+
+/* 自定義顏色 */
+.hero.is-info {
+    background-color: #96AB82;
+    color: #fff;
+}
+
+.button.is-info,
+.tag.is-info {
+    background-color: #A98467;
+    color: #fff;
+}
+
+/* 動畫效果 */
+@keyframes flyintoright {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 響應式設計 */
+@media screen and (max-width: 768px) {
+    .column.is-4 {
+        width: 100%;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+} 

@@ -1,5 +1,11 @@
 # .gitignore
 # Ignore Visual Studio user-specific files
 .vs/
-
-/MVC(DB)/MVC(DB)/MVC(DB).csproj
+MVC(DB)/bin/
+MVC(DB)/obj/
+*.suo
+*.user
+*.pdb
+*.log
+*.tmp
+/MVC(DB)/MVC(DB)/obj/Debug/net6.0

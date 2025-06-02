@@ -1,0 +1,325 @@
+@{
+    ViewData["Title"] = "商品詳情";
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品詳情 - 唐寶寶社區</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+</head>
+<body>
+    <section class="section" style="padding-top: 100px;">
+        <div class="container">
+            <div class="columns">
+                <!-- 商品圖片區 -->
+                <div class="column is-6">
+                    <div class="product-gallery">
+                        <figure class="image is-4by3">
+                            <img id="mainImage" src="~/images/egg.webp" alt="商品主圖">
+                        </figure>
+                        <div class="columns is-multiline mt-4">
+                            <div class="column is-3">
+                                <figure class="image is-1by1">
+                                    <img class="thumbnail" src="~/images/egg.webp" alt="商品縮圖1" onmouseover="changeImage(this.src)">
+                                </figure>
+                            </div>
+                            <div class="column is-3">
+                                <figure class="image is-1by1">
+                                    <img class="thumbnail" src="~/images/800x xxxxx.webp" alt="商品縮圖2" onmouseover="changeImage(this.src)">
+                                </figure>
+                            </div>
+                            <div class="column is-3">
+                                <figure class="image is-1by1">
+                                    <img class="thumbnail" src="~/images/800x xxx.webp" alt="商品縮圖3" onmouseover="changeImage(this.src)">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 商品資訊區 -->
+                <div class="column is-6">
+                    <div class="product-info">
+                        <h1 class="title is-2">唐寶寶特製蛋捲禮盒</h1>
+                        
+                        <div class="content">
+                            <h3 class="is-size-5 mb-2">商品說明</h3>
+                            <p>
+                               口味:
+                            </p>
+                            <ul>
+                                <li>原味蛋捲</li>
+                                <li>巧克力蛋捲 </li>
+                                <li>抹茶蛋捲</li>
+                                <li>鳳梨蛋捲</li>
+                                <li>奶油蛋捲 </li>
+                            </ul>
+                            <p>
+                                包裝重量:
+                                <ul>
+                                <li>小包 150 克 </li>
+                                <li>大包 300 克 </li>
+                                </ul>
+                                包裝方式：密封袋裝
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns mt-6">
+                <div class="column is-12">
+                    <div class="tabs">
+                        <ul>
+                            <li class="is-active" data-tab="detail"><a>商品詳情</a></li>
+                            <li data-tab="spec"><a>商品規格</a></li>
+                            <li data-tab="return"><a>退換貨政策</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- 商品詳情 -->
+                        <div id="detail" class="tab-pane is-active">
+                            <div class="content mt-4">
+                                <h3 class="is-size-4 mb-4">商品特色</h3>
+                                <ul>
+                                    <li>嚴選新鮮雞蛋，無添加人工色素</li>
+                                    <li>多種口味選擇，滿足不同喜好</li>
+                                    <li>精美禮盒包裝，送禮自用兩相宜</li>
+                                    <li>支持唐寶寶就業，您的購買就是最好的支持</li>
+                                </ul>
+
+                                <div class="product-description mt-4">
+                                    <h3 class="is-size-4 mb-4">產品概述</h3>
+                                    <p>唐寶寶蛋捲是一款專為孩子和家庭設計的美味零食，融合了天然食材與獨特工藝，為每一位顧客帶來無與倫比的口感享受。無論是作為日常零食，還是聚會分享，唐寶寶蛋捲都是您的最佳選擇。</p>
+
+                                    <h3 class="is-size-4 mb-4 mt-6">產品特色</h3>
+                                    <div class="feature-section">
+                                        <h4 class="is-size-5 mb-3">天然食材：</h4>
+                                        <p>我們的蛋捲選用新鮮的雞蛋和優質的麵粉，絕不添加人工色素和防腐劑，讓您可以放心享用。</p>
+
+                                        <h4 class="is-size-5 mb-3 mt-4">多樣化口味：</h4>
+                                        <p>提供多種口味選擇，包括：</p>
+                                        <ul>
+                                            <li>原味：經典口味，香氣四溢。</li>
+                                            <li>巧克力：濃郁巧克力風味，滿足甜食愛好者。</li>
+                                            <li>抹茶：清新抹茶香氣，帶來獨特的風味體驗。</li>
+                                            <li>鳳梨：酸甜可口，讓人回味無窮。</li>
+                                            <li>奶油：濃郁奶香，適合各年齡層的喜好。</li>
+                                        </ul>
+
+                                        <h4 class="is-size-5 mb-3 mt-4">脆嫩口感：</h4>
+                                        <p>外層酥脆，內部柔軟，完美的口感組合讓人一口接一口，愛不釋手。</p>
+
+                                        <h4 class="is-size-5 mb-3 mt-4">便捷包裝：</h4>
+                                        <p>每包蛋捲均以密封包裝，方便攜帶，適合學校、戶外活動或家庭聚會時享用。</p>
+
+                                        <h4 class="is-size-5 mb-3 mt-4">健康零食選擇：</h4>
+                                        <p>蛋捲富含蛋白質和營養成分，是孩子們健康成長的理想零食。</p>
+                                    </div>
+
+                                    <h3 class="is-size-4 mb-4 mt-6">食用建議</h3>
+                                    <ul>
+                                        <li>適合場合：唐寶寶蛋捲不僅適合日常零食，還是家庭聚會、生日派對和戶外活動的完美選擇。</li>
+                                        <li>搭配飲品：可搭配牛奶、果汁或茶飲，增添更多風味。</li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="is-size-4 mb-4 mt-6">保存方式</h3>
+                                <p>常溫保存，請置於陰涼乾燥處</p>
+                                <p>開封後請盡快食用完畢</p>
+                            </div>
+                        </div>
+
+                        <!-- 商品規格 -->
+                        <div id="spec" class="tab-pane">
+                            <div class="content mt-4">
+                                <h3 class="is-size-4 mb-4">商品規格</h3>
+                                <table class="table is-fullwidth">
+                                    <tbody>
+                                        <tr>
+                                            <th>商品名稱</th>
+                                            <td>唐寶寶特製蛋捲禮盒</td>
+                                        </tr>
+                                        <tr>
+                                            <th>商品重量</th>
+                                            <td>小包 150 克 / 大包 300 克</td>
+                                        </tr>
+                                        <tr>
+                                            <th>包裝方式</th>
+                                            <td>密封袋裝</td>
+                                        </tr>
+                                        <tr>
+                                            <th>保存期限</th>
+                                            <td>未開封常溫保存 30 天</td>
+                                        </tr>
+                                        <tr>
+                                            <th>產地</th>
+                                            <td>台灣</td>
+                                        </tr>
+                                        <tr>
+                                            <th>製造商</th>
+                                            <td>唐寶寶烘焙坊</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 退換貨政策 -->
+                        <div id="return" class="tab-pane">
+                            <div class="content mt-4">
+                                <h3 class="is-size-4 mb-4">退換貨政策</h3>
+                                <div class="return-policy">
+                                    <h4 class="is-size-5 mb-3">退換貨須知</h4>
+                                    <ul>
+                                        <li>商品到貨後，請立即檢查商品外觀及數量。</li>
+                                        <li>若商品有瑕疵或損壞，請於收到商品後 24 小時內與我們聯繫。</li>
+                                        <li>食品類商品因衛生考量，除商品本身瑕疵外，恕不接受退換貨。</li>
+                                    </ul>
+
+                                    <h4 class="is-size-5 mb-3 mt-4">退換貨流程</h4>
+                                    <ol>
+                                        <li>請先聯繫客服，說明退換貨原因。</li>
+                                        <li>客服確認後，將提供退換貨相關資訊。</li>
+                                        <li>請於收到退換貨資訊後 7 天內完成退換貨程序。</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .product-gallery .image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .product-gallery .image img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-description {
+            margin-top: 2rem;
+        }
+
+        .feature-section {
+            margin-top: 1.5rem;
+        }
+
+        .feature-section h4 {
+            color: #363636;
+            font-weight: 600;
+        }
+
+        .feature-section ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .feature-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tabs {
+            border-bottom: 2px solid #eee;
+        }
+
+        .tabs ul {
+            border-bottom: none;
+        }
+
+        .tabs a {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.is-active {
+            display: block;
+        }
+
+        .table th {
+            width: 150px;
+            background-color: #f5f5f5;
+        }
+
+        .return-policy ol {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .return-policy li {
+            margin-bottom: 0.5rem;
+        }
+
+        @@media screen and (max-width: 768px) {
+            .product-gallery {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+
+        // 標籤切換功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tabs li');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有標籤的活動狀態
+                    tabs.forEach(t => t.classList.remove('is-active'));
+                    // 移除所有內容區塊的活動狀態
+                    tabPanes.forEach(pane => pane.classList.remove('is-active'));
+
+                    // 添加當前標籤的活動狀態
+                    this.classList.add('is-active');
+                    // 顯示對應的內容區塊
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('is-active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

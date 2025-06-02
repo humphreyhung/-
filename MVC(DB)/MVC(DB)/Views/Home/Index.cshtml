@@ -1,33 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    List<account> accounts = ViewBag.accounts;
+﻿@model List<MVC_DB_.Models.account>
+
+@{
+    ViewData["Title"] = "首頁";
 }
 
 <div class="text-center">
+    <h1 class="display-4">歡迎</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>編號</th>
-                <th>帳號</th>
-                <th>密碼</th>
-                <th>姓名</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (account user in accounts)
+<div class="container mt-4">
+    <h2>帳號列表</h2>
+    <div class="row">
+        @if (ViewBag.accounts != null)
+        {
+            @foreach (var user in ViewBag.accounts)
             {
-                <tr>
-                    <th>@user.ID</th>
-                    <th>@user.userName</th>
-                    <th>@user.passwd</th>
-                    <th>@user.name</th>
-                </tr>
-            }            
-        </tbody>
-    </table>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@user.userName</h5>
+                            <p class="card-text">Email: @user.email</p>
+                            <p class="card-text">電話: @user.phone</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info">
+                    目前沒有帳號資料
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
-    <p>@Html.ActionLink("新增帳戶","addAccount")</p>
-   
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <a asp-controller="Home" asp-action="addAccount" class="btn btn-primary">
+                <i class="fas fa-plus"></i> 新增帳號
+            </a>
+        </div>
+    </div>
 </div>
