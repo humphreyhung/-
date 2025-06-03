@@ -232,9 +232,11 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index_R">
                         <img src="~/images/logoamabay.png" alt="首頁" class="nav-icon" />
+                        </a>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index_R">
                                
                                 Home
                             </a>
@@ -252,20 +254,39 @@
                             </a>
                         </li>
                     </ul>
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="project">
+                    <a class="navbar-brand"  asp-area="" asp-controller="Home" asp-action="Index_R">
                         
                         Give4Life
                     </a>
+                    @using Microsoft.AspNetCore.Http
+
                     <div class="d-flex">
-                        <a asp-controller="Home" asp-action="Register" class="register-btn">
-                            <span class="register-icon">📝</span>
-                            註冊
-                        </a>
-                        <a asp-controller="Home" asp-action="Login" class="login-btn">
-                            <span class="login-icon">👤</span>
-                            登入
-                        </a>
+                        @if (Context.Session.GetString("username") != null)
+                        {
+                            <a asp-controller="Account" asp-action="Profile" class="login-btn">
+                                <span class="login-icon">👤</span>
+                                @Context.Session.GetString("username")
+                            </a>
+                            
+                            <a asp-controller="Login" asp-action="Logout" method="post" class="register-btn">
+                                <span type="submit" class="register-icon">登出</span>
+                            </a>
+                            
+
+                        }
+                        else
+                        {
+                            <a asp-controller="Login" asp-action="Signup" class="register-btn">
+                                <span class="register-icon">📝</span>
+                                註冊
+                            </a>
+                            <a asp-controller="Login" asp-action="Index" class="login-btn">
+                                <span class="login-icon">👤</span>
+                                登入
+                            </a>
+                        }
                     </div>
+
                 </div>
             </div>
         </nav>

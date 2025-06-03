@@ -1,10 +1,27 @@
 ﻿@model List<MVC_DB_.Controllers.AccountInfo>
-
+@using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "所有帳號資訊";
     var currentUser = Context.Session.GetString("username");
     var currentRole = Context.Session.GetString("role");
 }
+<style>
+    table.table-bordered {
+        border: 2px solid #333; /* 表格外框 */
+    }
+
+        table.table-bordered th,
+        table.table-bordered td {
+            border: 1px solid #333; /* 表格內部框線 */
+        }
+
+        table.table-bordered thead {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+</style>
 
 <h2>所有帳號資訊</h2>
 
@@ -30,8 +47,11 @@
                     <form method="post" asp-action="UpdateRole" class="d-flex mt-1">
                         <input type="hidden" name="username" value="@account.UserName" />
                         <select name="role" class="form-select me-2">
-                            <option value="User" @@(account.Role == "User" ? "selected" : "")>User</option>
-                            <option value="Admin" @@(account.Role == "Admin" ? "selected" : "")>Admin</option>
+                            <option value="User" selected="@(account.Role == "User" ? "selected" : null)">User</option>
+                            <option value="Admin" selected="@(account.Role == "Admin" ? "selected" : null)">Admin</option>
+
+                            
+
                         </select>
                         <button type="submit" class="btn btn-primary btn-sm">更新</button>
                     </form>

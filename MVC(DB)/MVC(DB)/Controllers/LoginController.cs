@@ -47,7 +47,7 @@ namespace MVC_DB_.Controllers
                             if (role == "Admin")
                                 return RedirectToAction("AllAccounts", "Account");
                             else
-                                return RedirectToAction("Index", "Home");
+                                return RedirectToAction("Index_R", "Home");
                         }
                         else
                         {
@@ -111,6 +111,13 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // 清除所有 Session
+            return RedirectToAction("Index_R", "Home"); // 回到登入頁
+        }
+
 
     }
 }
