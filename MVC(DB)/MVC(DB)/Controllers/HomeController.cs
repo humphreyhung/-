@@ -263,7 +263,11 @@ namespace MVC_DB_.Controllers
                         {
                             "原味",
                             "巧克力",
-                            "抹茶"
+                            "抹茶",
+                            "咖啡",
+                            "芝麻",
+                            "紅茶",
+                            "草莓"
                         }
                     },
                     new SponsorPlan
