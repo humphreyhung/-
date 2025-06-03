@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication3.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
+    @using Microsoft.AspNetCore.Http
     <style>
         body {
             padding-top: 80px;
@@ -253,12 +254,23 @@
                                 募資專案
                             </a>
                         </li>
+                        @if (Context.Session.GetString("role") == "Admin")
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="AllAccounts">
+                              
+                                帳號列表
+                            </a>
+                        </li>
+                        }
                     </ul>
                     <a class="navbar-brand"  asp-area="" asp-controller="Home" asp-action="Index_R">
                         
                         Give4Life
                     </a>
-                    @using Microsoft.AspNetCore.Http
+                    
+
+                    
 
                     <div class="d-flex">
                         @if (Context.Session.GetString("username") != null)
