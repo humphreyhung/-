@@ -138,6 +138,27 @@ namespace MVC_DB_.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Project2()
+        {
+            var viewModel = new ProjectViewModel
+            {
+                Projects = new List<Project>
+                {
+                    new Project
+                    {
+                        Id = 2,
+                        Title = "讓愛酥進心裡，用餅乾陪他們走過抗癌旅程",
+                        Description = "每一盒餅乾都承載著我們的關懷與祝福",
+                        ImageUrl = "fa-cookie",
+                        CurrentAmount = 230000,
+                        TargetAmount = 1000000,
+                        RemainingDays = 180
+                    }
+                }
+            };
+            return View(viewModel);
+        }
+
         public IActionResult ProjectDetails(int id)
         {
             // 這裡可以根據 id 獲取專案詳情
