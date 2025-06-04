@@ -1240,6 +1240,131 @@
                 padding: 0 1rem;
             }
         }
+
+        .table {
+            width: 100%;
+            margin-bottom: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-bordered {
+            border: none;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .table-bordered thead {
+            background: linear-gradient(135deg, #718355 0%, #B5C99A 100%);
+            color: #fff;
+        }
+
+        .table-bordered thead th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .table-bordered tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .table-bordered tbody tr:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-bordered tbody td {
+            color: #2C3E50;
+            font-size: 0.95rem;
+        }
+
+        .form-select {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            color: #2C3E50;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            border-color: #6A994E;
+            box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #6A994E;
+            border-color: #6A994E;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #718355;
+            border-color: #718355;
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            transform: translateY(-1px);
+        }
+
+        .text-muted {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        h2 {
+            color: #2C3E50;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #6A994E;
+            display: inline-block;
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .me-2 {
+            margin-right: 0.5rem;
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem;
+        }
     </style>
     <script>
         // 設定目標日期（這裡設定為30天後）

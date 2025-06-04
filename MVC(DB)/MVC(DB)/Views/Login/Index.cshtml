@@ -6,22 +6,27 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
+    <title>登入頁面</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-color: #dcae66;
+            background-color: #f7f8f3;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            font-family: 'Microsoft JhengHei', sans-serif;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #3a3a3a;
         }
 
         /* 幾何背景圖形 */
@@ -30,9 +35,11 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background-color: #c4772c;
+            background-color: #90a07c;
             top: -80px;
             left: -80px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .shape-diamond {
@@ -43,68 +50,93 @@
             transform: rotate(45deg);
             top: 60px;
             right: -60px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .shape-bottom-left {
             position: absolute;
             width: 300px;
             height: 300px;
-            background-color: #7a8939;
+            background-color: #f0f2ea;
             bottom: -80px;
             left: -80px;
             clip-path: polygon(0 0, 100% 100%, 0 100%);
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .shape-bottom-right {
             position: absolute;
             width: 300px;
             height: 300px;
-            background-color: #d5912e;
+            background-color: #f5f5f0;
             bottom: -80px;
             right: -80px;
             clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .login-container {
-            background-color: #f7ebd7;
+            background-color: rgba(245, 237, 227, 0.95);
+            border: 1px solid #e0d6cc;
             border-radius: 20px;
             padding: 40px;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            max-width: 90vw;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             z-index: 10;
             position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-            .login-container h2 {
-                text-align: center;
-                color: #5a2c0d;
-                margin-bottom: 30px;
-            }
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
 
         .form-group {
-            margin-bottom: 20px;
+            width: 100%;
+            margin-bottom: 24px;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #333;
+        .login-container h2 {
+            text-align: center;
+            color: #4f5b2c;
+            margin-bottom: 35px;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
-            padding: 12px;
+            width: 92%;
+            margin: 0 auto;
+            display: block;
+            padding: 14px 16px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 16px;
+            background-color: #fff;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #9e572a;
+            box-shadow: 0 0 0 2px rgba(158, 87, 42, 0.2);
+            outline: none;
         }
 
         .login-btn {
             width: 100%;
-            padding: 12px;
-            background-color: #a4571e;
+            padding: 14px;
+            background-color: #9e572a;
+            transition: all 0.3s ease;
             color: white;
             font-weight: bold;
             border: none;
@@ -112,62 +144,214 @@
             font-size: 16px;
             margin-top: 10px;
             cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
         }
 
-        .line-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #06c755;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            margin-top: 20px;
+        .login-btn:hover {
+            background-color: #7d3f1c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .social-login {
+            text-align: center;
+            margin: 25px 0;
+            color: #4f5b2c;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .social-login::before,
+        .social-login::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background-color: #e0d6cc;
+        }
+
+        .social-login::before {
+            left: 0;
+        }
+
+        .social-login::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .social-buttons .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-            .line-btn img {
-                height: 20px;
-                margin-right: 10px;
-            }
-
-        .signup {
-            width: 100%;
+            gap: 10px;
             padding: 12px;
-            background-color: #7a8939;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
             color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .social-btn {
-            padding: 10px 15px;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            font-size: 14px;
+        .btn-google {
+            background-color: #A4744D;
+        }
+
+        .btn-facebook {
+            background-color: #4267B2;
+        }
+
+        .btn-line {
+            background-color: #00B900;
+        }
+
+        .social-buttons .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            color: #fff;
+        }
+
+        .social-buttons .btn i {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-buttons .btn:hover i {
+            transform: scale(1.1);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e0d6cc;
+            color: #4f5b2c;
+        }
+
+        .signup-link a {
+            color: #71803c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .signup-link a:hover {
+            color: #5c6a2f;
+        }
+
+        .signup-link a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #5c6a2f;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .signup-link a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .remember-me {
             display: flex;
             align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
         }
 
-            .social-btn img {
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                background-color: white;
-                padding: 2px;
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            color: #4f5b2c;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container:hover {
+            color: #9e572a;
+        }
+
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: relative;
+            height: 18px;
+            width: 18px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container:hover input ~ .checkmark {
+            border-color: #9e572a;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #9e572a;
+            border-color: #9e572a;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-container .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        @@media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 30px 20px;
             }
+
+            .shape-circle,
+            .shape-diamond,
+            .shape-bottom-left,
+            .shape-bottom-right {
+                opacity: 0.5;
+            }
+        }
     </style>
 </head>
 <body>
@@ -179,43 +363,47 @@
 
     <!-- 登入表單 -->
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>登入</h2>
         <form method="post" action="/Login/login">
-        <div class="form-group">
-            <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Type your username" maxlength="20" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Type your password" maxlength="20" required />
-        </div>
-            <button type="submit" class="login-btn">Login</button>
+            <div class="form-group">
+                <label for="username">帳號</label>
+                <input type="text" id="username" name="username" placeholder="請輸入帳號" maxlength="20" required />
+            </div>
+            <div class="form-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" placeholder="請輸入密碼" maxlength="20" required />
+            </div>
+            <div class="form-group remember-me">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" />
+                    <span class="checkmark"></span>
+                    記住我
+                </label>
+            </div>
+            <button type="submit" class="login-btn">登入</button>
         </form>
-        <div style="text-align: center; margin: 20px 0 10px;">Or sign up using</div>
 
-        <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 20px; justify-content: center;">
-            <!-- LINE -->
-            <button class="social-btn" style="background-color: #06c755;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" />
-                LINE
-            </button>
-
-            <!-- Google -->
-            <button class="social-btn" style="background-color: #db4437;">
-                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" />
-                Google
-            </button>
-
-            <!-- Facebook -->
-            <button class="social-btn" style="background-color: #4267B2;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" />
-                Facebook
-            </button>
+        <div class="social-login">
+            <p class="divider"><span>或使用以下方式登入</span></p>
+            <div class="social-buttons">
+                <a href="#" class="btn btn-google">
+                    <i class="fab fa-google"></i>
+                    Google 登入
+                </a>
+                <a href="#" class="btn btn-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook 登入
+                </a>
+                <a href="#" class="btn btn-line">
+                    <i class="fab fa-line"></i>
+                    LINE 登入
+                </a>
+            </div>
         </div>
 
-        <form method="get" action="/Login/Signup">
-            <input type="submit" class="signup" value="SIGN UP" />
-        </form>
+        <div class="signup-link">
+            還沒有帳號？<a href="/Login/Signup">立即註冊</a>
+        </div>
     </div>
 </body>
 
@@ -225,14 +413,31 @@
         form.addEventListener("submit", function (e) {
             const username = document.getElementById("username").value.trim();
             const password = document.getElementById("password").value.trim();
+            const rememberMe = document.getElementById("rememberMe").checked;
 
             if (username.length < 8 || password.length < 8) {
                 alert("帳號與密碼需至少 8 個字元");
-                e.preventDefault(); // 阻止表單提交
+                e.preventDefault();
             }
+        });
+
+        // 添加背景動畫效果
+        const shapes = document.querySelectorAll('.shape-circle, .shape-diamond, .shape-bottom-left, .shape-bottom-right');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            shapes.forEach(shape => {
+                const speed = shape.classList.contains('shape-circle') ? 0.05 :
+                            shape.classList.contains('shape-diamond') ? 0.03 :
+                            shape.classList.contains('shape-bottom-left') ? 0.04 : 0.02;
+                
+                const moveX = (x - 0.5) * speed * 100;
+                const moveY = (y - 0.5) * speed * 100;
+                
+                shape.style.transform = `translate(${moveX}px, ${moveY}px) ${shape.classList.contains('shape-diamond') ? 'rotate(45deg)' : ''}`;
+            });
         });
     });
 </script>
-
-
 </html>

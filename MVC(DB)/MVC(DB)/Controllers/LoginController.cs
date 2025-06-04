@@ -1,20 +1,32 @@
 ﻿using BCrypt.Net;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace MVC_DB_.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Index()
+       
+
+            [BindProperty]
+            public bool RememberMe { get; set; }
+
+            public void OnGet()
+            {
+            }
+            public IActionResult Index()
         {
+
             return View();
         }
-        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=account;User ID=don1;Password=Qw669668;Trusted_Connection=True";
-        public IActionResult login(string username, string password)
+
+        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=account;User ID=zate;Password=zate;Trusted_Connection=True";
+        public IActionResult login(string username, string password, bool rememberMe)
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 return BadRequest("帳號或密碼不能空白");
@@ -43,11 +55,24 @@ namespace MVC_DB_.Controllers
                             HttpContext.Session.SetString("username", username);
                             HttpContext.Session.SetString("role", role);
 
+                            // 如果選擇記住我，設置 Cookie
+                            if (rememberMe)
+                            {
+                                var cookieOptions = new CookieOptions
+                                {
+                                    Expires = DateTime.Now.AddDays(30),
+                                    HttpOnly = true,
+                                    Secure = true,
+                                    SameSite = SameSiteMode.Strict
+                                };
+                                Response.Cookies.Append("rememberedUser", username, cookieOptions);
+                            }
+
                             // 根據角色導向
                             if (role == "Admin")
                                 return RedirectToAction("AllAccounts", "Account");
                             else
-                                return RedirectToAction("Index", "Home");
+                                return RedirectToAction("Index_R", "Home");
                         }
                         else
                         {
@@ -72,30 +97,32 @@ namespace MVC_DB_.Controllers
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email))
                 return BadRequest("欄位不能空白");
 
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string sql = "INSERT INTO accountInformation (userName, password,name,email,role) VALUES (@u, @p,@n,@e,@r)";
+                
+                // 檢查帳號是否已存在
+                string checkSql = "SELECT COUNT(*) FROM accountInformation WHERE userName = @username";
+                using (SqlCommand checkCmd = new SqlCommand(checkSql, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@username", username);
+                    int exists = (int)checkCmd.ExecuteScalar();
+                    if (exists > 0)
+                        return BadRequest("帳號已被註冊");
+                }
 
-                string checkSql = "SELECT COUNT(*) FROM accountInformation WHERE userName = @u";
-                SqlCommand checkCmd = new SqlCommand(checkSql, conn);
-                checkCmd.Parameters.AddWithValue("@u", username);
-                int exists = (int)checkCmd.ExecuteScalar();
-                if (exists > 0)
-                    return BadRequest("帳號已被註冊");
-
-
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                // 插入新帳號
+                string insertSql = "INSERT INTO accountInformation (userName, password, name, email, role) VALUES (@username, @password, @name, @email, @role)";
+                using (SqlCommand cmd = new SqlCommand(insertSql, conn))
                 {
                     string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-                    cmd.Parameters.AddWithValue("@u", username);
-                    cmd.Parameters.AddWithValue("@p", hashedPassword);
-                    cmd.Parameters.AddWithValue("@n", name);
-                    cmd.Parameters.AddWithValue("@e", email);
-                    cmd.Parameters.AddWithValue("@r", "User");
-                    int rows = cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@role", "Admin");
 
+                    int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
                     {
                         return RedirectToAction("Index", "Login");
@@ -111,6 +138,13 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // 清除所有 Session
+            return RedirectToAction("Index_R", "Home"); // 回到登入頁
+        }
+
 
     }
 }

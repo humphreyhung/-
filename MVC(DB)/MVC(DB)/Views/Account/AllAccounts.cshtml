@@ -1,56 +1,252 @@
 ﻿@model List<MVC_DB_.Controllers.AccountInfo>
-
+@using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "所有帳號資訊";
     var currentUser = Context.Session.GetString("username");
     var currentRole = Context.Session.GetString("role");
 }
+<style>
+    .container {
+        padding: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 1400px;
+    }
 
-<h2>所有帳號資訊</h2>
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        padding: 2rem;
+        margin: 0 -2rem 2rem -2rem;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>帳號</th>
-            <th>姓名</th>
-            <th>Email</th>
-            <th>角色</th>
-            <th>操作</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var account in Model)
-        {
-            <tr>
-                <td>@account.UserName</td>
-                <td>@account.Name</td>
-                <td>@account.Email</td>
-                <td>
-                    <strong>@account.Role</strong>
-                    <form method="post" asp-action="UpdateRole" class="d-flex mt-1">
-                        <input type="hidden" name="username" value="@account.UserName" />
-                        <select name="role" class="form-select me-2">
-                            <option value="User" @@(account.Role == "User" ? "selected" : "")>User</option>
-                            <option value="Admin" @@(account.Role == "Admin" ? "selected" : "")>Admin</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary btn-sm">更新</button>
-                    </form>
-                </td>
+    .page-header h2 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-                <td>
-                    @if (account.UserName != currentUser)  // 不允許刪除自己
-                    {
-                        <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
-                            <input type="hidden" name="username" value="@account.UserName" />
-                            <button type="submit" class="btn btn-danger btn-sm">刪除</button>
-                        </form>
-                    }
-                    else
-                    {
-                        <span class="text-muted">（目前使用者）</span>
-                    }
-                </td>
-            </tr>
+    .table-responsive {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow-x: auto;
+        margin-top: 1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table {
+        margin-bottom: 0;
+        min-width: 1000px;
+    }
+
+    .table thead {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .table thead th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        padding: 1.2rem;
+        border: none;
+        white-space: nowrap;
+    }
+
+    .table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--bg-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .table tbody td {
+        padding: 1.2rem;
+        vertical-align: middle;
+        color: var(--text-color);
+        font-size: 0.95rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .form-select {
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        color: var(--text-color);
+        background-color: #fff;
+        transition: all 0.3s ease;
+        min-width: 120px;
+    }
+
+    .form-select:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 0.2rem rgba(167, 201, 87, 0.15);
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--hover-color);
+        border-color: var(--hover-color);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(167, 201, 87, 0.2);
+    }
+
+    .btn-danger {
+        background-color: #f44336;
+        border-color: #f44336;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #e53935;
+        border-color: #e53935;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
+    }
+
+    .text-muted {
+        color: #757575;
+        font-size: 0.9rem;
+        font-style: italic;
+        padding: 0.5rem 1rem;
+        background-color: var(--bg-color);
+        border-radius: 4px;
+        display: inline-block;
+    }
+
+    strong {
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+        background-color: rgba(167, 201, 87, 0.1);
+        border-radius: 4px;
+        display: inline-block;
+    }
+
+    .d-flex {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .me-2 {
+        margin-right: 0.8rem;
+    }
+
+    .mt-1 {
+        margin-top: 0.5rem;
+    }
+
+    @@media (max-width: 768px) {
+        .container {
+            padding: 1rem;
         }
-    </tbody>
-</table>
+
+        .page-header {
+            padding: 1.5rem;
+            margin: 0 -1rem 1.5rem -1rem;
+        }
+
+        .page-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .table thead th,
+        .table tbody td {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>所有帳號資訊</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>帳號</th>
+                        <th>姓名</th>
+                        <th>Email</th>
+                        <th>角色</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var account in Model)
+                    {
+                        <tr>
+                            <td>@account.UserName</td>
+                            <td>@account.Name</td>
+                            <td>@account.Email</td>
+                            <td>
+                                <strong>@account.Role</strong>
+                                <form method="post" asp-action="UpdateRole" class="d-flex mt-1">
+                                    <input type="hidden" name="username" value="@account.UserName" />
+                                    <select name="role" class="form-select me-2">
+                                        <option value="User" selected="@(account.Role == "User" ? "selected" : null)">User</option>
+                                        <option value="Admin" selected="@(account.Role == "Admin" ? "selected" : null)">Admin</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-sm">更新</button>
+                                </form>
+                            </td>
+                            <td>
+                                @if (account.UserName != currentUser)  // 不允許刪除自己
+                                {
+                                    <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
+                                        <input type="hidden" name="username" value="@account.UserName" />
+                                        <button type="submit" class="btn btn-danger btn-sm">刪除</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">（目前使用者）</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
