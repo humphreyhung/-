@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApplication3</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication3.styles.css" asp-append-version="true" />
@@ -229,6 +230,62 @@
                 padding: 1rem;
             }
         }
+
+        .dropdown-menu {
+            background-color: var(--primary-color);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem;
+            min-width: 200px;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: white !important;
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .settings-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .settings-btn:hover {
+            transform: rotate(30deg);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -244,33 +301,14 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index_R">
-                               
-                                Home
+                                <i class="fas fa-home">首頁</i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                提案
+                                <i class="fas fa-search">搜尋</i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                搜尋
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Campaign" asp-action="Index">
-                                專案
-                            </a>
-                        </li>
-                        @if (Context.Session.GetString("role") == "Admin")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="AllAccounts">
-                                    帳號列表
-                                </a>
-                            </li>
-                        }
                     </ul>
 
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index_R">
@@ -279,6 +317,37 @@
                     </a>
 
                     <div class="d-flex">
+                        <ul class="navbar-nav me-3">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                    提案
+                                </a>
+                            </li>
+                        </ul>
+                         @if (Context.Session.GetString("role") == "Admin")
+                                {
+                        <div class="dropdown">
+                            <button class="settings-btn dropdown-toggle" type="button" id="settingsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-wrench"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
+                                
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Campaign" asp-action="Index">
+                                        <i class="fas fa-project-diagram me-2"></i>專案
+                                    </a>
+                                </li>
+                              
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="AllAccounts">
+                                            <i class="fas fa-users me-2"></i>帳號列表
+                                        </a>
+                                    </li>
+                                
+                            </ul>
+                            </div>
+                        }
                         @if (Context.Session.GetString("username") != null)
                         {
                             <a asp-controller="Account" asp-action="Profile" class="login-btn">
@@ -291,7 +360,6 @@
                         }
                         else
                         {
-                           
                             <a asp-controller="Login" asp-action="Index" class="login-btn">
                                 <span class="login-icon">👤</span>
                                 登入
@@ -313,11 +381,33 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script>
+        // 確保 Bootstrap 下拉選單功能正常運作
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化所有下拉選單
+            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+            var dropdownList = dropdownElementList.map(function(dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl);
+            });
+
+            // 點擊其他地方時關閉下拉選單
+            document.addEventListener('click', function(event) {
+                var dropdowns = document.querySelectorAll('.dropdown-menu.show');
+                dropdowns.forEach(function(dropdown) {
+                    if (!dropdown.contains(event.target) && !event.target.matches('.dropdown-toggle')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // 原有的回到頂部按鈕功能
         if (typeof jQuery != 'undefined') {
             $(document).ready(function() {
                 try {
