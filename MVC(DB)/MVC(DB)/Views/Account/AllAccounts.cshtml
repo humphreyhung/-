@@ -17,12 +17,19 @@
     <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
 </head>
 <style>
-    .container {
-        padding: 2rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        width: 100%;
-        max-width: 1400px;
+    :root {
+        --primary-color: #AAB386;
+        --secondary-color: #A7C957;
+        --hover-color: #6A994E;
+        --bg-color: #f7f8f3;
+        --text-color: #333;
+        --border-color: #e0d6cc;
+    }
+
+    .content-wrapper {
+        background-color: var(--bg-color);
+        min-height: calc(100vh - var(--navbar-height));
+        padding: 2rem 0;
     }
 
     .page-header {
@@ -47,20 +54,16 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         overflow-x: auto;
         margin-top: 1rem;
-        -webkit-overflow-scrolling: touch;
     }
 
     .table {
         margin-bottom: 0;
-        min-width: 1000px;
+        width: 100%;
     }
 
     .table thead {
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         color: white;
-        position: sticky;
-        top: 0;
-        z-index: 1;
     }
 
     .table thead th {

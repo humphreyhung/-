@@ -247,7 +247,7 @@
         }
 
         .dropdown-item {
-            color: white !important;
+            color: black !important;
             padding: 0.75rem 1rem;
             border-radius: 5px;
             transition: all 0.3s ease;
@@ -334,13 +334,13 @@
                             <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
                                 
                                 <li>
-                                    <a class="dropdown-item" asp-controller="Campaign" asp-action="Index">
+                                        <a class="dropdown-item" asp-controller="Campaign" asp-action="Index" style="background-color: #dad7cd; color: white;">
                                         <i class="fas fa-project-diagram me-2"></i>專案
                                     </a>
                                 </li>
                               
                                     <li>
-                                        <a class="dropdown-item" asp-controller="Account" asp-action="AllAccounts">
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="AllAccounts" style="background-color: #dad7cd; color: white;">
                                             <i class="fas fa-users me-2"></i>帳號列表
                                         </a>
                                     </li>
