@@ -547,6 +547,10 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+        public IActionResult Proposal()
+        {
+            return View();
+        }
     }
 }
 

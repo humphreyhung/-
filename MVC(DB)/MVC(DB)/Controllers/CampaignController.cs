@@ -250,5 +250,7 @@ namespace MVC_DB_.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
+     
     }
 }
