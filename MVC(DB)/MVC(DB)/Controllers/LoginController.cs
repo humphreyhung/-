@@ -23,7 +23,7 @@ namespace MVC_DB_.Controllers
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT password, role FROM accountInformation WHERE userName = @u";
+                string sql = "SELECT password, role, email FROM accountInformation WHERE userName = @u";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -36,6 +36,7 @@ namespace MVC_DB_.Controllers
 
                         string storedHashedPassword = reader.GetString(0);
                         string role = reader.GetString(1);
+                        string email = reader.GetString(2);
 
                         // 使用 BCrypt 驗證密碼
                         if (BCrypt.Net.BCrypt.Verify(password, storedHashedPassword))
@@ -43,6 +44,7 @@ namespace MVC_DB_.Controllers
                             // 儲存登入狀態與角色
                             HttpContext.Session.SetString("username", username);
                             HttpContext.Session.SetString("role", role);
+                            HttpContext.Session.SetString("email", email);
 
                             // 根據角色導向
                             if (role == "Admin")
