@@ -349,6 +349,76 @@
             transform: scale(1.2);
         }
 
+        .search-container {
+            position: relative;
+        }
+
+        .search-toggle {
+            color: white;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .search-toggle:hover {
+                color: white;
+        }
+
+        .search-collapse {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            min-width: 300px;
+            margin-top: 0.5rem;
+        }
+
+        .search-box {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-box .input-group {
+            width: 100%;
+        }
+
+        .search-box .form-control {
+            border-radius: 20px 0 0 20px;
+            border: 1px solid #6A994E;
+            padding-left: 15px;
+        }
+
+        .search-box .btn {
+            border-radius: 0 20px 20px 0;
+            border: 1px solid #6A994E;
+            color: #6A994E;
+        }
+
+        .search-box .btn:hover {
+            background-color: #6A994E;
+            color: white;
+        }
+
+        .search-box .form-control:focus {
+            box-shadow: none;
+            border-color: #6A994E;
+        }
+
+        @@media (max-width: 768px) {
+            .search-collapse {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                min-width: auto;
+            }
+
+            .search-box {
+                margin: 0 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -368,9 +438,23 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                <i class="fas fa-search">搜尋</i>
-                            </a>
+                            <div class="search-container">
+                                <button class="btn btn-link search-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <div class="collapse search-collapse" id="searchCollapse">
+                                    <div class="search-box">
+                                        <form class="d-flex" role="search">
+                                            <div class="input-group">
+                                                <input class="form-control" type="search" placeholder="搜尋專案..." aria-label="Search">
+                                                <button class="btn btn-outline-success" type="submit">
+                                                    <i class="fas fa-search">搜尋</i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
 
