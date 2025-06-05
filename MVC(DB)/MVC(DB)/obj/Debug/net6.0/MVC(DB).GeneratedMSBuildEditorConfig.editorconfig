@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBbGxBY2NvdW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/USER/OneDrive/桌面/mvc/-/MVC(DB)/MVC(DB)/Views/Account/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/USER/OneDrive/桌面/mvc/-/MVC(DB)/MVC(DB)/Views/Campaign/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FtcGFpZ25cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,6 +94,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/USER/OneDrive/桌面/mvc/-/MVC(DB)/MVC(DB)/Views/Home/project.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxwcm9qZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER/OneDrive/桌面/mvc/-/MVC(DB)/MVC(DB)/Views/Home/project2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxwcm9qZWN0Mi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER/OneDrive/桌面/mvc/-/MVC(DB)/MVC(DB)/Views/Home/Proposal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9wb3NhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/USER/OneDrive/桌面/mvc/-/MVC(DB)/MVC(DB)/Views/Home/Register.cshtml]
