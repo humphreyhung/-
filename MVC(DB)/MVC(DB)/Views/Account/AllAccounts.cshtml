@@ -120,6 +120,8 @@
         letter-spacing: 0.5px;
         border: none;
         cursor: pointer;
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
     }
 
     .btn-primary {
@@ -249,12 +251,18 @@
                                         <option value="User" selected="@(account.Role == "User" ? "selected" : null)">User</option>
                                         <option value="Admin" selected="@(account.Role == "Admin" ? "selected" : null)">Admin</option>
                                     </select>
-                                    <button type="submit" class="btn btn-primary">更新</button>
+                                   
                                 </form>
+                               
                             </td>
                             <td>
                                 @if (account.UserName != currentUser)
                                 {
+                                    <form method="post" asp-action="UpdateRole" class="d-flex mt-1">
+                                        <input type="hidden" name="username" value="@account.UserName" />
+                                       
+                                        <button type="submit" class="btn btn-primary" style="writing-mode: horizontal-tb;">更新</button>
+                                    </form>
                                     <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
                                         <input type="hidden" name="username" value="@account.UserName" />
                                         <button type="submit" class="btn btn-danger">刪除</button>
