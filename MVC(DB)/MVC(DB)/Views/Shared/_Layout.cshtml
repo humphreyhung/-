@@ -4,57 +4,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApplication3</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication3.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
-    @using Microsoft.AspNetCore.Http
     <style>
-        :root {
-            --navbar-height: 80px;
-            --primary-color: #AAB386;
-            --secondary-color: #A7C957;
-            --hover-color: #6A994E;
-        }
-
         body {
-            padding-top: var(--navbar-height);
+            padding-top: 80px;
             font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
-
         .navbar {
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            height: var(--navbar-height) !important;
             z-index: 9999 !important;
-            background-color: var(--primary-color) !important;
+            background-color: #AAB386 !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-            padding: 0 !important;
+            padding: 20px 0;
         }
-
-        .navbar .container {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-        }
-
         .navbar-brand {
             font-size: 1.6rem;
             font-weight: 600;
             letter-spacing: 2px;
-            margin: 0;
-            white-space: nowrap;
+            margin-right: 3rem;
+            white-space: normal;
             line-height: 1.4;
+            max-width: 400px;
+            text-align: center;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -62,419 +41,301 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white !important;
         }
-
         .nav-link {
             font-size: 1.0rem;
-            padding: 0.5rem 1rem !important;
-            margin: 0 0.5rem;
+            padding: 1rem 1rem !important;
+            margin: 0 1rem;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             white-space: nowrap;
-            color: white !important;
         }
-
         .nav-link:hover {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
         }
-
         .main-content {
-            flex: 1;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+            position: relative;
+            z-index: 1;
         }
-
-        .login-btn, .register-btn {
-            padding: 0.5rem 1rem;
-            background-color: var(--secondary-color);
-            color: white !important;
+        .login-btn {
+            margin-left: 1rem;
+            padding: 6px 17px;
+            background-color: #A7C957;
+            color: white;
             border: none;
             border-radius: 25px;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 500;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
             display: flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
-            margin-left: 0.5rem;
         }
-
-        .login-btn:hover, .register-btn:hover {
-            background-color: var(--hover-color);
-            color: white !important;
+        .login-btn:hover {
+            background-color: #6A994E;
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
         }
-
-        .login-btn:active, .register-btn:active {
+        .login-btn:active {
             transform: translateY(0);
         }
-
-        .login-icon, .register-icon {
-            font-size: 1.1rem;
-            margin-right: 4px;
+        .login-icon {
+            font-size: 1.4rem;
         }
-
+        .card-section {
+            padding: 40px 0;
+            background-color: #f8f9fa;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        .card-image {
+            padding: 30px 0;
+            text-align: center;
+        }
+        .card-image i {
+            font-size: 48px;
+                color: #A7C957;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-content h4 {
+                color: #A7C957;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .card-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .card-content a {
+                color: #A7C957;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .card-content a:hover {
+                    color: #A7C957;
+            text-decoration: underline;
+        }
+        .btn-custom {
+            background-color: #A7C957;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .btn-custom:hover {
+                background-color: #A7C957;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+        }
+        .btn-custom:active {
+            transform: translateY(0);
+        }
+        .btn-custom i {
+            font-size: 14px;
+        }
+        .register-btn {
+            margin-left: 1rem;
+            padding: 6px 17px;
+            background-color: #A7C957;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .register-btn:hover {
+            background-color: #6A994E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+        .register-btn:active {
+            transform: translateY(0);
+        }
+        .register-icon {
+            font-size: 1.4rem;
+        }
         .navbar-nav {
-            display: flex;
-            align-items: center;
-            margin: 0;
-            padding: 0;
+            margin-right: 3rem;
+            position: relative;
+            z-index: 2;
         }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
+        .d-flex {
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
         }
-
+        .container {
+            max-width: 1400px;
+        }
+        .navbar img {
+            max-height: 50px;
+            margin-right: 1rem;
+        }
         .nav-icon {
+           
             height: 80px;
-            margin-right: 0.5rem;
+            margin-right: 5px;
+            vertical-align: middle;
+            object-fit: contain;
+        }
+        
+        .logo-img {
+            height: 50px;
+            margin-right: 15px;
             vertical-align: middle;
             object-fit: contain;
         }
 
-        .d-flex {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .footer {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            /* background-color: #343a40; */
+            /* color: white; */
+            /* padding: 10px; */
+            z-index: 9999 !important;
+            background-color: #AAB386 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+            padding: 20px 0;
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
+        .center-text {
+            margin: auto;
+            width: 50%; /* 調整寬度 */
+            text-align: center;
         }
 
-        .back-to-top:hover {
-            background-color: var(--hover-color);
-            transform: translateY(-2px);
+        .footer-centered {
+            position: fixed!important;
+            bottom: 0 !important;
+            left: 50% !important;
+            transform: translateX(-50%);
+            width: 50% !important;
+            z-index: 9999 !important;
+            /* background-color: #333; */
+            background-color: #AAB386 !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+            color: white !important;
+            p padding: 20px 0;
+            text-align: center !important;
         }
-
-        @@media (max-width: 992px) {
-            .navbar-brand {
-                position: relative;
-                left: 0;
-                transform: none;
-                margin-right: 1rem;
-            }
-
-            .navbar-collapse {
-                position: absolute;
-                top: var(--navbar-height);
-                left: 0;
-                right: 0;
-                background-color: var(--primary-color);
-                padding: 1rem;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            }
-
-            .navbar-nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem !important;
-                margin: 0.25rem 0;
-            }
-
-            .d-flex {
-                flex-direction: column;
-                width: 100%;
-                margin-top: 1rem;
-            }
-
-            .login-btn, .register-btn {
-                width: 100%;
-                justify-content: center;
-                margin: 0.25rem 0;
-            }
-        }
-
-        @@media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .nav-icon {
-                height: 30px;
-            }
-
-            .main-content {
-                padding: 1rem;
-            }
-        }
-
-        .dropdown-menu {
-            background-color: var(--primary-color);
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 0.5rem;
-            min-width: 200px;
-            margin-top: 0.5rem;
-            display: none;
-        }
-
-        .dropdown-menu.show {
-            display: block;
-        }
-
-        .dropdown-item {
-            color: black !important;
-            padding: 0.75rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-        }
-
-        .dropdown-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
-        }
-
-        .settings-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .settings-btn:hover {
-            transform: rotate(30deg);
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-toggle::after {
-            display: none;
-        }
-
-        footer {
-            background-color: #a8bfa0;
-            padding: 30px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .footer-column {
-            flex: 1 1 200px;
-            min-width: 150px;
-        }
-
-        .footer-column h4 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .footer-column ul {
-            list-style: none;
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 8px;
-        }
-
-        .footer-column ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .footer-column ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* 社群圖示 */
-        .footer-column.social .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .footer-column.social i {
-            font-size: 20px;
-            color: #111;
-            transition: transform 0.2s ease;
-        }
-
-        .footer-column.social i:hover {
-            transform: scale(1.2);
-        }
-
     </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav">
+                        <img src="~/images/logoamabay.png" alt="首頁" class="nav-icon" />
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index_R">
-                                <i class="fas fa-home">首頁</i>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                               
+                                Home
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                <i class="fas fa-search">搜尋</i>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                
+                                Privacy
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Campaign" asp-action="Index">
+                              
+                                募資專案
                             </a>
                         </li>
                     </ul>
-
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index_R">
-                        <img src="~/images/logoamabay.png" alt="首頁" class="nav-icon" />
-                        <span style="display: inline-block; vertical-align: middle; text-align: center; width: 100%;">Give4Life</span>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="project">
+                        
+                        想不到名子要取甚麼的募資網站
                     </a>
-
                     <div class="d-flex">
-                        <ul class="navbar-nav me-3">
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Proposal">
-                                    提案
-                                </a>
-                            </li>
-                        </ul>
-                         @if (Context.Session.GetString("role") == "Admin")
-                                {
-                        <div class="dropdown">
-                            <button class="settings-btn dropdown-toggle" type="button" id="settingsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-wrench"></i>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
-                                
-                                <li>
-                                        <a class="dropdown-item" asp-controller="Campaign" asp-action="Index" style="background-color: #dad7cd; color: white;">
-                                        <i class="fas fa-project-diagram me-2"></i>專案
-                                    </a>
-                                </li>
-                              
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Account" asp-action="AllAccounts" style="background-color: #dad7cd; color: white;">
-                                            <i class="fas fa-users me-2"></i>帳號列表
-                                        </a>
-                                    </li>
-                                
-                            </ul>
-                            </div>
-                        }
-                        @if (Context.Session.GetString("username") != null)
-                        {
-                            <a asp-controller="Account" asp-action="Profile" class="login-btn">
-                                <span class="login-icon">👤</span>
-                                @Context.Session.GetString("username")
-                            </a>
-                            <a asp-controller="Login" asp-action="Logout" method="post" class="register-btn">
-                                <span class="register-icon">登出</span>
-                            </a>
-                        }
-                        else
-                        {
-                            <a asp-controller="Login" asp-action="Index" class="login-btn">
-                                <span class="login-icon">👤</span>
-                                登入
-                            </a>
-                        }
+                        <a asp-controller="Home" asp-action="Register" class="register-btn">
+                            <span class="register-icon">📝</span>
+                            註冊
+                        </a>
+                        <a asp-controller="Home" asp-action="Login" class="login-btn">
+                            <span class="login-icon">👤</span>
+                            登入
+                        </a>
                     </div>
-
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="main-content">
-        <main role="main">
+    <div class="container main-content">
+        <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    @* <div class="text-center"> *@
+        <footer class="footer-centered">
+            <h4>暫時的footer</h4>
+        </footer>
+    @* </div> *@
 
+    <i class="fa-solid fa-gift"></i>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- 回到頂部按鈕 -->
+    <!-- 回到頂部按鈕 -->
     <button id="backToTop" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
     <script>
-        // 確保 Bootstrap 下拉選單功能正常運作
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化所有下拉選單
-            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
-            var dropdownList = dropdownElementList.map(function(dropdownToggleEl) {
-                return new bootstrap.Dropdown(dropdownToggleEl);
-            });
-
-            // 點擊其他地方時關閉下拉選單
-            document.addEventListener('click', function(event) {
-                var dropdowns = document.querySelectorAll('.dropdown-menu.show');
-                dropdowns.forEach(function(dropdown) {
-                    if (!dropdown.contains(event.target) && !event.target.matches('.dropdown-toggle')) {
-                        dropdown.classList.remove('show');
-                    }
-                });
-            });
-        });
-
-        // 原有的回到頂部按鈕功能
+        // 確保 jQuery 已正確載入
         if (typeof jQuery != 'undefined') {
+            // 等待 DOM 完全載入
             $(document).ready(function() {
                 try {
+                    // 回到頂部按鈕功能
                     var backToTop = $("#backToTop");
                     
                     $(window).scroll(function() {
@@ -491,55 +352,20 @@
                         }, 800);
                         return false;
                     });
+
+                    // 添加錯誤處理
+                    $(window).on('error', function(e) {
+                        console.error('jQuery 錯誤:', e);
+                    });
                 } catch (error) {
                     console.error('初始化時發生錯誤:', error);
                 }
             });
+        } else {
+            console.error('jQuery 未正確載入');
         }
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-<footer>
-    <div class="footer-container">
-        <div class="footer-column">
-            <h4>關於</h4>
-            <ul>
-                <li><a href="#">關於我們</a></li>
-                <li><a href="#">合作團體</a></li>
-                <li><a href="#">合作商家</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-column">
-            <h4>支援</h4>
-            <ul>
-                <li><a href="#">服務條款</a></li>
-                <li>
-                    <a class="project-link"
-                       asp-area=""
-                       asp-controller="Home"
-                       asp-action="Privacy">隱私權政策</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="footer-column">
-            <h4>聯繫</h4>
-            <ul>
-                <li><a href="#">聯繫我們</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-column social">
-            <h4>追蹤</h4>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-line"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
 </html>
