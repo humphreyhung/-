@@ -8,5 +8,3 @@ MVC(DB)/obj/
 *.pdb
 *.log
 *.tmp
-/MVC(DB)/MVC(DB)/obj/Debug/net6.0
-/MVC(DB)/MVC(DB)

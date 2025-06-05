@@ -286,6 +286,69 @@
         .dropdown-toggle::after {
             display: none;
         }
+
+        footer {
+            background-color: #a8bfa0;
+            padding: 30px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-column {
+            flex: 1 1 200px;
+            min-width: 150px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 社群圖示 */
+        .footer-column.social .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-column.social i {
+            font-size: 20px;
+            color: #111;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-column.social i:hover {
+            transform: scale(1.2);
+        }
+
     </style>
 </head>
 <body>
@@ -437,4 +500,46 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>關於</h4>
+            <ul>
+                <li><a href="#">關於我們</a></li>
+                <li><a href="#">合作團體</a></li>
+                <li><a href="#">合作商家</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>支援</h4>
+            <ul>
+                <li><a href="#">服務條款</a></li>
+                <li>
+                    <a class="project-link"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="Privacy">隱私權政策</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>聯繫</h4>
+            <ul>
+                <li><a href="#">聯繫我們</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column social">
+            <h4>追蹤</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-line"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
