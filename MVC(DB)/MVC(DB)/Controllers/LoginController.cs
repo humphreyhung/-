@@ -70,11 +70,9 @@ namespace MVC_DB_.Controllers
                                 Response.Cookies.Append("rememberedUser", username, cookieOptions);
                             }
 
-                            // 根據角色導向
-                            if (role == "Admin")
-                                return RedirectToAction("AllAccounts", "Account");
-                            else
-                                return RedirectToAction("Index_R", "Home");
+                            
+                            
+                            return RedirectToAction("Index_R", "Home");
                         }
                         else
                         {
