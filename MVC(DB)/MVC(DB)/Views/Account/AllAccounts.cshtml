@@ -249,23 +249,26 @@
                                         <option value="User" selected="@(account.Role == "User" ? "selected" : null)">User</option>
                                         <option value="Admin" selected="@(account.Role == "Admin" ? "selected" : null)">Admin</option>
                                     </select>
-                                    <button type="submit" class="btn btn-primary">更新</button>
                                 </form>
-                                
                             </td>
                             <td>
-
-                                @if (account.UserName != currentUser)
-                                {
-                                    <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
+                                <div class="btn-group">
+                                    <form method="post" asp-action="UpdateRole" class="d-flex">
                                         <input type="hidden" name="username" value="@account.UserName" />
-                                        <button type="submit" class="btn btn-danger">刪除</button>
+                                        <button type="submit" class="btn btn-primary">更新</button>
                                     </form>
-                                }
-                                else
-                                {
-                                    <span class="text-muted">（目前使用者）</span>
-                                }
+                                    @if (account.UserName != currentUser)
+                                    {
+                                        <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
+                                            <input type="hidden" name="username" value="@account.UserName" />
+                                            <button type="submit" class="btn btn-danger">刪除</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">（目前使用者）</span>
+                                    }
+                                </div>
                             </td>
                         </tr>
                     }
