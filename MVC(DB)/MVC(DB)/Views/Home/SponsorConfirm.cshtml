@@ -3,406 +3,366 @@
     ViewData["Title"] = "贊助確認";
 }
 
-<div class="container-fluid mt-5 px-5">
-    <div class="row">
-        <div class="col-12">
-            <div class="card confirmation-card">
-                <div class="card-header text-center">
-                    <i class="fas fa-check-circle text-success mb-3" style="font-size: 3rem;"></i>
-                    <h3 class="mb-0">贊助確認</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <div class="info-section">
-                                <h5><i class="fas fa-project-diagram me-2"></i>專案資訊</h5>
-                                <div class="info-content">
-                                    <p><strong>專案名稱：</strong> @Model.ProjectTitle</p>
-                                    <p><strong>贊助金額：</strong> <span class="text-primary">NT$ @Model.Amount.ToString("N0")</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-section">
-                                <h5><i class="fas fa-receipt me-2"></i>交易資訊</h5>
-                                <div class="info-content">
-                                    <p><strong>交易編號：</strong> <span class="text-primary">@Model.TransactionId</span></p>
-                                    <p><strong>交易時間：</strong> @Model.TransactionTime.ToString("yyyy/MM/dd HH:mm:ss")</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <div class="info-section">
-                                <h5><i class="fas fa-user me-2"></i>贊助者資訊</h5>
-                                <div class="info-content">
-                                    <p><strong>姓名：</strong> @Model.Name</p>
-                                    <p><strong>電子郵件：</strong> @Model.Email</p>
-                                    <p><strong>電話：</strong> @Model.Phone</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-section">
-                                <h5><i class="fas fa-map-marker-alt me-2"></i>收件地址</h5>
-                                <div class="info-content">
-                                    <p><strong>縣市：</strong> @Model.City</p>
-                                    <p><strong>鄉鎮市區：</strong> @Model.District</p>
-                                    <p><strong>詳細地址：</strong> @Model.Address</p>
-                                </div>
-                            </div>
-                        </div>
+    
+        <div class="row">
+            <div class="col-12">
+                <div class="card confirmation-card">
+                    <div class="card-header">
+                        <h2 class="text-center mb-0">贊助確認</h2>
                     </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h5><i class="fas fa-project-diagram me-2"></i>專案資訊</h5>
+                                    <div class="info-content">
+                                        <p><strong>專案名稱：</strong> @Model.ProjectTitle</p>
+                                        <p><strong>贊助金額：</strong> <span class="text-primary">NT$ @Model.Amount.ToString("N0")</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h5><i class="fas fa-receipt me-2"></i>交易資訊</h5>
+                                    <div class="info-content">
+                                        <p><strong>交易編號：</strong> <span class="text-primary">@Model.TransactionId</span></p>
+                                        <p><strong>交易時間：</strong> @Model.TransactionTime.ToString("yyyy/MM/dd HH:mm:ss")</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <div class="info-section">
-                                <h5><i class="fas fa-comment me-2"></i>備註</h5>
-                                <div class="info-content">
-                                    <p>@(string.IsNullOrEmpty(Model.Message) ? "無" : Model.Message)</p>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h5><i class="fas fa-user me-2"></i>贊助者資訊</h5>
+                                    <div class="info-content">
+                                        <p><strong>姓名：</strong> @Model.Name</p>
+                                        <p><strong>電子郵件：</strong> @Model.Email</p>
+                                        <p><strong>電話：</strong> @Model.Phone</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h5><i class="fas fa-map-marker-alt me-2"></i>收件地址</h5>
+                                    <div class="info-content">
+                                        <p><strong>縣市：</strong> @Model.City</p>
+                                        <p><strong>鄉鎮市區：</strong> @Model.District</p>
+                                        <p><strong>詳細地址：</strong> @Model.Address</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <div class="info-section">
-                                <h5><i class="fas fa-credit-card me-2"></i>付款方式</h5>
-                                <div class="info-content">
-                                    <p>
-                                        @switch (Model.PaymentMethod.ToLower())
-                                        {
-                                            case "credit":
-                                                <text><i class="fas fa-credit-card me-2"></i>信用卡</text>
-                                                break;
-                                            case "atm":
-                                                <text><i class="fas fa-university me-2"></i>ATM轉帳</text>
-                                                break;
-                                            case "line":
-                                                <text><i class="fab fa-line me-2"></i>LINE Pay</text>
-                                                break;
-                                            default:
-                                                <text>@Model.PaymentMethod</text>
-                                                break;
-                                        }
-                                    </p>
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="info-section">
+                                    <h5><i class="fas fa-comment me-2"></i>備註</h5>
+                                    <div class="info-content">
+                                        <p>@(string.IsNullOrEmpty(Model.Message) ? "無" : Model.Message)</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="text-center mt-4">
-                        <a href="@Url.Action("Index_R", "Home")" class="btn btn-secondary me-2">
-                            <i class="fas fa-home me-2"></i>返回首頁
-                        </a>
-                        <!-- 
-                        <button type="button" class="btn btn-primary" onclick="window.print()">
-                            <i class="fas fa-print me-2"></i>列印確認單
-                        </button>
-                        -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="info-section">
+                                    <h5><i class="fas fa-credit-card me-2"></i>付款方式</h5>
+                                    <div class="info-content">
+                                        <p>
+                                            @switch (Model.PaymentMethod.ToLower())
+                                            {
+                                                case "credit":
+                                                    <text><i class="fas fa-credit-card me-2"></i>信用卡</text>
+                                                    break;
+                                                case "atm":
+                                                    <text><i class="fas fa-university me-2"></i>ATM轉帳</text>
+                                                    break;
+                                                case "line":
+                                                    <text><i class="fab fa-line me-2"></i>LINE Pay</text>
+                                                    break;
+                                                default:
+                                                    <text>@Model.PaymentMethod</text>
+                                                    break;
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <a href="/" class="btn btn-secondary">
+                    <i class="fas fa-home me-2"></i>返回首頁
+                </a>
+                
                     </div>
+                    
                 </div>
             </div>
+    
         </div>
-    </div>
-</div>
+    
 
 
-   
+@section Styles {
     <style>
-        .confirmation-card {
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border: none;
-            border-radius: 15px;
+        .page-container {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+        }
+
+        .container-fluid {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 2rem;
+            box-sizing: border-box;
             margin: 0 auto;
-            max-width: 1400px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+        }
+
+        .row {
+            width: 100%;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .col-12 {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 2rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .confirmation-card {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: none;
+            border-radius: 20px;
+            margin: 2rem auto;
+            width: 100%;
+            max-width: 100%;
+            background-color: #fff;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .confirmation-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
         }
 
         .card-header {
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            padding: 2rem 1rem;
-            border-radius: 15px 15px 0 0 !important;
+            background: linear-gradient(135deg, #6A994E 0%, #718355 100%);
+            border-bottom: none;
+            padding: 2.5rem 2rem;
+            border-radius: 20px 20px 0 0 !important;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .text-success {
-            color: #6A994E !important;
+        .card-header h2 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 2.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            position: relative;
+            padding-bottom: 6rem;
+        }
+
+        .card-footer {
+            padding: 1.5rem 2rem;
+            background-color: #f8f9fa;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-radius: 0 0 20px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            bottom: 0;
+            left: 0;
         }
 
         .info-section {
             background-color: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 2rem;
             height: 100%;
             transition: all 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: visible;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .info-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        h5 {
-            color: #6A994E;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            border-bottom: 2px solid #6A994E;
-            padding-bottom: 0.8rem;
-            font-size: 1.2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
         }
 
         .info-content {
-            color: #666;
+            color: #4a4f54;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .info-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             font-size: 1.1rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            width: 100%;
+            word-wrap: break-word;
+            white-space: normal;
+            overflow: visible;
         }
 
-        .text-primary {
-            color: #6A994E !important;
-            font-weight: 600;
+        .form-group {
+            margin-bottom: 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .btn {
-            padding: 1rem 2rem;
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            font-weight: 500;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
+            background-color: #f8f9fa;
+            color: #333;
+            box-sizing: border-box;
+            overflow: visible;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.5;
+            overflow-y: auto;
         }
 
         .btn-primary {
             background-color: #6A994E;
             border-color: #6A994E;
-        }
-
-        .btn-primary:hover {
-            background-color: #718355;
-            border-color: #718355;
-            transform: translateY(-2px);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 1rem;
         }
 
         .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
+            background: linear-gradient(135deg, #6A994E 0%, #718355 100%);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            width: auto;
+            min-width: 200px;
+            margin: 0 auto;
+            display: inline-block;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.2);
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #718355 0%, #6A994E 100%);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 153, 78, 0.3);
         }
 
-        @@media print {
-            .btn {
-                display: none;
-            }
-
-            .confirmation-card {
-                box-shadow: none;
-            }
-
-            .info-section {
-                box-shadow: none;
-            }
-
-            .info-section:hover {
-                transform: none;
-                box-shadow: none;
-            }
+        .btn-secondary:active {
+            transform: translateX(-50%) translateY(0);
+            box-shadow: 0 2px 10px rgba(106, 153, 78, 0.2);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .progress-container {
-            width: 100%;
-            margin: 2rem auto;
-        }
-
-        .funding-progress {
-            background: #fff;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .progress-title h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-stats {
-            display: flex;
-            gap: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .current-amount {
-            color: #6A994E;
-            font-weight: 600;
-        }
-
-        .target-amount {
-            color: #666;
-        }
-
-        .progress-percentage {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #6A994E;
-        }
-
-        .progress-visualization {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            gap: 3rem;
-        }
-
-        .circular-progress {
-            position: relative;
-            width: 120px;
-            height: 120px;
-        }
-
-        .circular-progress-value {
+        .btn-secondary::before {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #6A994E;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .circular-progress-svg {
-            transform: rotate(-90deg);
-        }
-
-        .circular-progress-bg {
-            fill: none;
-            stroke: #e9ecef;
-            stroke-width: 8;
-        }
-
-        .circular-progress-bar {
-            fill: none;
-            stroke: #6A994E;
-            stroke-width: 8;
-            stroke-dasharray: 339.292;
-            stroke-dashoffset: 237.504;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        .countdown-container {
-            flex: 1;
-        }
-
-        .countdown-title {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .countdown-timer {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .countdown-item {
-            text-align: center;
-        }
-
-        .countdown-item span:first-child {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #333;
-            background: #f8f9fa;
-            padding: 0.5rem;
-            border-radius: 8px;
-            min-width: 60px;
-        }
-
-        .countdown-label {
-            display: block;
-            margin-top: 0.5rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .progress-bar-container {
-            background: #e9ecef;
-            height: 8px;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-        }
-
-        .progress-bar {
-            background: #6A994E;
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-
-        .progress-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .progress-info {
-            display: flex;
-            gap: 3rem;
-        }
-
-        .info-item {
-            text-align: center;
-        }
-
-        .info-label {
-            display: block;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-value {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
+        .btn-secondary:hover::before {
+            opacity: 1;
         }
 
         @@media (max-width: 768px) {
-            .progress-visualization {
-                flex-direction: column;
-                gap: 2rem;
+            .container-fluid {
+                padding: 0 1rem;
             }
 
-            .countdown-timer {
-                justify-content: center;
+            .card-header {
+                padding: 2rem 1.5rem;
             }
 
-            .progress-info {
-                gap: 2rem;
+            .card-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .card-body {
+                padding: 2rem 1.5rem;
+                padding-bottom: 5.5rem;
+            }
+
+            .card-footer {
+                padding: 1rem 1.5rem;
+            }
+
+            .btn-secondary {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                min-width: 180px;
+                bottom: 1.5rem;
+            }
+
+            .info-section {
+                padding: 1.5rem;
+            }
+
+            .info-content p {
+                font-size: 1rem;
+                line-height: 1.6;
             }
         }
     </style>
+}

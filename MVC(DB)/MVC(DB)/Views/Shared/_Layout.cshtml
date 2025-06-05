@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="utf-8" />
@@ -356,7 +356,7 @@
         .search-toggle {
             color: white;
             padding: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.0rem;
         }
 
         .search-toggle:hover {
@@ -364,58 +364,159 @@
         }
 
         .search-collapse {
-            position: absolute;
-            top: 100%;
+            position: fixed;
+            top: 0;
             left: 0;
-            z-index: 1000;
-            min-width: 300px;
-            margin-top: 0.5rem;
+            right: 0;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            backdrop-filter: blur(10px);
         }
 
         .search-box {
-            background: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .search-box .input-group {
-            width: 100%;
+            background: #fff;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
         }
 
         .search-box .form-control {
-            border-radius: 20px 0 0 20px;
-            border: 1px solid #6A994E;
-            padding-left: 15px;
-        }
-
-        .search-box .btn {
-            border-radius: 0 20px 20px 0;
-            border: 1px solid #6A994E;
-            color: #6A994E;
-        }
-
-        .search-box .btn:hover {
-            background-color: #6A994E;
-            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            background: transparent;
         }
 
         .search-box .form-control:focus {
             box-shadow: none;
-            border-color: #6A994E;
+        }
+
+        .search-box .btn-search {
+            border: none;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #6A994E 0%, #718355 100%);
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-box .btn-search::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-box .btn-search:hover {
+            background: linear-gradient(135deg, #718355 0%, #6A994E 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+        }
+
+        .search-box .btn-search:hover::before {
+            opacity: 1;
+        }
+
+        .search-box .btn-search i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .search-box .btn-search:hover i {
+            transform: scale(1.1);
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #718355 0%, #6A994E 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 10px rgba(106, 153, 78, 0.2);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #6A994E 0%, #718355 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+            color: white;
+        }
+
+        .back-btn i {
+            font-size: 1.1rem;
         }
 
         @@media (max-width: 768px) {
-            .search-collapse {
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                min-width: auto;
+            .search-box .btn-search {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
             }
 
-            .search-box {
-                margin: 0 1rem;
+            .search-box .btn-search i {
+                font-size: 1rem;
+            }
+        }
+
+        .close-btn {
+            background: linear-gradient(135deg, #718355 0%, #6A994E 100%);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(106, 153, 78, 0.2);
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: linear-gradient(135deg, #6A994E 0%, #718355 100%);
+            transform: rotate(90deg);
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+            color: white;
+        }
+
+        .close-btn i {
+            font-size: 1.2rem;
+        }
+
+        @@media (max-width: 768px) {
+            .close-btn {
+                width: 36px;
+                height: 36px;
+            }
+
+            .close-btn i {
+                font-size: 1.1rem;
             }
         }
 
@@ -439,16 +540,20 @@
                         </li>
                         <li class="nav-item">
                             <div class="search-container">
-                                <button class="btn btn-link search-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
+                                <button class="nav-link search-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
                                     <i class="fas fa-search">搜尋</i>
                                 </button>
                                 <div class="collapse search-collapse" id="searchCollapse">
                                     <div class="search-box">
-                                        <form class="d-flex" role="search">
+                                        <button type="button" class="close-btn" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-label="Close">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <form class="d-flex flex-grow-1" role="search">
                                             <div class="input-group">
                                                 <input class="form-control" type="search" placeholder="搜尋專案..." aria-label="Search">
-                                                <button class="btn btn-outline-success" type="submit">
-                                                    <i class="fas fa-search">搜尋</i>
+                                                <button class="btn btn-search" type="submit">
+                                                    <i class="fas fa-search"></i>
+                                                    <span>搜尋</span>
                                                 </button>
                                             </div>
                                         </form>
@@ -627,5 +732,5 @@
         </div>
     </div>
 </footer>
->>>>>>> cb93ca5f6d6608720b023644974c2f695b275b8e
+
 </html>
