@@ -4,6 +4,7 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\108_img_1.jpg
 wwwroot\images\138_img_1.jpg
+wwwroot\images\20201102700202.jpg
 wwwroot\images\20241105133651xl18l 1111.png
 wwwroot\images\20241105133651xl18l.png
 wwwroot\images\800x xxx.webp
@@ -15,6 +16,7 @@ wwwroot\images\93_img_1.jpg
 wwwroot\images\99_img_1.jpg
 wwwroot\images\cake.webp
 wwwroot\images\egg.webp
+wwwroot\images\image2-1.jpg
 wwwroot\images\location.jpg
 wwwroot\images\logoamabay.png
 wwwroot\images\pic1.png
@@ -60,3 +62,4 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\video\candybaby.mp4
+wwwroot\images\34_130503787509.jpg
