@@ -29,15 +29,15 @@
 
     .content-wrapper {
         background-color: var(--bg-color);
-        min-height: calc(100vh - var(--navbar-height));
-        padding: 2rem 0;
+        min-height: calc(100vh - 60px);
+        
     }
 
     .page-header {
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         color: white;
         padding: 2rem;
-        margin: 0 -2rem 2rem -2rem;
+        margin-bottom: 2rem;
         border-radius: 0 0 20px 20px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
@@ -55,11 +55,12 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         overflow-x: auto;
         margin-top: 1rem;
+        padding: 1rem;
     }
 
     .table {
-        margin-bottom: 0;
         width: 100%;
+        border-collapse: collapse;
     }
 
     .table thead {
@@ -79,12 +80,11 @@
 
     .table tbody tr {
         transition: all 0.3s ease;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .table tbody tr:hover {
         background-color: var(--bg-color);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
 
     .table tbody td {
@@ -92,7 +92,6 @@
         vertical-align: middle;
         color: var(--text-color);
         font-size: 0.95rem;
-        border-bottom: 1px solid var(--border-color);
     }
 
     .form-select {
@@ -119,30 +118,28 @@
         transition: all 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        border: none;
+        cursor: pointer;
     }
 
     .btn-primary {
         background-color: var(--secondary-color);
-        border-color: var(--secondary-color);
         color: white;
     }
 
     .btn-primary:hover {
         background-color: var(--hover-color);
-        border-color: var(--hover-color);
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(167, 201, 87, 0.2);
     }
 
     .btn-danger {
         background-color: #f44336;
-        border-color: #f44336;
         color: white;
     }
 
     .btn-danger:hover {
         background-color: #e53935;
-        border-color: #e53935;
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
     }
@@ -181,6 +178,12 @@
         margin-top: 0.5rem;
     }
 
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
     @@media (max-width: 768px) {
         .container {
             padding: 1rem;
@@ -188,7 +191,7 @@
 
         .page-header {
             padding: 1.5rem;
-            margin: 0 -1rem 1.5rem -1rem;
+            margin-bottom: 1.5rem;
         }
 
         .page-header h2 {
@@ -204,6 +207,10 @@
         .btn {
             padding: 0.4rem 0.8rem;
             font-size: 0.8rem;
+        }
+
+        .table-responsive {
+            padding: 0.5rem;
         }
     }
 </style>
@@ -242,15 +249,15 @@
                                         <option value="User" selected="@(account.Role == "User" ? "selected" : null)">User</option>
                                         <option value="Admin" selected="@(account.Role == "Admin" ? "selected" : null)">Admin</option>
                                     </select>
-                                    <button type="submit" class="btn btn-primary btn-sm">更新</button>
+                                    <button type="submit" class="btn btn-primary">更新</button>
                                 </form>
                             </td>
                             <td>
-                                @if (account.UserName != currentUser)  // 不允許刪除自己
+                                @if (account.UserName != currentUser)
                                 {
                                     <form method="post" asp-action="DeleteAccount" onsubmit="return confirm('確定要刪除此帳號嗎？')">
                                         <input type="hidden" name="username" value="@account.UserName" />
-                                        <button type="submit" class="btn btn-danger btn-sm">刪除</button>
+                                        <button type="submit" class="btn btn-danger">刪除</button>
                                     </form>
                                 }
                                 else
