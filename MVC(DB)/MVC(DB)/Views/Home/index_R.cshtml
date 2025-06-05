@@ -2,17 +2,19 @@
     Layout = "_Layout";
     ViewData["Title"] = "Give4Life";
 }
-
 <!-- 左專案列表 -->
 <section class="content">
     <aside class="sidebar">
-        <h2>捐款專案列表</h2>
+        <h5>捐款專案列表</h5>
         <ul>
-            <li><a href="#">唐氏症孩子計畫</a></li>
+            <li>
+                <a 
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Project">唐氏症孩子計畫</a>
+            </li>
             <li><a href="#">癌症旅程計畫</a></li>
             <li><a href="#">自閉症關懷計畫</a></li>
-            <li><a href="#">流浪動物救援</a></li>
-            <li><a href="#">罕見疾病</a></li>
             <li><a href="#">脊髓損傷／癱瘓</a></li>
             <li><a href="#">ALS(漸凍人症)</a></li>
             <li><a href="#">肺部疾病</a></li>
@@ -20,20 +22,6 @@
     </aside>
 
     <section class="main-projects">
-        <!-- 右上導覽列 -->
-        <nav>
-            <button>關於我們</button>
-            <button>合作團體</button>
-            <button>合作商家</button>
-            <input type="text" placeholder="搜尋">
-            <select>
-                <option>全部分類</option>
-                <option>孩童</option>
-                <option>年長者</option>
-                <option>先天性疾病</option>
-            </select>
-            <span class="see">👁 瀏覽人次: 1,235</span>
-        </nav>
 
         <!-- 右下募款區塊 -->
         <main>
@@ -46,57 +34,77 @@
                 <h2>讓愛，從蛋捲開始－支持唐氏症孩子的未來</h2>
                 <progress value="550000" max="1000000"></progress>
                 <p>已募金額:550,000 / 目標金額:1,000,000</p>
-                <p>🎁 捐獻數量:55盒  👥 捐獻人數:50人</p>
+                <p>🎁 捐獻數量:1,000盒  👥 捐獻人數:833人</p>
                 </section>
             </a>
 
-            <a href="#" class="project-link">
+            <a class="project-link"
+               asp-area=""
+               asp-controller="Home"
+               asp-action="Project2">
                 <section class="project">
                     <img src="~/images/pic2.png" alt="癌症孩童">
                     <h2>讓愛酥進心裡，用餅乾陪他們走過抗癌旅程</h2>
                     <progress value="230000" max="1000000"></progress>
                     <p>已募金額:230,000 / 目標金額:1,000,000</p>
-                    <p>🎁 捐獻數量:23盒  👥 捐獻人數:15人</p>
+                    <p>🎁 捐獻數量:460盒  👥 捐獻人數:399人</p>
                 </section>
             </a>
 
             <a href="#" class="project-link">
                 <section class="project">
-                    <img src="~/images/pic1.png" alt="唐氏症孩子">
-                    <h2>讓愛，從蛋捲開始－支持唐氏症孩子的未來</h2>
+                    <img src="~/images/pic3.jpg" alt="自閉症">
+                    <h2>餅乾行動．星希望</h2>
                     <progress value="550000" max="1000000"></progress>
-                    <p>已募金額:550,000 / 目標金額:1,000,000</p>
-                    <p>🎁 捐獻數量:55盒  👥 捐獻人數:50人</p>
+                    <p>已募金額:210,000 / 目標金額:1,000,000</p>
+                    <p>🎁 捐獻數量:420盒  👥 捐獻人數:410人</p>
                 </section>
             </a>
 
             <a href="#" class="project-link">
                 <section class="project">
-                    <img src="~/images/pic2.png" alt="癌症孩童">
-                    <h2>讓愛酥進心裡，用餅乾陪他們走過抗癌旅程</h2>
+                    <img src="~/images/pic4.jpg" alt="漸凍症">
+                    <h2>凍結不了的愛</h2>
                     <progress value="230000" max="1000000"></progress>
+                    <p>已募金額:480,000 / 目標金額:1,000,000</p>
+                    <p>🎁 捐獻數量:800盒  👥 捐獻人數:677人</p>
+                </section>
+            </a>
+            <a href="#" class="project-link">
+                <section class="project">
+                    <img src="~/images/pic5.jpeg" alt="肺病">
+                    <h2>酥甜守護肺力量</h2>
+                    <progress value="100000" max="1000000"></progress>
+                    <p>已募金額:100,000 / 目標金額:1,000,000</p>
+                    <p>🎁 捐獻數量:200盒  👥 捐獻人數:155人</p>
+                </section>
+            </a>
+
+            <a href="#" class="project-link">
+                <section class="project">
+                    <img src="~/images/pic6.png" alt="癱瘓">
+                    <h2>酥行者的希望之路</h2>
+                    <progress value="180000" max="1000000"></progress>
                     <p>已募金額:230,000 / 目標金額:1,000,000</p>
-                    <p>🎁 捐獻數量:23盒  👥 捐獻人數:15人</p>
+                    <p>🎁 捐獻數量:300盒  👥 捐獻人數:259人</p>
                 </section>
             </a>
         </main>
-
-        <!-- 頁尾 -->
-        <footer>
-            <div class="footer-row">
-                <p>網頁設計：萬實華第五組</p>
-                <p>電話:02-55326788</p>
-                <p class="social">
-                    追蹤我們：
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                </p>
-            </div>
-        </footer>
     </section>
 </section>
 
 @section Styles {
+    @* <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head> *@
     <style>
         body {
             font-family: "微軟正黑體", sans-serif;
@@ -115,23 +123,23 @@
 
         /* 左專案列表 */
         .sidebar {
-            width: 250px;
+            width: 400px;
             background-color: #f0f5e9;
             padding: 30px;
             border-radius: 10px;
             height: fit-content;
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            margin-top:20px ;
         }
 
-        .sidebar h2 {
-            font-size: 15px;
+        .sidebar h4 {
             margin-bottom: 10px;
         }
 
         .sidebar ul {
             list-style: none;
-            font-size: 13px;
             padding: 0;
+            font-size: 14px;
         }
 
         .sidebar li {
@@ -151,16 +159,6 @@
             display: flex;
             padding: 20px;
             gap: 20px;
-        }
-
-        /* 右上列 */
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            background-color: #eae9dc;
-            border-radius: 10px;
-            padding: 10px;
-            gap: 10px;
         }
 
         /* 右下內容 */
@@ -183,18 +181,18 @@
         }
 
         .project h2{
-            font-size: 20px;
+            font-size: 18px;
         }
 
         .project p{
             font-size: 15px;
         }
 
-            /* 進度條 */
-            .project progress {
-                width: 100%;
-                height: 18px;
-            }
+        /* 進度條 */
+        .project progress {
+            width: 100%;
+            height: 18px;
+        }
 
         progress::-webkit-progress-bar {
             background-color: #ffffff;
@@ -208,14 +206,14 @@
 
         /* 區塊點選 */
         .project-link {
-            text-decoration: none;
-            color: inherit; /*保留原色*/
+            text-decoration: none !important;
+            color: inherit !important; /*保留原色*/
             display: block; /*整區都可以點擊*/
         }
 
-            .project-link:hover {
-                opacity: 0.6; /*加深強調*/
-            }
+        .project-link:hover {
+            opacity: 0.6; /*加深強調*/
+        }
 
         /* 專案圖片 */
         .project img {
@@ -223,83 +221,5 @@
             border-radius: 8px;
         }
 
-        /* 底下公告欄 */
-        footer {
-            width: 100%;
-            background-color: #a8bfa0;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .footer-row {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social {
-            text-align: right;
-        }
     </style>
-    <script>
-        //導覽列按鈕模擬
-        document.querySelectorAll('nav button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                alert(`你點擊了「${btn.textContent}」`);
-            });
-        });
-
-        //搜尋功能
-        //document.querySelector('nav input[type="text"]').addEventListener('input', (e) => {
-            const keyword = e.target.value.trim().toLowerCase();
-            const projects = document.querySelectorAll('.project');
-
-            projects.forEach(project => {
-                const title = project.querySelector('h2').textContent.toLowerCase();
-                project.parentElement.style.display = title.includes(keyword) ? 'block' : 'none';
-            });
-        });
-
-        // 4. 顯示 progress 條百分比（依金額）
-        document.querySelectorAll('.project').forEach(project => {
-            const progressBar = project.querySelector('progress');
-
-            // 擷取金額文字，例如 "已募金額:550,000 / 目標金額:1,000,000"
-            const moneyText = project.querySelectorAll('p')[0].textContent;
-
-            // 擷取金額數值
-            const match = moneyText.match(/已募金額:(\d[\d,]*) \/ 目標金額:(\d[\d,]*)/);
-            if (match) {
-                const currentAmount = parseInt(match[1].replace(/,/g, ''));
-                const goalAmount = parseInt(match[2].replace(/,/g, ''));
-
-                // 計算百分比並設定進度條
-                const percentage = Math.min((currentAmount / goalAmount) * 100, 100);
-                progressBar.value = currentAmount;
-                progressBar.max = goalAmount;
-
-                // 顯示百分比文字
-                const percentageText = document.createElement('p');
-                percentageText.style.fontWeight = 'bold';
-                percentageText.textContent = `達成率：${Math.round(percentage)}%`;
-                project.insertBefore(percentageText, progressBar.nextSibling);
-            }
-        });
-
-
-        //瀏覽人次模擬自動增加
-        let viewCountSpan = document.querySelector('.see');
-        let baseNumber = parseInt(viewCountSpan.textContent.replace(/[^\d]/g, ''));
-
-        function updateViewCount() {
-            baseNumber += Math.floor(Math.random() * 3); // 每次加 0~2
-            viewCountSpan.textContent = `👁 瀏覽人次: ${baseNumber.toLocaleString()}`;
-        }
-        //每 2 秒更新一次
-        setInterval(updateViewCount, 2000);
-
-    </script>
 } 

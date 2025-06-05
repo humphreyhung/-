@@ -1,27 +1,32 @@
 ﻿@{
-    Layout = null; 
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
+    <title>註冊頁面</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-color: #dcae66;
+            background-color: #f7f8f3;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            font-family: 'Microsoft JhengHei', sans-serif;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #3a3a3a;
         }
 
         /* 幾何背景圖形 */
@@ -30,9 +35,11 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background-color: #c4772c;
+            background-color: #90a07c;
             top: -80px;
             left: -80px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .shape-diamond {
@@ -43,68 +50,95 @@
             transform: rotate(45deg);
             top: 60px;
             right: -60px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .shape-bottom-left {
             position: absolute;
             width: 300px;
             height: 300px;
-            background-color: #7a8939;
+            background-color: #f0f2ea;
             bottom: -80px;
             left: -80px;
             clip-path: polygon(0 0, 100% 100%, 0 100%);
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .shape-bottom-right {
             position: absolute;
             width: 300px;
             height: 300px;
-            background-color: #d5912e;
+            background-color: #f5f5f0;
             bottom: -80px;
             right: -80px;
             clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
 
         .login-container {
-            background-color: #f7ebd7;
+            background-color: rgba(245, 237, 227, 0.95);
+            border: 1px solid #e0d6cc;
             border-radius: 20px;
             padding: 40px;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            max-width: 90vw;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             z-index: 10;
             position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-            .login-container h2 {
-                text-align: center;
-                color: #5a2c0d;
-                margin-bottom: 30px;
+            .login-container:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             }
 
         .form-group {
-            margin-bottom: 20px;
+            width: 100%;
+            margin-bottom: 24px;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #333;
+        .login-container h2 {
+            text-align: center;
+            color: #4f5b2c;
+            margin-bottom: 35px;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
+        input[type="password"],
+        input[type="email"] {
+            width: 92%;
+            margin: 0 auto;
+            display: block;
+            padding: 14px 16px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 16px;
+            background-color: #fff;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus,
+            input[type="email"]:focus {
+                border-color: #9e572a;
+                box-shadow: 0 0 0 2px rgba(158, 87, 42, 0.2);
+                outline: none;
+            }
 
         .login-btn {
             width: 100%;
-            padding: 12px;
-            background-color: #a4571e;
+            padding: 14px;
+            background-color: #9e572a;
+            transition: all 0.3s ease;
             color: white;
             font-weight: bold;
             border: none;
@@ -112,35 +146,154 @@
             font-size: 16px;
             margin-top: 10px;
             cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
         }
 
-        .line-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #06c755;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-            .line-btn img {
-                height: 20px;
-                margin-right: 10px;
+            .login-btn:hover {
+                background-color: #7d3f1c;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             }
 
-        .signup {
+            .login-btn:active {
+                transform: translateY(0);
+            }
+
+        .social-login {
             text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #333;
+            margin: 25px 0;
+            color: #4f5b2c;
+            font-size: 14px;
+            position: relative;
+        }
+
+            .social-login::before,
+            .social-login::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 30%;
+                height: 1px;
+                background-color: #e0d6cc;
+            }
+
+            .social-login::before {
+                left: 0;
+            }
+
+            .social-login::after {
+                right: 0;
+            }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+            .social-buttons .btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 12px;
+                border-radius: 8px;
+                font-weight: 500;
+                transition: all 0.3s;
+                color: white;
+                text-decoration: none;
+                position: relative;
+                overflow: hidden;
+            }
+
+        .btn-google {
+            background-color: #A4744D;
+        }
+
+        .btn-facebook {
+            background-color: #4267B2;
+        }
+
+        .btn-line {
+            background-color: #00B900;
+        }
+
+        .social-buttons .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            color: #fff;
+        }
+
+        .social-buttons .btn i {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-buttons .btn:hover i {
+            transform: scale(1.1);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e0d6cc;
+            color: #4f5b2c;
+        }
+
+            .login-footer a {
+                color: #71803c;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+                .login-footer a:hover {
+                    color: #5c6a2f;
+                }
+
+                .login-footer a::after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    bottom: -2px;
+                    left: 0;
+                    background-color: #5c6a2f;
+                    transform: scaleX(0);
+                    transition: transform 0.3s ease;
+                }
+
+                .login-footer a:hover::after {
+                    transform: scaleX(1);
+                }
+
+        .text-danger {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        @@media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .shape-circle,
+            .shape-diamond,
+            .shape-bottom-left,
+            .shape-bottom-right {
+                opacity: 0.5;
+            }
         }
     </style>
+
 </head>
 <body>
     <!-- 幾何背景 -->
@@ -149,32 +302,58 @@
     <div class="shape-bottom-left"></div>
     <div class="shape-bottom-right"></div>
 
-    <!-- 登入表單 -->
+    <!-- 註冊表單 -->
     <div class="login-container">
-        <h2>Sign Up</h2>
+        <h2>註冊</h2>
         <form method="post" action="/Login/Signupp">
-        <div class="form-group">
-            <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Type your name" maxlength="20" required />
-        </div>
-        
-        <div class="form-group">
-            <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Type your username" maxlength="20" required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Type your password" maxlength="20" required />
-        </div>
+            <div class="form-group">
+                <label for="name">全名</label>
+                <input type="text" id="name" name="name" placeholder="請輸入全名" maxlength="20" required />
+            </div>
+
+            <div class="form-group">
+                <label for="username">帳號</label>
+                <input type="text" id="username" name="username" placeholder="請輸入帳號" maxlength="20" required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" name="password" placeholder="請輸入密碼" maxlength="20" required />
+            </div>
+
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Type your email" maxlength="40" required />
+                <input type="email" id="email" name="email" placeholder="請輸入Email" maxlength="40" required />
+            </div>
+
+            <button type="submit" class="login-btn">註冊</button>
+
+            <div class="social-login">
+                <p class="divider"><span>或使用以下方式註冊</span></p>
+                <div class="social-buttons">
+                    <a href="#" class="btn btn-google">
+                        <i class="fab fa-google"></i>
+                        Google 註冊
+                    </a>
+                    <a href="#" class="btn btn-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook 註冊
+                    </a>
+                    <a href="#" class="btn btn-line">
+                        <i class="fab fa-line"></i>
+                        LINE 註冊
+                    </a>
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p>已經有帳號？ <a href="/Login/Index">立即登入</a></p>
             </div>
         <button type="submit" class="login-btn">Sign Up</button>
         </form>
-
     </div>
 </body>
+
 
 <script>
     document.querySelector("form").addEventListener("submit", function (e) {

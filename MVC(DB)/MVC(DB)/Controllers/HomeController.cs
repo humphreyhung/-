@@ -138,6 +138,27 @@ namespace MVC_DB_.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Project2()
+        {
+            var viewModel = new ProjectViewModel
+            {
+                Projects = new List<Project>
+                {
+                    new Project
+                    {
+                        Id = 2,
+                        Title = "讓愛酥進心裡，用餅乾陪他們走過抗癌旅程",
+                        Description = "每一盒餅乾都承載著我們的關懷與祝福",
+                        ImageUrl = "fa-cookie",
+                        CurrentAmount = 230000,
+                        TargetAmount = 1000000,
+                        RemainingDays = 180
+                    }
+                }
+            };
+            return View(viewModel);
+        }
+
         public IActionResult ProjectDetails(int id)
         {
             // 這裡可以根據 id 獲取專案詳情
@@ -263,11 +284,7 @@ namespace MVC_DB_.Controllers
                         {
                             "原味",
                             "巧克力",
-                            "抹茶",
-                            "咖啡",
-                            "芝麻",
-                            "紅茶",
-                            "草莓"
+                            "抹茶"
                         }
                     },
                     new SponsorPlan
@@ -527,6 +544,10 @@ namespace MVC_DB_.Controllers
         }
 
         public IActionResult ProductDetail()
+        {
+            return View();
+        }
+        public IActionResult Proposal()
         {
             return View();
         }
