@@ -9,97 +9,327 @@
 @{
     ViewData["Title"] = "募資專案列表";
 }
+@section Styles {
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
 
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>募資專案列表</h2>
-        <a asp-action="Create" class="btn btn-primary">
-            <i class="fas fa-plus"></i> 新增專案
-        </a>
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+</head>
+
+<style>
+    :root {
+        --primary-color: #AAB386;
+        --secondary-color: #A7C957;
+        --hover-color: #6A994E;
+        --bg-color: #f7f8f3;
+        --text-color: #333;
+        --border-color: #e0d6cc;
+    }
+
+    .content-wrapper {
+        background-color: var(--bg-color);
+        min-height: calc(100vh - var(--navbar-height));
+        padding: 2rem 0;
+    }
+
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        padding: 2rem;
+        margin: 0 -2rem 2rem -2rem;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-header h2 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--hover-color);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: white;
+    }
+
+    .alert {
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        border: none;
+        color: var(--text-color);
+    }
+
+    .alert-info {
+        background-color: rgba(167, 201, 87, 0.1);
+        border-left: 4px solid var(--secondary-color);
+    }
+
+    .table-responsive {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow-x: auto;
+        margin-top: 1rem;
+    }
+
+    .table {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .table thead {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+    }
+
+    .table thead th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        padding: 1.2rem;
+        border: none;
+        white-space: nowrap;
+    }
+
+    .table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--bg-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .table tbody td {
+        padding: 1.2rem;
+        vertical-align: middle;
+        color: var(--text-color);
+        font-size: 0.95rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .progress {
+        height: 8px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 0.5rem 0;
+    }
+
+    .progress-bar {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.6s ease;
+    }
+
+    .badge {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .bg-secondary { background-color: #6c757d; color: white; }
+    .bg-success { background-color: var(--secondary-color); color: white; }
+    .bg-primary { background-color: var(--primary-color); color: white; }
+    .bg-danger { background-color: #dc3545; color: white; }
+    .bg-info { background-color: #17a2b8; color: white; }
+
+    .btn-group {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    @@media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .page-header {
+            padding: 1.5rem;
+            margin: 0 -1rem 1.5rem -1rem;
+        }
+
+        .page-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .table thead th,
+        .table tbody td {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-group {
+            flex-direction: column;
+        }
+    }
+</style>
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>募資專案列表</h2>
+            <a asp-action="Create" class="btn-primary">
+                <i class="fas fa-plus"></i> 新增專案
+            </a>
+        </div>
     </div>
 
-    @if (!Model.Any())
-    {
-        <div class="alert alert-info">
-            目前還沒有任何募資專案。點擊「新增專案」按鈕來創建第一個專案！
-        </div>
-    }
-    else
-    {
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th>標題</th>
-                        <th>描述</th>
-                        <th>目標金額</th>
-                        <th>已募金額</th>
-                        <th>狀態</th>
-                        <th>建立時間</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var campaign in Model)
-                    {
+    <div class="container">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                目前還沒有任何募資專案。點擊「新增專案」按鈕來創建第一個專案！
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>@campaign.Title</td>
-                            <td>@(campaign.Description?.Length > 50 ? campaign.Description.Substring(0, 47) + "..." : campaign.Description)</td>
-                            <td>@campaign.TargetAmount.ToString("C")</td>
-                            <td>
-                                <div class="progress" style="height: 20px;">
-                                    @{
-                                        var percentage = campaign.TargetAmount > 0 
-                                            ? (campaign.CollectedAmount / campaign.TargetAmount) * 100 
-                                            : 0;
-                                    }
-                                    <div class="progress-bar" role="progressbar" 
-                                         style="width: @Math.Min(percentage, 100)%;" 
-                                         aria-valuenow="@percentage" 
-                                         aria-valuemin="0" 
-                                         aria-valuemax="100">
-                                        @campaign.CollectedAmount.ToString("C")
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge bg-@(campaign.Status switch {
-                                    "Draft" => "secondary",
-                                    "Active" => "success",
-                                    "Completed" => "primary",
-                                    "Cancelled" => "danger",
-                                    _ => "info"
-                                })">
-                                    @campaign.Status
-                                </span>
-                            </td>
-                            <td>@campaign.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a asp-action="Details" asp-route-id="@campaign.Id" 
-                                       class="btn btn-sm btn-info">
-                                        <i class="fas fa-info-circle"></i> 詳情
-                                    </a>
-                                    <a asp-action="Edit" asp-route-id="@campaign.Id" 
-                                       class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i> 編輯
-                                    </a>
-                                    @if (campaign.Status == "Draft")
-                                    {
-                                        <a asp-action="Delete" asp-route-id="@campaign.Id" 
-                                           class="btn btn-sm btn-danger" 
-                                           onclick="return confirm('確定要刪除這個專案嗎？');">
-                                            <i class="fas fa-trash"></i> 刪除
-                                        </a>
-                                    }
-                                </div>
-                            </td>
+                            <th>標題</th>
+                            <th>描述</th>
+                            <th>目標金額</th>
+                            <th>已募金額</th>
+                            <th>狀態</th>
+                            <th>建立時間</th>
+                            <th>操作</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    }
+                    </thead>
+                    <tbody>
+                        @foreach (var campaign in Model)
+                        {
+                            <tr>
+                                <td>@campaign.Title</td>
+                                <td>@(campaign.Description?.Length > 50 ? campaign.Description.Substring(0, 47) + "..." : campaign.Description)</td>
+                                <td>@campaign.TargetAmount.ToString("C")</td>
+                                <td>
+                                    <div class="progress">
+                                        @{
+                                            var percentage = campaign.TargetAmount > 0 
+                                                ? (campaign.CollectedAmount / campaign.TargetAmount) * 100 
+                                                : 0;
+                                        }
+                                        <div class="progress-bar" role="progressbar" 
+                                             style="width: @Math.Min(percentage, 100)%;" 
+                                             aria-valuenow="@percentage" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                            @campaign.CollectedAmount.ToString("C")
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-@(campaign.Status switch {
+                                        "Draft" => "secondary",
+                                        "Active" => "success",
+                                        "Completed" => "primary",
+                                        "Cancelled" => "danger",
+                                        _ => "info"
+                                    })">
+                                        @campaign.Status
+                                    </span>
+                                </td>
+                                <td>@campaign.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a asp-action="Details" asp-route-id="@campaign.Id" 
+                                           class="btn btn-info">
+                                            <i class="fas fa-info-circle"></i> 詳情
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@campaign.Id" 
+                                           class="btn btn-warning">
+                                            <i class="fas fa-edit"></i> 編輯
+                                        </a>
+                                        @if (campaign.Status == "Draft")
+                                        {
+                                            <a asp-action="Delete" asp-route-id="@campaign.Id" 
+                                               class="btn btn-danger" 
+                                               onclick="return confirm('確定要刪除這個專案嗎？');">
+                                                <i class="fas fa-trash"></i> 刪除
+                                            </a>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
 </div>
 
 @section Scripts {

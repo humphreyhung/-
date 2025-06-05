@@ -3,6 +3,7 @@
     ViewData["Title"] = "Give4Life";
 }
 
+
 <!-- 左專案列表 -->
 <section class="content">
     <aside class="sidebar">
@@ -53,7 +54,7 @@
             <a class="project-link"
                asp-area=""
                asp-controller="Home"
-               asp-action="Project">
+               asp-action="Project2">
                 <section class="project">
                     <img src="~/images/pic2.png" alt="癌症孩童">
                     <h2>讓愛酥進心裡，用餅乾陪他們走過抗癌旅程</h2>
@@ -106,6 +107,17 @@
 </section>
 
 @section Styles {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head>
     <style>
         body {
             font-family: "微軟正黑體", sans-serif;
@@ -262,7 +274,7 @@
         });
 
         //搜尋功能
-        document.querySelector('nav input[type="text"]').addEventListener('input', (e) => {
+        //document.querySelector('nav input[type="text"]').addEventListener('input', (e) => {
             const keyword = e.target.value.trim().toLowerCase();
             const projects = document.querySelectorAll('.project');
 

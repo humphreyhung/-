@@ -1,0 +1,336 @@
+@{
+    ViewData["Title"] = "我要提案";
+}
+
+@section Styles {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head>
+    <style>
+        :root {
+            --primary-color: #AAB386;
+            --secondary-color: #A7C957;
+            --hover-color: #6A994E;
+            --bg-color: #f7f8f3;
+            --text-color: #333;
+            --border-color: #e0d6cc;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Microsoft JhengHei', sans-serif;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 6rem 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-types {
+            background: white;
+            padding: 4rem 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .type-card {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .type-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .type-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+
+        .type-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .type-item i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--secondary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            color: var(--hover-color);
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @@media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .feature-grid,
+            .type-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+}
+
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">我要的被實現</h1>
+        <p class="hero-subtitle">用群眾的力量，讓有價值的事物獲得更好的機會</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_sf7bbHXlDOXugmLNaqZGjsLOtpd04hkhY1wielh5DRbKvg/viewform?usp=header" class="btn-primary">開始提案</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="section-title">為什麼需要群眾集資？</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <i class="fas fa-bullhorn feature-icon"></i>
+            <h3 class="feature-title">品牌擴散</h3>
+            <p class="feature-description">透過群眾集資平台，讓您的品牌和產品快速獲得曝光，建立品牌知名度。</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-hand-holding-usd feature-icon"></i>
+            <h3 class="feature-title">取得資源</h3>
+            <p class="feature-description">集結群眾力量，獲得資金支持，讓您的計畫得以實現。</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <h3 class="feature-title">測試市場</h3>
+            <p class="feature-description">透過集資過程，了解市場反應，收集使用者回饋，優化產品。</p>
+        </div>
+    </div>
+
+    <div class="project-types">
+        <h2 class="section-title">哪些人/專案可以使用群眾集資？</h2>
+        <div class="type-grid">
+            <div class="type-card">
+                <h3 class="type-title">原創型專案</h3>
+                <ul class="type-list">
+                    <li class="type-item">
+                        <i class="fas fa-check-circle"></i>
+                        由團隊自行發想、設計的專案
+                    </li>
+                    <li class="type-item">
+                        <i class="fas fa-times-circle"></i>
+                        已有事物或重新包裝的產品
+                    </li>
+                </ul>
+            </div>
+            <div class="type-card">
+                <h3 class="type-title">倡議型專案</h3>
+                <ul class="type-list">
+                    <li class="type-item">
+                        <i class="fas fa-check-circle"></i>
+                        關切社會公共事務的專案
+                    </li>
+                    <li class="type-item">
+                        <i class="fas fa-times-circle"></i>
+                        具有攻擊性或歧視性的專案
+                    </li>
+                </ul>
+            </div>
+            <div class="type-card">
+                <h3 class="type-title">預購型專案</h3>
+                <ul class="type-list">
+                    <li class="type-item">
+                        <i class="fas fa-check-circle"></i>
+                        原創開發團隊的預購活動
+                    </li>
+                    <li class="type-item">
+                        <i class="fas fa-times-circle"></i>
+                        已有現貨販售的產品
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2 class="cta-title">對集資流程仍有疑問？</h2>
+        <p class="cta-description">歡迎先看看常見問題集，或是直接聯繫我們唷！</p>
+        <a href="#" class="btn-primary">查看常見問題</a>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-item">
+            <h3 class="faq-question">提案有什麼限制？</h3>
+            <p class="faq-answer">提案內容必須符合平台規範，不得包含違法、不當或侵權內容。詳細規範請參考我們的提案服務說明。</p>
+        </div>
+        <div class="faq-item">
+            <h3 class="faq-question">計畫失敗還會收費嗎？</h3>
+            <p class="faq-answer">若專案未達目標金額，我們不會收取任何費用。只有在專案成功時才會收取平台服務費。</p>
+        </div>
+        <div class="faq-item">
+            <h3 class="faq-question">上架平台會有集資顧問協助嗎？</h3>
+            <p class="faq-answer">是的，我們提供專業的集資顧問服務，協助您規劃專案內容、行銷策略等，提高集資成功率。</p>
+        </div>
+    </div>
+</div> 

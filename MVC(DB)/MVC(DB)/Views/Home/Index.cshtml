@@ -4,24 +4,150 @@
     ViewData["Title"] = "首頁";
 }
 
-<div class="text-center">
-    <h1 class="display-4">歡迎</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .welcome-section {
+        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-section h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-section p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .welcome-section a {
+        color: white;
+        text-decoration: underline;
+        transition: all 0.3s ease;
+    }
+
+    .welcome-section a:hover {
+        color: #e8f5e9;
+        text-decoration: none;
+    }
+
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        background: white;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        color: #2C3E50;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #4CAF50;
+    }
+
+    .card-text {
+        color: #546E7A;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .card-text i {
+        color: #4CAF50;
+        width: 20px;
+    }
+
+    .section-title {
+        color: #2C3E50;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #4CAF50;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        border-color: #4CAF50;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-primary:hover {
+        background-color: #43A047;
+        border-color: #43A047;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+    }
+
+    .alert-info {
+        background-color: #E3F2FD;
+        border: none;
+        color: #1976D2;
+        padding: 1rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .container {
+        padding: 2rem;
+    }
+</style>
+
+<div class="welcome-section">
+    <div class="container text-center">
+        <h1 class="display-4">歡迎</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
 </div>
 
-<div class="container mt-4">
-    <h2>帳號列表</h2>
+<div class="container">
+    <h2 class="section-title">帳號列表</h2>
     <div class="row">
         @if (ViewBag.accounts != null)
         {
             @foreach (var user in ViewBag.accounts)
             {
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">@user.userName</h5>
-                            <p class="card-text">Email: @user.email</p>
-                            <p class="card-text">電話: @user.phone</p>
+                            <p class="card-text">
+                                <i class="fas fa-envelope"></i>
+                                Email: @user.email
+                            </p>
+                            <p class="card-text">
+                                <i class="fas fa-phone"></i>
+                                電話: @user.phone
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -31,6 +157,7 @@
         {
             <div class="col-12">
                 <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
                     目前沒有帳號資料
                 </div>
             </div>
@@ -42,7 +169,7 @@
     <div class="row">
         <div class="col-12">
             <a asp-controller="Home" asp-action="addAccount" class="btn btn-primary">
-                <i class="fas fa-plus"></i> 新增帳號
+                <i class="fas fa-plus me-2"></i> 新增帳號
             </a>
         </div>
     </div>

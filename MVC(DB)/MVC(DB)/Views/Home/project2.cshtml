@@ -1,0 +1,1519 @@
+@model MVC_DB_.Models.ProjectViewModel
+@{
+    ViewData["Title"] = "讓愛酥進心裡";
+}
+
+<!DOCTYPE html>
+<html>
+    @section Styles {
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>讓愛酥進心裡 - 愛心募資</title>
+    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+   
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+</head>}
+<body>
+    <section class="section" style="padding-top: 100px;">
+        <div class="main-container">
+            <div class="content-wrapper">
+                <div class="video-section">
+                    <video width="560" height="315" controls poster="~/images/videopage.jpg">
+                        <source src="~/video/candybaby.mp4" type="video/mp4">
+                        您的瀏覽器不支援影片播放。
+                    </video>
+                </div>
+                <div class="text-section">
+                    <h1 class="title">
+                        「讓愛酥進心裡，用餅乾陪他們走過抗癌旅程」
+                    </h1>
+                    <h2 class="subtitle">
+                        在這個充滿愛的專案中，我們致力於為癌症孩童提供溫暖的支持。透過美味的餅乾，我們希望能為他們帶來歡樂與力量，陪伴他們度過治療的每一天。
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="box cta">
+        <p class="has-text-centered">
+            <span class="tag is-primary">專案時間</span>
+            2024/06/01 00:00 ~ 2024/12/31 23:59
+        </p>
+    </div>
+
+    <div class="container-fluid px-5">
+        <div class="progress-container">
+            <div class="funding-progress">
+                <div class="progress-header">
+                    <div class="progress-title">
+                        <h3>募資進度</h3>
+                        <div class="progress-stats">
+                            <span class="current-amount">NT$ 230,000</span>
+                            <span class="target-amount">目標 NT$ 1,000,000</span>
+                        </div>
+                    </div>
+                    <div class="progress-percentage">23%</div>
+                </div>
+                <div class="progress-visualization">
+                    <div class="circular-progress">
+                        <div class="circular-progress-value">23%</div>
+                        <svg class="circular-progress-svg">
+                            <circle class="circular-progress-bg" cx="60" cy="60" r="54"></circle>
+                            <circle class="circular-progress-bar" cx="60" cy="60" r="54"></circle>
+                        </svg>
+                    </div>
+                    <div class="countdown-container">
+                        <div class="countdown-title">距離募資結束還有</div>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span id="days">00</span>
+                                <span class="countdown-label">天</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="hours">00</span>
+                                <span class="countdown-label">時</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes">00</span>
+                                <span class="countdown-label">分</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds">00</span>
+                                <span class="countdown-label">秒</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 23%"></div>
+                </div>
+                <div class="progress-footer">
+                    <div class="progress-info">
+                        <div class="info-item">
+                            <span class="info-label">贊助人數</span>
+                            <span class="info-value">15 人</span>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns mt-6">
+        <div class="column is-12">
+            <div class="tabs">
+                <ul>
+                    <li class="is-active" data-tab="detail"><a>專案介紹</a></li>
+                    <li data-tab="news"><a>最新消息</a></li>
+                    <li data-tab="faq"><a>常見問題</a></li>
+                    <li data-tab="message"><a>留言</a></li>
+                    <li data-tab="notice"><a>專案須知</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div id="detail" class="tab-pane is-active">
+            <div class="content">
+                <h3>專案介紹</h3>
+                <p>在唐寶寶社區，我們相信每一個孩子都是未來的希望，每一個家庭都是社區的基石。為了促進社區內部的團結與成長，我們推出了「唐寶寶社區計畫」，旨在為家庭和孩子們提供一個安全、友善和充滿愛的環境。</p>
+                
+                    
+                </div>
+                <div class="content">
+                    <div class="plan-highlights">
+                        <h4>計畫亮點</h4>
+                        <div class="highlight-grid">
+                            <div class="highlight-item">
+                                <h5>親子活動</h5>
+                                <p>定期舉辦親子互動活動，增進家庭間的聯繫，讓孩子們在遊戲中學習與成長。</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h5>教育資源</h5>
+                                <p>提供免費的課後輔導和學習資源，幫助孩子們在學業上取得更好的成績。</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h5>健康講座</h5>
+                                <p>邀請專家進行健康講座，提升家長對兒童健康的認識，促進家庭健康生活方式。</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h5>志願者計畫</h5>
+                                <p>鼓勵社區成員參與志願服務，為有需要的家庭提供支持，讓愛心在社區中延續。</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h5>社區聚會</h5>
+                                <p>定期舉辦社區聚會，促進鄰里交流，建立互助的社區氛圍。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div id="news" class="tab-pane">
+            <div class="content">
+            <h3>最新消息</h3>
+            <div class="news-list">
+                <div class="news-item">
+                    <h4>2024年春季親子活動開始報名</h4>
+                    <p class="date">2024-03-15</p>
+                    <p>我們將舉辦一系列精彩的親子活動，包括手工藝製作、戶外探索等，歡迎家長和孩子們踴躍報名參加。</p>
+                </div>
+                <div class="news-item">
+                    <h4>社區義工招募</h4>
+                    <p class="date">2024-03-10</p>
+                    <p>我們正在招募熱心的社區義工，一起為孩子們創造更好的成長環境。</p>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div id="faq" class="tab-pane">
+            <div class="content">
+                <h3>常見問題</h3>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h4>如何參與社區活動？</h4>
+                        <p>您可以通過我們的網站或直接聯繫社區中心報名參加活動。所有活動都會提前在網站上公佈。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>活動費用如何計算？</h4>
+                        <p>大部分基礎活動都是免費的，部分特殊活動可能會收取材料費用，具體費用會在活動公告中說明。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="message" class="tab-pane">
+            <div class="content">
+                <h3>留言板</h3>
+                <div class="message-form">
+                    <div class="field">
+                        <label class="label">姓名</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="請輸入您的姓名">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">留言內容</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="請輸入您的留言"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary">送出留言</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notice" class="tab-pane">
+            <div class="content">
+                <h3>專案須知</h3>
+                <div class="notice-list">
+                    <div class="notice-item">
+                        <h4>活動參與須知</h4>
+                        <ul>
+                            <li>請提前報名參加活動</li>
+                            <li>活動當天請準時到達</li>
+                            <li>請遵守活動規則和秩序</li>
+                        </ul>
+                    </div>
+                    <div class="notice-item">
+                        <h4>贊助須知</h4>
+                        <ul>
+                            <li>所有贊助款項將用於社區活動和設施改善</li>
+                            <li>贊助者可獲得相應的回饋禮品</li>
+                            <li>贊助金額可抵稅</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <section class="container">
+        <div class="columns features">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4>地方的孩子需要吃飯.</h4>
+                            <p>回饋一些唐寶寶做的食物(๑•́ ₃ •̀๑).</p>
+                            <a asp-controller="Home" asp-action="SponsorPlan" asp-route-id="1" class="btn btn-custom" style="background-color: #A7C957; color: white;">
+                                <i class="fa-solid fa-gift"></i>
+                                前往贊助
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4>地方的孩子需要教材.</h4>
+                            <p>可能是回饋一些畫作之類的(╬☉д⊙)</p>
+                            <a asp-controller="Home" asp-action="SponsorPlan" asp-route-id="2" class="btn btn-custom" style="background-color: #A7C957; color: white;">
+                                <i class="fa-solid fa-gift"></i>
+                                前往贊助
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h4>地方的孩子需要家.</h4>
+                            <p>送你一隻(:3[___]=.</p>
+                            <a asp-controller="Home" asp-action="SponsorPlan" asp-route-id="3" class="btn btn-custom" style="background-color: #A7C957; color: white;">
+                                <i class="fa-solid fa-gift"></i>
+                                前往贊助
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="intro">
+            <div class="intro-content">
+                <h2 class="title">用心烹飪，傳遞愛的味道！ 🌟</h2>
+                <p class="subtitle">我們相信每一口食物都應該充滿愛與關懷。我們的每一道料理，都是由唐寶寶親手製作！</p>
+            </div>
+        </div>
+        <div class="sandbox">
+            <div class="tile is-ancestor">
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-8">
+                    <div class="tile">
+                        <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-white">
+                                <a href="@Url.Action("ProductDetail", "Home")" class="product-link">
+                                    <p class="title">我是蛋捲</p>
+                                    <div class="cake-container">
+                                        <div class="cake-image">
+                                            <img src="~/images/egg.webp" alt="蛋捲">
+                                        </div>
+                                        <div class="cake-content">
+                                            <p class="subtitle">
+                                                <h1>唐寶寶蛋捲是一款傳承經典的美味小吃，結合了傳統工藝與現代口味，為您帶來獨特的味覺享受。</h1>
+                                                <ul class="package-list">
+                                                    <li>小包 150 克</li>
+                                                    <li>大包 300 克</li>
+                                                </ul>
+                                                <div class="flavor-list">
+                                                    <div class="flavor-item">原味</div>
+                                                    <div class="flavor-item">巧克力</div>
+                                                    <div class="flavor-item">抹茶</div>
+                                                    <div class="flavor-item">咖啡</div>
+                                                    <div class="flavor-item">芝麻</div>
+                                                    <div class="flavor-item">紅茶</div>
+                                                    <div class="flavor-item">草莓</div>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                            <article class="tile is-child notification is-white">
+                                <a href="@Url.Action("ProductDetail", "Home")" class="product-link">
+                                    <p class="title">我是餅乾</p>
+                                    <div class="cake-container">
+                                        <div class="cake-image">
+                                            <img src="~/images/800x.webp" alt="餅乾">
+                                        </div>
+                                        <div class="cake-content">
+                                            <p class="subtitle">
+                                                <h1>唐寶寶蛋捲是一款傳承經典的美味小吃，結合了傳統工藝與現代口味，為您帶來獨特的味覺享受。</h1>
+
+                                                
+                                                <div class="flavor-list">
+                                                    <div class="flavor-item">原味</div>
+                                                    <div class="flavor-item">巧克力</div>
+                                                    <div class="flavor-item">抹茶</div>
+                                                    <div class="flavor-item">蔓越莓</div>
+                                                    <div class="flavor-item">咖啡</div>
+                                                    <div class="flavor-item">檸檬</div>
+                                                    <div class="flavor-item">椰子</div>
+                                                </div>
+
+
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+
+
+                            <article class="tile is-child notification is-white">
+                                <a href="@Url.Action("ProductDetail", "Home")" class="product-link">
+                                    <p class="title">我是蛋糕</p>
+                                    <div class="cake-container">
+                                        <div class="cake-image">
+                                            <img src="~/images/cake.webp" alt="蛋糕">
+                                        </div>
+                                        <div class="cake-content">
+                                            <p class="subtitle">
+                                                <h1>唐寶寶蛋捲是一款傳承經典的美味小吃，結合了傳統工藝與現代口味，為您帶來獨特的味覺享受。</h1>
+
+                                                <div class="flavor-list">
+                                                    <div class="flavor-item">原味</div>
+                                                    <div class="flavor-item">巧克力</div>
+                                                    <div class="flavor-item">抹茶</div>
+                                                    <div class="flavor-item">草莓</div>
+                                                    <div class="flavor-item">芒果</div>
+                                                    <div class="flavor-item">藍莓</div>
+                                                    <div class="flavor-item">提拉米蘇</div>
+                                                    <div class="flavor-item">起司</div>
+
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                        <div class="intro">
+                            <div class="intro-content">
+                                <h2 class="title">回顧唐寶寶精彩活動 🎉</h2>
+                                <p class="subtitle">在過去的一段時間裡，唐寶寶舉辦了一系列精彩的活動，與大家分享了美味、健康和歡樂的時光！</p>
+                            </div>
+                        </div>
+                    
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="event-container">
+                                <img src="~/images/93_img_1.jpg" alt="義賣活動">
+                                <p class="title">義賣活動</p>
+                                <p class="subtitle">
+                                    唐寶寶舉辦義賣活動
+                                </p>
+                                <a href="#" class="event-link">查看詳情</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="event-container">
+                                <img src="~/images/108_img_1.jpg" alt="義賣活動">
+                                <p class="title">義賣活動</p>
+                                <p class="subtitle">
+                                    唐寶寶舉辦義賣活動
+                                </p>
+                                <a href="#" class="event-link">查看詳情</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="event-container">
+                                <img src="~/images/138_img_1.jpg" alt="義賣活動">
+                                <p class="title">義賣活動</p>
+                                <p class="subtitle">
+                                    唐寶寶舉辦義賣活動
+                                </p>
+                                <a href="#" class="event-link">查看詳情</a>
+                            </div>
+                        </article>
+                    </div>
+                        <div class="tile is-parent is-shady">
+                            <article class="tile is-child notification is-white">
+                                <div class="event-container">
+                                    <img src="~/images/93_img_1.jpg" alt="義賣活動">
+                                    <p class="title">義賣活動</p>
+                                    <p class="subtitle">
+                                        唐寶寶舉辦義賣活動
+                                    </p>
+                                    <a href="#" class="event-link">查看詳情</a>
+                                </div>
+                            </article>
+                        </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <style>
+       
+        .container-fluid {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .main-container {
+            background: linear-gradient(135deg, #718355 0%, #B5C99A 100%);
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .video-section {
+            flex: 1.2;
+            min-width: 0;
+        }
+
+        .text-section {
+            flex: 0.8;
+            text-align: left;
+        }
+
+        .main-container video {
+            width: 100%;
+            height: auto;
+            min-height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-container .title {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .main-container .subtitle {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-container {
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .funding-progress {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .progress-title h3 {
+            font-size: 2rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.3rem;
+            align-items: baseline;
+        }
+
+        .current-amount {
+            color: #6A994E;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .target-amount {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .progress-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #6A994E;
+            background: rgba(106, 153, 78, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .progress-visualization {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            gap: 4rem;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            background: #fff;
+            border-radius: 50%;
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .circular-progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6A994E;
+        }
+
+        .circular-progress-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .circular-progress-bg {
+            fill: none;
+            stroke: #e9ecef;
+            stroke-width: 10;
+        }
+
+        .circular-progress-bar {
+            fill: none;
+            stroke: #6A994E;
+            stroke-width: 10;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .countdown-container {
+            flex: 1;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-title {
+            font-size: 1.4rem;
+            color: #2C3E50;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .countdown-item span:first-child {
+            display: block;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #6A994E;
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .countdown-label {
+            display: block;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            margin: 2.5rem 1rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #6A994E 0%, #B5C99A 100%);
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient( 45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent );
+            background-size: 30px 30px;
+            animation: move 2s linear infinite;
+        }
+
+        @@keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 30px 30px;
+            }
+        }
+
+        .intro {
+            position: relative;
+            padding: 2rem 0;
+            margin: 1rem 0;
+            text-align: center;
+            background: #90a955 !important;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            border-radius: 0;
+            font-family: "Open Sans", sans-serif;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .intro .title {
+            color: #000000 !important;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: "Open Sans", sans-serif;
+            letter-spacing: 1.5px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .intro .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+        }
+
+        .intro .subtitle {
+            color: #000000 !important;
+            font-size: 1.3rem;
+            line-height: 2;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: "Open Sans", sans-serif;
+            letter-spacing: 0.8px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .tab-content {
+            margin-top: 2rem;
+        }
+
+        .tab-pane {
+            display: none;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #000000;
+        }
+
+        .tab-pane.is-active {
+            display: block;
+        }
+
+        .tab-pane h3 {
+            color: #000000;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .tab-pane h4 {
+            color: #000000;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .tab-pane p {
+            color: #000000;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6A994E;
+        }
+
+        .feature-item h4 {
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            color: #000000;
+        }
+
+        .news-item, .faq-item, .notice-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item h4, .faq-item h4, .notice-item h4 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .message-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .message-form .label {
+            color: #000000;
+        }
+
+        .message-form .input,
+        .message-form .textarea {
+            color: #000000;
+        }
+
+        .button.is-primary {
+            background-color: #6A994E;
+            color: #ffffff;
+        }
+
+        .button.is-primary:hover {
+            background-color: #718355;
+        }
+
+        @@media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .text-section {
+                text-align: center;
+            }
+
+            .main-container .title {
+                font-size: 2rem;
+            }
+
+            .progress-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .progress-title h3 {
+                font-size: 1.8rem;
+            }
+
+            .progress-stats {
+                justify-content: center;
+            }
+
+            .progress-percentage {
+                font-size: 2rem;
+            }
+
+            .countdown-title {
+                font-size: 1.3rem;
+            }
+
+            .countdown-item span:first-child {
+                font-size: 2rem;
+                padding: 1rem;
+            }
+
+            .intro {
+                padding: 4rem 1rem;
+                margin: 2rem 0;
+            }
+            
+            .intro .title {
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .intro .subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            padding: 0 1rem;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            display: block;
+            color: #000000;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .info-value {
+            display: block;
+            color: #000000;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .tabs ul {
+            border-bottom-color: #6A994E;
+        }
+
+        .tabs a {
+            color: #000000 !important;
+            border-bottom-color: #6A994E;
+            font-weight: 500;
+        }
+
+        .tabs li.is-active a {
+            color: #000000 !important;
+            border-bottom-color: #6A994E;
+            border-bottom-width: 3px;
+            font-weight: 700;
+        }
+
+        .tabs li:hover a {
+            color: #000000 !important;
+            border-bottom-color: #6A994E;
+        }
+
+        /* 產品卡片樣式 */
+        .columns.features {
+            margin: 1rem 0;
+            gap: 0.8rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .col-md-4 {
+            padding: 0.4rem;
+            flex: 0 1 300px; /* 固定寬度 */
+            max-width: 300px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-image {
+            padding: 1.2rem;
+            text-align: center;
+            background: #f8f9fa;
+        }
+
+        .card-image i {
+            font-size: 2.2rem;
+            color: #6A994E;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-content h4 {
+            color: #000000;
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .card-content p {
+            color: #666666;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-size: 1rem;
+            min-height: 2.6rem;
+        }
+
+        .btn-custom {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom i {
+            margin-right: 0.5rem;
+        }
+
+        @@media (max-width: 768px) {
+            .columns.features {
+                flex-wrap: wrap;
+                gap: 0.6rem;
+            }
+
+            .col-md-4 {
+                padding: 0.3rem;
+                flex: 0 1 280px;
+                max-width: 280px;
+            }
+
+            .card-image {
+                padding: 0.8rem;
+            }
+
+            .card-image i {
+                font-size: 1.8rem;
+            }
+
+            .card-content {
+                padding: 0.8rem;
+            }
+
+            .card-content h4 {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-content p {
+                font-size: 0.95rem;
+                margin-bottom: 0.8rem;
+                min-height: 2.4rem;
+            }
+
+            .btn-custom {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 產品展示區塊樣式 */
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-link:hover {
+            text-decoration: none;
+        }
+
+        .tile.is-child.notification {
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+            background: #ffffff;
+        }
+
+        .tile.is-child .title {
+            color: #000000;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .tile.is-child .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #6A994E;
+            border-radius: 2px;
+        }
+
+        .cake-container {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .cake-image {
+            flex: 0 0 220px;
+            text-align: center;
+        }
+
+        .cake-image img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .cake-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .cake-content {
+            flex: 1;
+            padding: 1rem 0;
+            text-align: left;
+        }
+
+        .cake-content .subtitle {
+            margin-bottom: 1.5rem;
+        }
+
+        .cake-content h1 {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333333;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .package-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .package-list li {
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: #000000;
+            font-size: 1rem;
+            border: 1px solid #e9ecef;
+            font-weight: 500;
+        }
+
+        .flavor-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .flavor-item {
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            color: #000000;
+            font-size: 0.95rem;
+            border: 1px solid #e9ecef;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .flavor-item:hover {
+            background: #6A994E;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        @@media (max-width: 768px) {
+            .cake-content {
+                padding: 0.8rem 0;
+            }
+
+            .cake-content h1 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .package-list {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .package-list li {
+                font-size: 0.95rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .flavor-item {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 活動回顧區塊樣式 */
+        .event-container {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .event-container img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .event-container .title {
+            color: #000000;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .event-container .subtitle {
+            color: #666666;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .event-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background-color: #6A994E;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #6A994E;
+        }
+
+        .event-link:hover {
+            background-color: #ffffff;
+            color: #6A994E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        @@media (max-width: 768px) {
+            .event-link {
+                padding: 0.5rem 1.2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* 響應式設計 */
+        @@media (max-width: 768px) {
+            .egg-container, .cookie-container, .cake-container {
+                flex-direction: column;
+            }
+
+            .egg-image-container, .cookie-image-container, .cake-image {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+
+            .egg-image-container img, .cookie-image-container img, .cake-image img {
+                max-width: 200px;
+            }
+
+            .card-content h4 {
+                font-size: 1.6rem;
+            }
+
+            .card-content p {
+                font-size: 1.1rem;
+            }
+
+            .tile.is-child .title {
+                font-size: 1.8rem;
+            }
+
+            .event-container img {
+                height: 150px;
+            }
+
+            .event-container .title {
+                font-size: 1.4rem;
+            }
+
+            .event-container .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        .plan-highlights {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .plan-highlights h4 {
+            color: #000000;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-align: left;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .plan-highlights h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #6A994E;
+            border-radius: 2px;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-left: 4px solid #6A994E;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-item h5 {
+            color: #000000;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-item p {
+            color: #000000;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        @@media (max-width: 768px) {
+            .plan-highlights {
+                padding: 1.5rem;
+            }
+
+            .plan-highlights h4 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .highlight-grid {
+                gap: 1.5rem;
+            }
+
+            .highlight-item {
+                padding: 1.5rem;
+            }
+
+            .highlight-item h5 {
+                font-size: 1.4rem;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        // 設定目標日期（2025年12月31日23:59）
+        const targetDate = new Date('2025-12-31T23:59:59');
+        let countdownInterval;
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const difference = targetDate - currentDate;
+
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                const countdownContainer = document.querySelector('.countdown-container');
+                if (countdownContainer) {
+                    countdownContainer.innerHTML = `
+                        <div class="countdown-title" style="color: #dc3545; font-size: 1.5rem; font-weight: bold;">
+                            專案已結束
+                        </div>
+                    `;
+                }
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // 立即更新一次
+        updateCountdown();
+        // 每秒更新一次
+        countdownInterval = setInterval(updateCountdown, 1000);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tabs li');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有標籤的活動狀態
+                    tabs.forEach(t => t.classList.remove('is-active'));
+                    // 移除所有內容面板的活動狀態
+                    tabPanes.forEach(pane => pane.classList.remove('is-active'));
+
+                    // 添加當前標籤的活動狀態
+                    this.classList.add('is-active');
+                    // 顯示對應的內容面板
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('is-active');
+                });
+            });
+
+            // 設定環形進度條
+            const progress = 23; // 進度百分比
+            const circle = document.querySelector('.circular-progress-bar');
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+
+            const offset = circumference - (progress / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        });
+    </script>
+</body>
+</html> 
