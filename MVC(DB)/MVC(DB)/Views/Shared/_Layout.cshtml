@@ -440,7 +440,7 @@
                         <li class="nav-item">
                             <div class="search-container">
                                 <button class="btn btn-link search-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
-                                    <i class="fas fa-search"></i>
+                                    <i class="fas fa-search">搜尋</i>
                                 </button>
                                 <div class="collapse search-collapse" id="searchCollapse">
                                     <div class="search-box">
@@ -456,6 +456,14 @@
                                 </div>
                             </div>
                         </li>
+                        <ul class="navbar-nav me-3">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Proposal">
+                                    <i class="fas fa-marker">提案</i>
+                                </a>
+                            </li>
+                        </ul>
                     </ul>
 
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index_R">
@@ -464,14 +472,7 @@
                     </a>
 
                     <div class="d-flex">
-                        <ul class="navbar-nav me-3">
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Proposal">
-                                    提案
-                                </a>
-                            </li>
-                        </ul>
+                       
                          @if (Context.Session.GetString("role") == "Admin")
                                 {
                         <div class="dropdown">
