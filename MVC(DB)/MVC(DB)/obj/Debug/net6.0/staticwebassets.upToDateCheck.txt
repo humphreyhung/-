@@ -4,6 +4,7 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\108_img_1.jpg
 wwwroot\images\138_img_1.jpg
+wwwroot\images\20241105133651xl18l 1111.png
 wwwroot\images\20241105133651xl18l.png
 wwwroot\images\800x xxx.webp
 wwwroot\images\800x xxxxx.webp
