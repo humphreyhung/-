@@ -110,299 +110,132 @@
     </div>
 </div>
 
+<style>
+    body {
+        background-color: #f7f7f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
 
-   
-    <style>
-        .confirmation-card {
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border: none;
-            border-radius: 15px;
-            margin: 0 auto;
-            max-width: 1400px;
-        }
+    .container-fluid {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .card-header {
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-            padding: 2rem 1rem;
-            border-radius: 15px 15px 0 0 !important;
-        }
+    .row {
+        flex: 1;
+        display: flex;
+    }
 
-        .text-success {
-            color: #6A994E !important;
+    .col-12 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .confirmation-card {
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border: none;
+        border-radius: 15px;
+        margin: 0 auto;
+        max-width: 1200px;
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 2rem 1rem;
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    .text-success {
+        color: #6A994E !important;
+    }
+
+    .info-section {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 2rem;
+        height: 100%;
+        transition: all 0.3s ease;
+        margin-bottom: 1rem;
+    }
+
+    .info-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h5 {
+        color: #6A994E;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        border-bottom: 2px solid #6A994E;
+        padding-bottom: 0.8rem;
+        font-size: 1.2rem;
+    }
+
+    .info-content {
+        color: #666;
+    }
+
+    .info-content p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .text-primary {
+        color: #6A994E !important;
+        font-weight: 600;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+        transform: translateY(-2px);
+    }
+
+    @@media (max-width: 768px) {
+        .container-fluid {
+            padding: 1rem;
         }
 
         .info-section {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .info-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        h5 {
-            color: #6A994E;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            border-bottom: 2px solid #6A994E;
-            padding-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .info-content {
-            color: #666;
+            padding: 1.5rem;
         }
 
         .info-content p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .text-primary {
-            color: #6A994E !important;
-            font-weight: 600;
+            font-size: 1rem;
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
         }
-
-        .btn-primary {
-            background-color: #6A994E;
-            border-color: #6A994E;
-        }
-
-        .btn-primary:hover {
-            background-color: #718355;
-            border-color: #718355;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #545b62;
-            transform: translateY(-2px);
-        }
-
-        @@media print {
-            .btn {
-                display: none;
-            }
-
-            .confirmation-card {
-                box-shadow: none;
-            }
-
-            .info-section {
-                box-shadow: none;
-            }
-
-            .info-section:hover {
-                transform: none;
-                box-shadow: none;
-            }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .progress-container {
-            width: 100%;
-            margin: 2rem auto;
-        }
-
-        .funding-progress {
-            background: #fff;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .progress-title h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-stats {
-            display: flex;
-            gap: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .current-amount {
-            color: #6A994E;
-            font-weight: 600;
-        }
-
-        .target-amount {
-            color: #666;
-        }
-
-        .progress-percentage {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #6A994E;
-        }
-
-        .progress-visualization {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            gap: 3rem;
-        }
-
-        .circular-progress {
-            position: relative;
-            width: 120px;
-            height: 120px;
-        }
-
-        .circular-progress-value {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #6A994E;
-        }
-
-        .circular-progress-svg {
-            transform: rotate(-90deg);
-        }
-
-        .circular-progress-bg {
-            fill: none;
-            stroke: #e9ecef;
-            stroke-width: 8;
-        }
-
-        .circular-progress-bar {
-            fill: none;
-            stroke: #6A994E;
-            stroke-width: 8;
-            stroke-dasharray: 339.292;
-            stroke-dashoffset: 237.504;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        .countdown-container {
-            flex: 1;
-        }
-
-        .countdown-title {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .countdown-timer {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .countdown-item {
-            text-align: center;
-        }
-
-        .countdown-item span:first-child {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #333;
-            background: #f8f9fa;
-            padding: 0.5rem;
-            border-radius: 8px;
-            min-width: 60px;
-        }
-
-        .countdown-label {
-            display: block;
-            margin-top: 0.5rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .progress-bar-container {
-            background: #e9ecef;
-            height: 8px;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-        }
-
-        .progress-bar {
-            background: #6A994E;
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-
-        .progress-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .progress-info {
-            display: flex;
-            gap: 3rem;
-        }
-
-        .info-item {
-            text-align: center;
-        }
-
-        .info-label {
-            display: block;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-value {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        @@media (max-width: 768px) {
-            .progress-visualization {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .countdown-timer {
-                justify-content: center;
-            }
-
-            .progress-info {
-                gap: 2rem;
-            }
-        }
-    </style>
+    }
+</style>
