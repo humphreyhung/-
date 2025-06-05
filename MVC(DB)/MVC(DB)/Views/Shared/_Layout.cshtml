@@ -309,6 +309,13 @@
                                 <i class="fas fa-search">搜尋</i>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Proposal">
+                                <i class="fas fa-marker">提案</i>
+                                
+                            </a>
+                        </li>
                     </ul>
 
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index_R">
@@ -319,11 +326,7 @@
                     <div class="d-flex">
                         <ul class="navbar-nav me-3">
                             
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Proposal">
-                                    提案
-                                </a>
-                            </li>
+                            
                         </ul>
                          @if (Context.Session.GetString("role") == "Admin")
                                 {
