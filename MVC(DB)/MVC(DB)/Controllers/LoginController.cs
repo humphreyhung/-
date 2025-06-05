@@ -26,7 +26,7 @@ namespace MVC_DB_.Controllers
         }
 
         string connectionString = "Server=tcp:finalprojectmvcdbserver20250520dbserver.database.windows.net,1433;Initial Catalog=finalProjectMVCDBserver20250520;Persist Security Info=False;User ID=humphreyhung;Password=Hum921026~;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
-        public IActionResult login(string username, string password)
+        public IActionResult login(string username, string password, bool rememberMe)
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 return BadRequest("帳號或密碼不能空白");
