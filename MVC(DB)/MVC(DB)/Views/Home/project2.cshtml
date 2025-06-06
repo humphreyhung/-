@@ -888,56 +888,98 @@
             .content-wrapper {
                 flex-direction: column;
                 gap: 2rem;
+                padding: 1rem;
+            }
+
+            .video-section {
+                width: 100%;
+            }
+
+            .video-section video {
+                width: 100%;
+                height: auto;
+                min-height: auto;
             }
 
             .text-section {
                 text-align: center;
+                padding: 0 1rem;
             }
 
             .main-container .title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .main-container .subtitle {
+                font-size: 1.1rem;
             }
 
             .progress-header {
                 flex-direction: column;
                 text-align: center;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
-            .progress-title h3 {
-                font-size: 1.8rem;
+            .progress-visualization {
+                flex-direction: column;
+                gap: 2rem;
             }
 
-            .progress-stats {
+            .countdown-timer {
+                flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .progress-percentage {
-                font-size: 2rem;
+            .countdown-item {
+                min-width: 70px;
             }
 
-            .countdown-title {
-                font-size: 1.3rem;
+            .highlight-grid {
+                grid-template-columns: 1fr;
             }
 
-            .countdown-item span:first-child {
-                font-size: 2rem;
-                padding: 1rem;
+            .tabs ul {
+                flex-wrap: wrap;
             }
 
-            .intro {
-                padding: 4rem 1rem;
-                margin: 2rem 0;
+            .tabs li {
+                flex: 1 1 auto;
+                text-align: center;
             }
-            
-            .intro .title {
-                font-size: 2.2rem;
-                margin-bottom: 1.5rem;
+
+            .cake-container {
+                flex-direction: column;
+                text-align: center;
             }
-            
-            .intro .subtitle {
-                font-size: 1.1rem;
-                padding: 0 1rem;
+
+            .cake-image {
+                margin: 0 auto;
+            }
+
+            .cake-content {
+                text-align: center;
+            }
+
+            .package-list {
+                justify-content: center;
+            }
+
+            .flavor-list {
+                justify-content: center;
+            }
+
+            .box.cta {
+                margin: 0 1rem;
+                top: 0;
+            }
+
+            .banner {
+                margin: 0 1rem;
+                height: 120px;
+            }
+
+            .banner-content h1 {
+                font-size: 1.5rem;
             }
         }
 
