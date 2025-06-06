@@ -1,0 +1,430 @@
+@{
+    ViewData["Title"] = "關於我們";
+}
+
+<div class="page-wrapper">
+    <div class="about-container">
+        <div class="about-header">
+            <h1>關於唐寶寶公益募資平台</h1>
+            <p class="subtitle">連結愛心與希望，讓每個夢想都能實現</p>
+        </div>
+
+        <div class="about-content">
+            <div class="mission-section">
+                <h2>我們的使命</h2>
+                <p>唐寶寶公益募資平台成立於2021年，是一個專注於為唐氏症兒童及其家庭提供募資支持的公益平台。我們相信每個孩子都應該擁有平等發展的機會，透過群眾的力量，集結社會各界的愛心，為唐寶寶們創造更好的未來。</p>
+            </div>
+
+            <div class="values-section">
+                <h2>平台特色</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>透明公開</h3>
+                        <p>所有募資專案全程透明，定期公布資金使用狀況，讓每位贊助者都能清楚了解善款流向。</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>安全可靠</h3>
+                        <p>嚴謹的專案審核機制，確保每個募資專案的真實性，保障贊助者的權益。</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-users"></i>
+                        <h3>社群支持</h3>
+                        <p>建立互助互愛的社群氛圍，讓每個家庭都能感受到社會的溫暖與支持。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h2>平台發展歷程</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="year">2021</div>
+                        <div class="content">
+                            <h3>平台成立</h3>
+                            <p>唐寶寶公益募資平台正式上線，開始為唐氏症家庭提供募資服務。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2022</div>
+                        <div class="content">
+                            <h3>服務擴展</h3>
+                            <p>新增線上募資功能，並建立專案追蹤系統。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2023</div>
+                        <div class="content">
+                            <h3>社群成長</h3>
+                            <p>累計幫助超過100個唐氏症家庭，募資總額突破千萬。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2024</div>
+                        <div class="content">
+                            <h3>創新發展</h3>
+                            <p>推出專案回饋機制，讓贊助者能更深入了解專案進展。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-section">
+                <h2>平台影響力</h2>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-number">100+</div>
+                        <p>成功募資專案</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">10M+</div>
+                        <p>募資總額</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">5000+</div>
+                        <p>贊助者人數</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">98%</div>
+                        <p>專案成功率</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2>專業團隊</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="~/images/team1.jpg" alt="團隊成員">
+                        <h3>王小明</h3>
+                        <p>平台總監</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="~/images/team2.jpg" alt="團隊成員">
+                        <h3>李小華</h3>
+                        <p>專案經理</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="~/images/team3.jpg" alt="團隊成員">
+                        <h3>張小美</h3>
+                        <p>社群經理</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .page-wrapper {
+        min-height: calc(100vh - 60px); /* 減去頁尾的高度 */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-container {
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        background: linear-gradient(135deg, #6A994E 0%, #B5C99A 100%);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        color: white;
+    }
+
+    .about-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .about-header .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .mission-section {
+        margin-bottom: 4rem;
+        text-align: center;
+        padding: 2rem;
+        background: #f8f9fa;
+        border-radius: 15px;
+    }
+
+    .mission-section h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .mission-section p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .values-section {
+        margin-bottom: 4rem;
+    }
+
+    .values-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .value-item {
+        text-align: center;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .value-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .value-item i {
+        font-size: 2.5rem;
+        color: #6A994E;
+        margin-bottom: 1rem;
+    }
+
+    .value-item h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .value-item p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .impact-section {
+        margin-bottom: 4rem;
+        padding: 3rem 0;
+        background: #f8f9fa;
+        border-radius: 15px;
+    }
+
+    .impact-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .impact-item {
+        text-align: center;
+    }
+
+    .impact-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #6A994E;
+        margin-bottom: 0.5rem;
+    }
+
+    .impact-item p {
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .history-section {
+        margin-bottom: 4rem;
+    }
+
+    .history-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background: #6A994E;
+    }
+
+    .timeline-item {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+        position: relative;
+    }
+
+    .timeline-item .year {
+        background: #6A994E;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+        margin: 0 2rem;
+    }
+
+    .timeline-item .content {
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-item .content h3 {
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-item .content p {
+        color: #666;
+    }
+
+    .team-section {
+        margin-bottom: 4rem;
+    }
+
+    .team-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .team-member {
+        text-align: center;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+    }
+
+    .team-member img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border: 4px solid #6A994E;
+    }
+
+    .team-member h3 {
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+        color: #666;
+    }
+
+    @@media (max-width: 768px) {
+        .about-container {
+            padding: 1rem;
+        }
+
+        .about-header {
+            padding: 2rem 1rem;
+        }
+
+        .about-header h1 {
+            font-size: 2rem;
+        }
+
+        .mission-section {
+            padding: 1.5rem;
+        }
+
+        .mission-section p {
+            font-size: 1rem;
+        }
+
+        .values-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .impact-grid {
+            grid-template-columns: repeat(2, 1fr);
+            padding: 0 1rem;
+        }
+
+        .timeline::before {
+            left: 0;
+        }
+
+        .timeline-item {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 2rem;
+        }
+
+        .timeline-item .year {
+            margin: 0 0 1rem 0;
+        }
+
+        .timeline-item .content {
+            width: 100%;
+        }
+
+        .team-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .team-member {
+            padding: 1.5rem;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+</style> 

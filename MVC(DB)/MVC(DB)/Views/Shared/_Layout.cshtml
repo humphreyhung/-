@@ -695,7 +695,7 @@
         <div class="footer-column">
             <h4>關於</h4>
             <ul>
-                <li><a href="#">關於我們</a></li>
+                <li><a href="@Url.Action(\"About\", \"Home\")">關於我們</a></li>
                 <li><a href="#">合作團體</a></li>
                 <li><a href="#">合作商家</a></li>
             </ul>
@@ -704,13 +704,9 @@
         <div class="footer-column">
             <h4>支援</h4>
             <ul>
-                <li><a href="#">服務條款</a></li>
-                <li>
-                    <a class="project-link"
-                       asp-area=""
-                       asp-controller="Home"
-                       asp-action="Privacy">隱私權政策</a>
-                </li>
+                <li><a href="@Url.Action("FAQ", "Home")">常見問題</a></li>
+                <li><a href="@Url.Action("Terms", "Home")">服務條款</a></li>
+                <li><a href="@Url.Action("Privacy", "Home")">隱私權政策</a></li>
             </ul>
         </div>
 

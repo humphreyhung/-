@@ -1,0 +1,419 @@
+@{
+    ViewData["Title"] = "常見問題";
+}
+
+<div class="page-wrapper">
+    <div class="faq-container">
+        <div class="faq-header">
+            <h1>常見問題</h1>
+            <p class="subtitle">歡迎來到唐寶寶公益募資平台，以下是您可能遇到的常見問題解答</p>
+        </div>
+
+        <div class="faq-content">
+            <div class="faq-categories">
+                <div class="category active" data-category="general">
+                    <i class="fas fa-question-circle"></i>
+                    <span>一般問題</span>
+                </div>
+                <div class="category" data-category="sponsor">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span>贊助相關</span>
+                </div>
+                <div class="category" data-category="project">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>提案相關</span>
+                </div>
+                <div class="category" data-category="payment">
+                    <i class="fas fa-credit-card"></i>
+                    <span>付款相關</span>
+                </div>
+            </div>
+
+            <div class="faq-sections">
+                <!-- 一般問題 -->
+                <div class="faq-section active" id="general">
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>什麼是唐寶寶公益募資平台？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>唐寶寶公益募資平台是一個專注於支持唐氏症兒童及其家庭的公益募資平台。我們提供一個安全、透明的環境，讓愛心人士可以支持各種公益專案，幫助唐寶寶們獲得更好的生活品質和教育資源。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>如何註冊成為會員？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>您可以在網站首頁點擊「註冊」按鈕，填寫基本資料（包括姓名、電子郵件、密碼等）即可完成註冊。註冊後，您將可以參與贊助、追蹤專案進度，並接收最新消息。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>如何聯繫客服？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>您可以透過以下方式聯繫我們：</p>
+                            <ul>
+                                <li>客服信箱：support@tangbaby.org</li>
+                                <li>客服專線：(02) 1234-5678</li>
+                                <li>服務時間：週一至週五 9:00-18:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 贊助相關 -->
+                <div class="faq-section" id="sponsor">
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>如何贊助專案？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>贊助專案的步驟如下：</p>
+                            <ol>
+                                <li>選擇您想要贊助的專案</li>
+                                <li>選擇贊助金額或回饋方案</li>
+                                <li>填寫贊助資訊（姓名、聯絡方式等）</li>
+                                <li>選擇付款方式並完成付款</li>
+                                <li>收到贊助確認信</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>贊助後可以取消嗎？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>在專案募資期間內，您可以取消贊助。但請注意，如果專案已經結束募資，則無法取消贊助。取消贊助時，請聯繫客服人員協助處理。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提案相關 -->
+                <div class="faq-section" id="project">
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>如何提出專案？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>提出專案的步驟如下：</p>
+                            <ol>
+                                <li>註冊成為會員</li>
+                                <li>點擊「我要提案」</li>
+                                <li>填寫專案基本資訊</li>
+                                <li>上傳相關文件及圖片</li>
+                                <li>提交審核</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>專案審核需要多久？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>一般來說，專案審核時間為 5-7 個工作天。審核通過後，我們會立即通知您，並協助您進行後續的專案上線準備。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 付款相關 -->
+                <div class="faq-section" id="payment">
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>支援哪些付款方式？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>我們目前支援以下付款方式：</p>
+                            <ul>
+                                <li>信用卡付款</li>
+                                <li>ATM 轉帳</li>
+                                <li>超商代碼繳費</li>
+                                <li>LINE Pay</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>贊助金額可以抵稅嗎？</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="answer">
+                            <p>是的，透過本平台進行的贊助，只要符合相關法規規定，都可以申請抵稅。我們會在專案結束後提供捐款收據，您可以憑此收據進行抵稅申請。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .page-wrapper {
+        min-height: calc(100vh - 60px);
+        display: flex;
+        flex-direction: column;
+        background-color: #f8f9fa;
+    }
+
+    .faq-container {
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .faq-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .faq-header .subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .faq-content {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .faq-categories {
+        display: flex;
+        background: #f8f9fa;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .category {
+        padding: 1rem 2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #666;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .category:hover {
+        background: #e9ecef;
+    }
+
+    .category.active {
+        background: #6A994E;
+        color: #ffffff;
+    }
+
+    .category i {
+        font-size: 1.2rem;
+    }
+
+    .faq-sections {
+        padding: 2rem;
+    }
+
+    .faq-section {
+        display: none;
+    }
+
+    .faq-section.active {
+        display: block;
+    }
+
+    .faq-item {
+        background: #ffffff;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .faq-question {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: #333;
+        min-height: 60px;
+    }
+
+    .faq-answer {
+        padding: 0 1.5rem 1.5rem;
+        color: #666;
+        line-height: 1.6;
+        min-height: 80px;
+    }
+
+    .faq-category {
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .faq-category h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #6A994E;
+    }
+
+    .question:hover {
+        background: #f8f9fa;
+    }
+
+    .question h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .question i {
+        color: #6A994E;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .question i {
+        transform: rotate(180deg);
+    }
+
+    .answer {
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+    }
+
+    .faq-item.active .answer {
+        padding: 1.5rem;
+        max-height: 1000px;
+    }
+
+    .answer p {
+        margin: 0 0 1rem 0;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .answer ul, .answer ol {
+        margin: 0 0 1rem 1.5rem;
+        color: #666;
+    }
+
+    .answer li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 768px) {
+        .faq-container {
+            padding: 1rem;
+        }
+
+        .faq-header h1 {
+            font-size: 2rem;
+        }
+
+        .faq-header .subtitle {
+            font-size: 1.1rem;
+        }
+
+        .faq-categories {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .category {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .question h3 {
+            font-size: 1.1rem;
+        }
+
+        .answer {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 分類切換
+        const categories = document.querySelectorAll('.category');
+        const sections = document.querySelectorAll('.faq-section');
+
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                // 移除所有分類的 active 類
+                categories.forEach(c => c.classList.remove('active'));
+                // 添加當前分類的 active 類
+                category.classList.add('active');
+
+                // 隱藏所有區段
+                sections.forEach(section => section.classList.remove('active'));
+                // 顯示對應區段
+                const categoryId = category.getAttribute('data-category');
+                document.getElementById(categoryId).classList.add('active');
+            });
+        });
+
+        // FAQ 項目展開/收起
+        const questions = document.querySelectorAll('.question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // 關閉其他開啟的項目
+                document.querySelectorAll('.faq-item.active').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // 切換當前項目的狀態
+                faqItem.classList.toggle('active');
+            });
+        });
+    });
+</script> 

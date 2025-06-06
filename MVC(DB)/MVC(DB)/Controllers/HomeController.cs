@@ -551,6 +551,21 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Terms()
+        {
+            return View();
+        }
+
+        public IActionResult FAQ()
+        {
+            return View();
+        }
     }
 }
 
