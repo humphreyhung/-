@@ -1,0 +1,415 @@
+@{
+    ViewData["Title"] = "開始提案";
+}
+
+<div class="start-project-container">
+    <div class="start-header">
+        <h1>開始提案</h1>
+        <p>讓我們一起為弱勢群體創造更多可能</p>
+    </div>
+
+    <div class="project-types">
+        <div class="type-card active">
+            <div class="type-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h3>公益專案</h3>
+            <p>為所有弱勢有需要的群體提供幫助</p>
+        </div>
+        <div class="type-card">
+            <div class="type-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>創意專案</h3>
+            <p>展現弱勢群體的創意與才華</p>
+        </div>
+        <div class="type-card">
+            <div class="type-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>教育專案</h3>
+            <p>提供教育資源與學習機會</p>
+        </div>
+    </div>
+
+    <div class="project-steps">
+        <h2>提案流程</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>準備提案資料</h3>
+                    <ul>
+                        <li>專案企劃書</li>
+                        <li>團隊介紹</li>
+                        <li>預算規劃</li>
+                        <li>回饋方案</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>提交審核</h3>
+                    <ul>
+                        <li>填寫提案表單</li>
+                        <li>上傳相關文件</li>
+                        <li>等待審核結果</li>
+                        <li>補充所需資料</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>專案上線</h3>
+                    <ul>
+                        <li>設定募資目標</li>
+                        <li>發布專案頁面</li>
+                        <li>開始募資活動</li>
+                        <li>定期更新進度</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>執行與回饋</h3>
+                    <ul>
+                        <li>執行專案內容</li>
+                        <li>發送回饋品</li>
+                        <li>更新專案進度</li>
+                        <li>完成結案報告</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-requirements">
+        <h2>提案須知</h2>
+        <div class="requirements-grid">
+            <div class="requirement-card">
+                <div class="requirement-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>提案者資格</h3>
+                <p>年滿20歲，具有完全行為能力之自然人，或依法設立之法人團體</p>
+            </div>
+            <div class="requirement-card">
+                <div class="requirement-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>必要文件</h3>
+                <p>身分證明文件、企劃書、預算表、回饋方案說明等</p>
+            </div>
+            <div class="requirement-card">
+                <div class="requirement-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>募資期間</h3>
+                <p>最短30天，最長90天，可依專案需求調整</p>
+            </div>
+            <div class="requirement-card">
+                <div class="requirement-icon">
+                    <i class="fas fa-percentage"></i>
+                </div>
+                <h3>平台費用</h3>
+                <p>募資成功收取8%平台費用，未達目標不收取任何費用</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="start-action">
+        <a href="@Url.Action("CreateProject", "Home")" class="start-button">
+            開始提案
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<style>
+    .start-project-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .start-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .start-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .start-header p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .project-types {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        flex-wrap: wrap;
+    }
+
+    .type-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        width: 300px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .type-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .type-card.active {
+        border: 2px solid #6A994E;
+    }
+
+    .type-icon {
+        width: 80px;
+        height: 80px;
+        background: #f8f9fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+    }
+
+    .type-icon i {
+        font-size: 2rem;
+        color: #6A994E;
+    }
+
+    .type-card h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .type-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .project-steps {
+        margin-bottom: 4rem;
+    }
+
+    .project-steps h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .step {
+        display: flex;
+        gap: 2rem;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        background: #6A994E;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .step-content h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .step-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .step-content li {
+        color: #666;
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .step-content li:before {
+        content: "•";
+        color: #6A994E;
+        position: absolute;
+        left: 0;
+    }
+
+    .project-requirements {
+        margin-bottom: 4rem;
+    }
+
+    .project-requirements h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    .requirements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .requirement-card {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .requirement-icon {
+        width: 60px;
+        height: 60px;
+        background: #f8f9fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+    }
+
+    .requirement-icon i {
+        font-size: 1.5rem;
+        color: #6A994E;
+    }
+
+    .requirement-card h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .requirement-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .start-action {
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .start-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        background: #6A994E;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .start-button:hover {
+        background: #718355;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .start-button i {
+        transition: transform 0.3s ease;
+    }
+
+    .start-button:hover i {
+        transform: translateX(5px);
+    }
+
+    @@media (max-width: 768px) {
+        .start-project-container {
+            padding: 1rem;
+        }
+
+        .start-header h1 {
+            font-size: 2rem;
+        }
+
+        .start-header p {
+            font-size: 1rem;
+        }
+
+        .type-card {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .step {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .step-number {
+            margin: 0 auto;
+        }
+
+        .step-content li {
+            text-align: left;
+        }
+
+        .requirements-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .start-button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeCards = document.querySelectorAll('.type-card');
+        
+        typeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                typeCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+        });
+    });
+</script> 

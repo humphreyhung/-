@@ -1,0 +1,362 @@
+@{
+    ViewData["Title"] = "創建提案";
+}
+
+<div class="create-project-container">
+    <div class="form-header">
+        <h1>創建提案</h1>
+        <p>請填寫以下資訊以開始您的提案</p>
+    </div>
+
+    <form class="project-form" method="post" action="@Url.Action("CreateProject", "Home")" enctype="multipart/form-data">
+        <div class="form-section">
+            <h2>基本資訊</h2>
+            <div class="form-group">
+                <label for="projectName">專案名稱</label>
+                <input type="text" id="projectName" name="projectName" required placeholder="請輸入專案名稱">
+            </div>
+            <div class="form-group">
+                <label for="projectCategory">專案類別</label>
+                <select id="projectCategory" name="projectCategory" required>
+                    <option value="">請選擇專案類別</option>
+                    <option value="charity">公益專案</option>
+                    <option value="creative">創意專案</option>
+                    <option value="education">教育專案</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="projectDescription">專案簡介</label>
+                <textarea id="projectDescription" name="projectDescription" required placeholder="請簡述您的專案內容"></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>募資資訊</h2>
+            <div class="form-group">
+                <label for="targetAmount">目標金額</label>
+                <div class="input-with-prefix">
+                    <span class="prefix">NT$</span>
+                    <input type="number" id="targetAmount" name="targetAmount" required min="1000" placeholder="請輸入目標金額">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="startDate">開始日期</label>
+                <input type="date" id="startDate" name="startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="endDate">結束日期</label>
+                <input type="date" id="endDate" name="endDate" required>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>專案內容</h2>
+            <div class="form-group">
+                <label for="projectContent">詳細內容</label>
+                <textarea id="projectContent" name="projectContent" required placeholder="請詳細描述您的專案內容、目標和執行方式"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="projectImage">專案主圖</label>
+                <div class="file-upload">
+                    <input type="file" id="projectImage" name="projectImage" accept="image/*" required>
+                    <label for="projectImage" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>選擇圖片</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>回饋方案</h2>
+            <div id="rewards-container">
+                <div class="reward-item">
+                    <div class="form-group">
+                        <label>回饋金額</label>
+                        <div class="input-with-prefix">
+                            <span class="prefix">NT$</span>
+                            <input type="number" name="rewardAmounts[]" required min="100" placeholder="請輸入回饋金額">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>回饋內容</label>
+                        <textarea name="rewardContents[]" required placeholder="請描述回饋內容"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="add-reward-btn" onclick="addReward()">
+                <i class="fas fa-plus"></i> 新增回饋方案
+            </button>
+        </div>
+
+        <div class="form-section">
+            <h2>提案者資訊</h2>
+            <div class="form-group">
+                <label for="proposerName">提案者姓名</label>
+                <input type="text" id="proposerName" name="proposerName" required placeholder="請輸入提案者姓名">
+            </div>
+            <div class="form-group">
+                <label for="proposerEmail">聯絡信箱</label>
+                <input type="email" id="proposerEmail" name="proposerEmail" required placeholder="請輸入聯絡信箱">
+            </div>
+            <div class="form-group">
+                <label for="proposerPhone">聯絡電話</label>
+                <input type="tel" id="proposerPhone" name="proposerPhone" required placeholder="請輸入聯絡電話">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                提交提案
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    .create-project-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .form-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .form-header p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .form-section {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .form-section h2 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #6A994E;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #6A994E;
+        box-shadow: 0 0 0 2px rgba(106, 153, 78, 0.2);
+        outline: none;
+    }
+
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .input-with-prefix {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .input-with-prefix .prefix {
+        position: absolute;
+        left: 1rem;
+        color: #666;
+    }
+
+    .input-with-prefix input {
+        padding-left: 3rem;
+    }
+
+    .file-upload {
+        position: relative;
+    }
+
+    .file-upload input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    .file-upload-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .file-upload-label:hover {
+        border-color: #6A994E;
+        background: #f0f4e8;
+    }
+
+    .file-upload-label i {
+        color: #6A994E;
+        font-size: 1.5rem;
+    }
+
+    .reward-item {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .add-reward-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        background: #f8f9fa;
+        border: 2px dashed #6A994E;
+        border-radius: 8px;
+        color: #6A994E;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .add-reward-btn:hover {
+        background: #f0f4e8;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .submit-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: #6A994E;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background: #718355;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    @@media (max-width: 768px) {
+        .create-project-container {
+            padding: 1rem;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+        }
+
+        .form-section {
+            padding: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.6rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    function addReward() {
+        const container = document.getElementById('rewards-container');
+        const newReward = document.createElement('div');
+        newReward.className = 'reward-item';
+        newReward.innerHTML = `
+            <div class="form-group">
+                <label>回饋金額</label>
+                <div class="input-with-prefix">
+                    <span class="prefix">NT$</span>
+                    <input type="number" name="rewardAmounts[]" required min="100" placeholder="請輸入回饋金額">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>回饋內容</label>
+                <textarea name="rewardContents[]" required placeholder="請描述回饋內容"></textarea>
+            </div>
+            <button type="button" class="remove-reward-btn" onclick="this.parentElement.remove()">
+                <i class="fas fa-times"></i> 移除
+            </button>
+        `;
+        container.appendChild(newReward);
+    }
+
+    // 日期驗證
+    document.getElementById('startDate').addEventListener('change', function() {
+        const endDate = document.getElementById('endDate');
+        endDate.min = this.value;
+    });
+
+    document.getElementById('endDate').addEventListener('change', function() {
+        const startDate = document.getElementById('startDate');
+        startDate.max = this.value;
+    });
+
+    // 檔案上傳預覽
+    document.getElementById('projectImage').addEventListener('change', function(e) {
+        const label = this.nextElementSibling;
+        const fileName = e.target.files[0]?.name;
+        if (fileName) {
+            label.querySelector('span').textContent = fileName;
+        } else {
+            label.querySelector('span').textContent = '選擇圖片';
+        }
+    });
+</script> 

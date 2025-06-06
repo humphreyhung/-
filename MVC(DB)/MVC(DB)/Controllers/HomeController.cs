@@ -566,6 +566,16 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+
+        public IActionResult StartProject()
+        {
+            return View();
+        }
+
+        public IActionResult CreateProject()
+        {
+            return View();
+        }
     }
 }
 
