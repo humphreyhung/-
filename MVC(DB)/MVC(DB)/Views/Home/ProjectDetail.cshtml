@@ -13,13 +13,13 @@
             <img id="projectImage" src="" alt="專案主圖">
         </div>
 
-        <div class="project-info">
-            <div class="info-section">
+        <div class="project-info" id="sortableProjectInfo">
+            <div class="info-section" id="section-description">
                 <h2>專案簡介</h2>
                 <p id="projectDescriptionDisplay"><span contenteditable="false" class="editable-field" id="projectDescription"></span></p>
             </div>
 
-            <div class="info-section">
+            <div class="info-section" id="section-fundraising">
                 <h2>募資進度</h2>
                 <div class="progress-bar">
                     <div class="progress" id="progressBar"></div>
@@ -30,25 +30,25 @@
                 </div>
             </div>
 
-            <div class="info-section">
+            <div class="info-section" id="section-schedule">
                 <h2>專案時程</h2>
                 <p>開始日期：<span contenteditable="false" class="editable-field" id="startDateDisplay"></span></p>
                 <p>結束日期：<span contenteditable="false" class="editable-field" id="endDateDisplay"></span></p>
             </div>
 
-            <div class="info-section">
+            <div class="info-section" id="section-proposer-info">
                 <h2>提案者資訊</h2>
                 <p>姓名：<span contenteditable="false" class="editable-field" id="proposerName"></span></p>
                 <p>聯絡信箱：<span contenteditable="false" class="editable-field" id="proposerEmail"></span></p>
                 <p>聯絡電話：<span contenteditable="false" class="editable-field" id="proposerPhone"></span></p>
             </div>
 
-            <div class="info-section">
+            <div class="info-section" id="section-project-content">
                 <h2>專案內容</h2>
                 <div class="project-description" id="projectContentDisplay"><span contenteditable="false" class="editable-field" id="projectContent"></span></div>
             </div>
 
-            <div class="info-section">
+            <div class="info-section" id="section-links">
                 <h2>相關連結</h2>
                 <p><a id="relatedWebsiteLink" href="" target="_blank"><span contenteditable="false" class="editable-field" id="relatedWebsite"></span></a></p>
                 <p><a id="videoUrlLink" href="" target="_blank"><span contenteditable="false" class="editable-field" id="videoUrl"></span></a></p>
@@ -228,6 +228,7 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
 <script>
     let projectData = {}; // 全局變數，用於儲存當前專案資料
 
@@ -236,13 +237,21 @@
         if (projectDataJson) {
             projectData = JSON.parse(projectDataJson); // 載入資料到全局變數
             renderProjectDetails(projectData);
-
-            // 清除 sessionStorage 中的資料，因為已經顯示了
-            // sessionStorage.removeItem('newProjectData'); // 移除此行，讓資料保留
+            loadSectionOrder(); // 載入區塊順序
         } else {
             console.error('未找到專案資料');
-            // window.location.href = '/Home/CreateProject'; 
         }
+
+        // 初始化 SortableJS
+        const sortableList = document.getElementById('sortableProjectInfo');
+        Sortable.create(sortableList, {
+            animation: 150,
+            ghostClass: 'blue-background-class', // 拖曳時的視覺效果
+            onEnd: function (evt) {
+                // 拖曳結束後儲存新的順序
+                saveSectionOrder();
+            },
+        });
     });
 
     function renderProjectDetails(data) {
@@ -311,12 +320,42 @@
         projectData.relatedWebsite = document.getElementById('relatedWebsite').textContent;
         projectData.videoUrl = document.getElementById('videoUrl').textContent;
 
+        // 儲存區塊順序
+        saveSectionOrder();
+
         // 更新 sessionStorage
         sessionStorage.setItem('newProjectData', JSON.stringify(projectData));
 
-        // 重新渲染顯示（以防有格式化需求）
         renderProjectDetails(projectData);
         alert('更改已儲存！');
+    }
+
+    function saveSectionOrder() {
+        const sortableList = document.getElementById('sortableProjectInfo');
+        const sectionOrder = Array.from(sortableList.children).map(item => item.id);
+        projectData.sectionOrder = sectionOrder;
+        sessionStorage.setItem('newProjectData', JSON.stringify(projectData));
+    }
+
+    function loadSectionOrder() {
+        if (projectData.sectionOrder && projectData.sectionOrder.length > 0) {
+            const sortableList = document.getElementById('sortableProjectInfo');
+            const existingSections = Array.from(sortableList.children);
+            const orderedSections = [];
+
+            projectData.sectionOrder.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    orderedSections.push(section);
+                }
+            });
+
+            // 清空現有子元素並按新順序添加
+            sortableList.innerHTML = '';
+            orderedSections.forEach(section => {
+                sortableList.appendChild(section);
+            });
+        }
     }
 
     function shareProject() {
