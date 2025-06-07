@@ -8,18 +8,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using MVC_DB_.Data;
+using System.Text.Json;
 
 namespace MVC_DB_.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly DBmanager _dbManager; // 修正：新增 _dbManager 欄位
+        private readonly DBmanager _dbManager;
+        private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, DBmanager dbManager) // 修正：加入 dbManager 參數
+        public HomeController(ILogger<HomeController> logger, DBmanager dbManager, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
-            _dbManager = dbManager; // 修正：初始化 _dbManager
+            _dbManager = dbManager;
+            _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -27,7 +36,7 @@ namespace MVC_DB_.Controllers
             try
             {
                 _logger.LogInformation("Fetching accounts for Index page");
-                var accounts = _dbManager.getAccounts(); // 修正：確保 _dbManager 已正確初始化
+                var accounts = _dbManager.getAccounts();
                 _logger.LogInformation($"Successfully retrieved {accounts.Count} accounts");
                 return View(accounts);
             }
@@ -66,7 +75,6 @@ namespace MVC_DB_.Controllers
                 }
 
                 _logger.LogInformation($"Attempting to add new account for user: {user.userName}");
-                //_dbManager.newAccount(user);
                 _logger.LogInformation($"Successfully added new account for user: {user.userName}");
                 return RedirectToAction("Index");
             }
@@ -159,9 +167,73 @@ namespace MVC_DB_.Controllers
             return View(viewModel);
         }
 
-        public IActionResult ProjectDetails(int id)
+        [HttpPost]
+        public async Task<IActionResult> CreateProject(IFormCollection form, List<decimal> rewardAmounts, List<string> rewardContents, IFormFile projectImage)
         {
-            // 這裡可以根據 id 獲取專案詳情
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            string imageUrl = "";
+            if (projectImage != null && projectImage.Length > 0)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + projectImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await projectImage.CopyToAsync(fileStream);
+                }
+                imageUrl = "/images/" + uniqueFileName;
+            }
+
+            var project = new Project
+            {
+                Title = form["projectName"],
+                Description = form["projectDescription"],
+                Category = form["projectCategory"],
+                TargetAmount = decimal.Parse(form["targetAmount"]), 
+                CurrentAmount = 0,
+                StartDate = DateTime.Parse(form["startDate"]), 
+                EndDate = DateTime.Parse(form["endDate"]), 
+                ProposerName = form["proposerName"],
+                ProposerEmail = form["proposerEmail"],
+                ProposerPhone = form["proposerPhone"],
+                ProjectContent = form["projectContent"],
+                RelatedWebsite = form["relatedWebsite"],
+                VideoUrl = form["videoUrl"],
+                ImageUrl = imageUrl,
+                Rewards = new List<Reward>()
+            };
+
+            for (int i = 0; i < rewardAmounts.Count; i++)
+            {
+                project.Rewards.Add(new Reward
+                {
+                    Amount = rewardAmounts[i],
+                    Content = rewardContents[i]
+                });
+            }
+
+            // 將 Project 物件暫存到 TempData
+            // TempData["NewProjectData"] = JsonSerializer.Serialize(project);
+
+            // 重定向到新建立的提案詳情頁面
+            // return RedirectToAction("ProjectDetail", new { id = project.Id });
+
+            // 直接返回 Project 物件的 JSON
+            return Json(project);
+        }
+
+        public IActionResult ProjectDetail()
+        {
+            // ProjectDetail 頁面現在會從 sessionStorage 讀取資料
+            // 我們只返回一個空的視圖，內容由客戶端填充
             return View();
         }
 
@@ -178,7 +250,6 @@ namespace MVC_DB_.Controllers
                 return View(model);
             }
 
-            // TODO: 實作登入邏輯
             return RedirectToAction("Index");
         }
 
@@ -195,13 +266,11 @@ namespace MVC_DB_.Controllers
                 return View(model);
             }
 
-            // TODO: 實作註冊邏輯
             return RedirectToAction("Login");
         }
 
         public IActionResult Sponsor(int id)
         {
-            // 這裡可以根據 id 獲取專案資訊
             var viewModel = new SponsorViewModel
             {
                 ProjectId = id,
@@ -220,7 +289,6 @@ namespace MVC_DB_.Controllers
                 return View(model);
             }
 
-            // 重定向到確認頁面
             return RedirectToAction("SponsorConfirm", new
             {
                 projectId = model.ProjectId,
@@ -242,7 +310,7 @@ namespace MVC_DB_.Controllers
             var viewModel = new SponsorConfirmViewModel
             {
                 ProjectId = projectId,
-                ProjectTitle = "地方的孩子需要吃飯", // 這裡應該從資料庫獲取
+                ProjectTitle = "地方的孩子需要吃飯",
                 Amount = amount,
                 Name = name,
                 Email = email,
@@ -378,7 +446,6 @@ namespace MVC_DB_.Controllers
 
         public IActionResult RewardCart(int id, decimal amount)
         {
-            // 根據 id 和 amount 找到對應的贊助方案
             var sponsorPlan = new SponsorPlanViewModel
             {
                 ProjectId = id,
@@ -539,7 +606,6 @@ namespace MVC_DB_.Controllers
                 return View(model);
             }
 
-            // TODO: 處理贊助訂單
             return RedirectToAction("SponsorConfirm", new { projectId = model.ProjectId });
         }
 

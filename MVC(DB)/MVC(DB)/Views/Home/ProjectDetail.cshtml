@@ -1,0 +1,259 @@
+@{
+    ViewData["Title"] = "提案詳情";
+}
+
+<div class="project-detail-container">
+    <div class="project-header">
+        <h1 id="projectTitle"></h1>
+        <p class="project-category" id="projectCategory"></p>
+    </div>
+
+    <div class="project-content">
+        <div class="project-image">
+            <img id="projectImage" src="" alt="專案主圖">
+        </div>
+
+        <div class="project-info">
+            <div class="info-section">
+                <h2>專案簡介</h2>
+                <p id="projectDescription"></p>
+            </div>
+
+            <div class="info-section">
+                <h2>募資進度</h2>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="progress-info">
+                    <span class="current-amount" id="currentAmount"></span>
+                    <span class="target-amount" id="targetAmount"></span>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>專案時程</h2>
+                <p>開始日期：<span id="startDate"></span></p>
+                <p>結束日期：<span id="endDate"></span></p>
+            </div>
+
+            <div class="info-section">
+                <h2>提案者資訊</h2>
+                <p>姓名：<span id="proposerName"></span></p>
+                <p>聯絡信箱：<span id="proposerEmail"></span></p>
+                <p>聯絡電話：<span id="proposerPhone"></span></p>
+            </div>
+
+            <div class="info-section">
+                <h2>專案內容</h2>
+                <div class="project-description" id="projectContent"></div>
+            </div>
+
+            <div class="info-section">
+                <h2>相關連結</h2>
+                <p><a id="relatedWebsite" href="" target="_blank">相關網頁</a></p>
+                <p><a id="videoUrl" href="" target="_blank">專案影片</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .project-detail-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .project-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .project-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .project-category {
+        font-size: 1.2rem;
+        color: #6A994E;
+        font-weight: 500;
+    }
+
+    .project-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .project-info {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-section {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .info-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .info-section h2 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+
+    .progress {
+        height: 100%;
+        background: #6A994E;
+        transition: width 0.3s ease;
+    }
+
+    .progress-info {
+        display: flex;
+        justify-content: space-between;
+        color: #666;
+    }
+
+    .current-amount {
+        color: #6A994E;
+        font-weight: 600;
+    }
+
+    .project-description {
+        line-height: 1.6;
+        color: #666;
+    }
+
+    .project-description p {
+        margin-bottom: 1rem;
+    }
+
+    .info-section a {
+        color: #6A994E;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .info-section a:hover {
+        color: #718355;
+        text-decoration: underline;
+    }
+
+    @@media (max-width: 768px) {
+        .project-detail-container {
+            padding: 1rem;
+        }
+
+        .project-content {
+            grid-template-columns: 1fr;
+        }
+
+        .project-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectDataJson = sessionStorage.getItem('newProjectData');
+        if (projectDataJson) {
+            const projectData = JSON.parse(projectDataJson);
+
+            document.getElementById('projectTitle').textContent = projectData.title;
+            document.getElementById('projectCategory').textContent = projectData.category;
+            document.getElementById('projectImage').src = projectData.imageUrl;
+            document.getElementById('projectDescription').textContent = projectData.description;
+            
+            document.getElementById('currentAmount').textContent = 'NT$ ' + projectData.currentAmount.toLocaleString();
+            document.getElementById('targetAmount').textContent = '目標 NT$ ' + projectData.targetAmount.toLocaleString();
+            const progress = (projectData.currentAmount / projectData.targetAmount) * 100;
+            document.getElementById('progressBar').style.width = progress.toFixed(0) + '%';
+
+            document.getElementById('startDate').textContent = new Date(projectData.startDate).toLocaleDateString();
+            document.getElementById('endDate').textContent = new Date(projectData.endDate).toLocaleDateString();
+            
+            document.getElementById('proposerName').textContent = projectData.proposerName;
+            document.getElementById('proposerEmail').textContent = projectData.proposerEmail;
+            document.getElementById('proposerPhone').textContent = projectData.proposerPhone;
+            document.getElementById('projectContent').textContent = projectData.projectContent;
+
+            const relatedWebsiteLink = document.getElementById('relatedWebsite');
+            relatedWebsiteLink.href = projectData.relatedWebsite;
+            relatedWebsiteLink.textContent = '相關網頁'; // 可以根據需求顯示不同的文字
+
+            const videoUrlLink = document.getElementById('videoUrl');
+            videoUrlLink.href = projectData.videoUrl;
+            videoUrlLink.textContent = '專案影片'; // 可以根據需求顯示不同的文字
+        } else {
+            // 如果 sessionStorage 中沒有資料，可以重定向到其他頁面或顯示錯誤訊息
+            console.error('未找到專案資料');
+            // window.location.href = '/Home/CreateProject'; // 例如，重定向回創建提案頁面
+        }
+    });
+
+    function shareProject() {
+        const projectDataJson = sessionStorage.getItem('newProjectData');
+        if (!projectDataJson) {
+            alert('無法分享：未找到專案資料');
+            return;
+        }
+        const projectData = JSON.parse(projectDataJson);
+
+        if (navigator.share) {
+            navigator.share({
+                title: projectData.title,
+                text: projectData.description,
+                url: window.location.href
+            })
+            .catch(error => console.log('Error sharing:', error));
+        } else {
+            // 複製連結到剪貼簿
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('連結已複製到剪貼簿！');
+        }
+    }
+
+    function selectReward(rewardId) {
+        const projectDataJson = sessionStorage.getItem('newProjectData');
+        if (!projectDataJson) {
+            alert('無法選擇回饋：未找到專案資料');
+            return;
+        }
+        const projectData = JSON.parse(projectDataJson);
+        // 這裡需要根據您的贊助流程，將 projectData.id 和 rewardId 傳遞到贊助頁面
+        // 由於目前專案ID不是從資料庫來的，這裡的 URL Action 可能需要調整或提供模擬ID
+        window.location.href = '/Home/Sponsor?id=' + (projectData.id || 0) + '&rewardId=' + rewardId; // 如果 id 不存在，使用 0 或其他預設值
+    }
+</script> 

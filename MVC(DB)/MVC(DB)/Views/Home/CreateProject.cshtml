@@ -666,9 +666,43 @@
 
     // 表單提交前檢查
     document.querySelector('.project-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // 阻止表單預設提交行為
+        
         if (!document.getElementById('termsAgreement').checked) {
-            e.preventDefault();
             alert('請先同意合作條款');
+            return;
         }
+
+        // 收集表單資料
+        const formData = new FormData(this);
+        
+        // 使用 fetch API 提交表單
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // 解析 JSON 回應
+            } else {
+                throw new Error('提交失敗');
+            }
+        })
+        .then(projectData => {
+            // 將專案資料儲存到 sessionStorage
+            sessionStorage.setItem('newProjectData', JSON.stringify(projectData));
+            
+            // 在新分頁中開啟提案詳情頁面
+            window.open('/Home/ProjectDetail', '_blank');
+
+            // 清空表單
+            this.reset();
+            // 重置提交按鈕狀態
+            document.getElementById('submitButton').disabled = true;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('提交失敗，請稍後再試');
+        });
     });
 </script> 

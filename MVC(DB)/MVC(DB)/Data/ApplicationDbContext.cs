@@ -13,6 +13,8 @@ namespace MVC_DB_.Data
 
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<account> Accounts { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Reward> Rewards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
