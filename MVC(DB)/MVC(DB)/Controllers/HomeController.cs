@@ -591,6 +591,11 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+
+        public IActionResult SponsorGuarantee()
+        {
+            return View();
+        }
     }
 }
 

@@ -1,0 +1,274 @@
+@{
+    ViewBag.Title = "贊助保障說明";
+}
+@section Styles {
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+</head>
+
+<style>
+    body {
+        font-family: 'Noto Sans TC', sans-serif;
+        color: black;
+        line-height: 1.8;
+    }
+
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: black;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(to right, #6A994E, #B5C99A);
+        border-radius: 2px;
+    }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2.5rem;
+            border: none;
+            overflow: visible;
+            transition: transform 0.3s ease;
+            height: auto;
+            min-height: fit-content;
+        }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #6A994E, #B5C99A);
+        padding: 1.8rem;
+        border-bottom: none;
+    }
+
+    .card-header h2 {
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .card-body {
+        padding: 2rem;
+            color: black
+    }
+
+    .list-group {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .list-group-item {
+        padding: 1rem 1.2rem;
+        border: 1px solid #e9ecef;
+        background: #ffffff;
+        margin-bottom: 0.8rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        color: black;
+        transition: all 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        background: #f8f9fa;
+        transform: translateX(5px);
+    }
+
+    .bonus-points {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        border-left: 4px solid #6A994E;
+    }
+
+    .review-section {
+        margin-bottom: 2.5rem;
+            color: black
+    }
+
+    .review-section h3 {
+        color: black;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+</style>
+}
+<div class="page-container">
+    <h1 class="section-title">贊助保障說明</h1>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-bullseye"></i> 目的</h2>
+        </div>
+        <div class="card-body">
+            <p>本規範旨在確保所有贊助活動的透明性、公平性及合法性，並保障贊助商、受贊助方及相關利益方的權益。透過明確的規範和流程，我們希望建立信任，促進長期合作。</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-list"></i> 贊助範圍</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>贊助類型</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">現金贊助：直接資金支持，用於活動的各項開支。</li>
+                    <li class="list-group-item">物資贊助：提供產品或服務作為贊助，如場地、設備、餐飲等。</li>
+                    <li class="list-group-item">服務贊助：提供專業服務支持，如設計、宣傳、媒體報導等。</li>
+                </ul>
+            </div>
+            <div class="review-section">
+                <h3>受贊助對象</h3>
+                <p>所有受贊助項目必須符合社會責任，促進公益、教育、文化或環保等正面影響。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-shield"></i> 贊助商權益</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>品牌曝光</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">贊助商將在活動的宣傳材料（如海報、傳單、網站等）中獲得顯著展示。</li>
+                    <li class="list-group-item">在活動現場設置贊助商的標誌和展位，提供與參加者互動的機會。</li>
+                </ul>
+            </div>
+            <div class="review-section">
+                <h3>報告與回饋</h3>
+                <p>贊助商有權要求活動組織方提供詳細的活動報告，內容包括：</p>
+                <ul class="list-group">
+                    <li class="list-group-item">活動的參加人數</li>
+                    <li class="list-group-item">媒體曝光情況</li>
+                    <li class="list-group-item">贊助資金的具體使用情況</li>
+                </ul>
+                <p>提供贊助商的回饋渠道，收集其對活動的意見和建議。</p>
+            </div>
+            <div class="review-section">
+                <h3>法律保障</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">所有贊助協議均需簽署正式合同，明確雙方的權利和義務。</li>
+                    <li class="list-group-item">保障贊助商的知識產權，防止未經授權的使用。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-check-circle"></i> 受贊助方責任</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>透明度</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">受贊助方需定期向贊助商報告資金使用情況，確保資金的合理使用，並提供相關憑證。</li>
+                    <li class="list-group-item">所有財務報告應在活動結束後的30天內提交給贊助商。</li>
+                </ul>
+            </div>
+            <div class="review-section">
+                <h3>遵守承諾</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">受贊助方需按照協議內容履行對贊助商的承諾，包括品牌曝光、活動報導及其他約定事項。</li>
+                    <li class="list-group-item">若因受贊助方的原因未能履行承諾，需承擔相應的賠償責任。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-eye"></i> 監督機制</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>第三方審核</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">可選擇第三方機構對贊助資金的使用進行審核，確保資金使用的透明和合規。</li>
+                    <li class="list-group-item">第三方機構需具備相關的專業資格和經驗。</li>
+                </ul>
+            </div>
+            <div class="review-section">
+                <h3>意見反饋</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">設置意見反饋渠道，接受贊助商及其他利益相關者的建議與投訴。</li>
+                    <li class="list-group-item">定期舉辦會議，回顧贊助活動的效果，並進行改進。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-exclamation-triangle"></i> 違約責任</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>違約處罰</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">如任何一方未能遵守本規範，將承擔相應的法律責任，並賠償因此產生的損失。</li>
+                    <li class="list-group-item">違約方需承擔因違約造成的直接損失及間接損失。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2><i class="fa fa-file-text"></i> 附則</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>適用法律</h3>
+                <p>本規範受當地法律管轄，任何爭議應通過友好協商解決；如協商不成，則可向有管轄權的法院提起訴訟。</p>
+            </div>
+            <div class="review-section">
+                <h3>修訂條款</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">本規範自發布之日起生效，並將根據實際情況進行定期檢討與修訂。</li>
+                    <li class="list-group-item">任何修訂需經雙方書面確認。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> 
