@@ -1,0 +1,660 @@
+@{
+    ViewBag.Title = "提案服務說明";
+}
+@section Styles {
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+</head>
+
+<style>
+    body {
+        font-family: 'Noto Sans TC', sans-serif;
+        color: black;
+        line-height: 1.8;
+        
+    }
+
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: black;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(to right, #6A994E, #B5C99A);
+        border-radius: 2px;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        margin-bottom: 2.5rem;
+        border: none;
+        overflow: visible;
+        transition: transform 0.3s ease;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #6A994E, #B5C99A);
+        padding: 1.8rem;
+        border-bottom: none;
+    }
+
+    .card-header h2 {
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        text-align: center;
+        display: block;
+    }
+
+    .card-body {
+        padding: 2rem;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .review-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+        overflow: visible;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .review-table th {
+        background: #f8f9fa;
+        color: black;
+        padding: 1.2rem;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #e9ecef;
+        width: 25%;
+        font-size: 1.1rem;
+        vertical-align: top;
+    }
+
+    .review-table td {
+        padding: 1.2rem;
+        border: 1px solid #e9ecef;
+        background: #ffffff;
+        color: black;
+        font-size: 1rem;
+        line-height: 1.6;
+        vertical-align: top;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .review-table tr {
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .list-group {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .list-group-item {
+        padding: 1rem 1.2rem;
+        border: 1px solid #e9ecef;
+        background: #ffffff;
+        margin-bottom: 0.8rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        color: black;
+        transition: all 0.3s ease;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .list-group-item:hover {
+        background: #f8f9fa;
+        transform: translateX(5px);
+    }
+
+    .bonus-points {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        border-left: 4px solid #6A994E;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .review-section {
+        margin-bottom: 2.5rem;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .review-section h3 {
+        color: black;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+        transform: translateY(-3px);
+    }
+
+    .contact-item i {
+        font-size: 1.8rem;
+        color: #6A994E;
+        margin-right: 1.2rem;
+    }
+
+    .contact-item h5 {
+        color: black;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-item p {
+        color: black;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        color: black;
+        line-height: 1.8;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .service-icon.fa-users,
+    .service-icon.fa-cogs,
+    .service-icon.fa-check-circle,
+    .service-icon.fa-headset {
+        color: #6A994E !important;
+    }
+
+    @@media (max-width: 768px) {
+        .page-container {
+            padding: 1rem;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            margin-bottom: 1.5rem;
+            height: auto;
+            min-height: fit-content;
+        }
+
+        .card-header {
+            padding: 1.2rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            height: auto;
+            min-height: fit-content;
+        }
+
+        .review-section {
+            margin-bottom: 1.5rem;
+            height: auto;
+            min-height: fit-content;
+        }
+
+        .review-table {
+            display: block;
+            width: 100%;
+        }
+
+        .review-table th,
+        .review-table td {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            height: auto;
+        }
+
+        .review-table th {
+            background: #f8f9fa;
+            border-bottom: none;
+        }
+
+        .review-table td {
+            border-top: none;
+        }
+
+        .contact-info {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-item {
+            padding: 1.2rem;
+        }
+
+        .list-group-item {
+            height: auto;
+            min-height: fit-content;
+        }
+    }
+</style>
+}
+<div class="page-container">
+    <h1 class="section-title">提案服務說明</h1>
+    
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-lightbulb service-icon"></i>
+            <h2 class="title is-4">什麼是提案服務？</h2>
+        </div>
+        <div class="card-body">
+            <p class="lead text-center">
+                提案服務是我們為客戶提供的專業諮詢服務，幫助您規劃和實現專案目標。我們的專業團隊會根據您的需求，提供量身定制的解決方案。
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-list service-icon"></i>
+            <h2 class="title is-4">提案流程</h2>
+        </div>
+        <div class="card-body">
+            <div class="review-section">
+                <h3>STEP 1 | 提案諮詢</h3>
+                <p>於「提案表單」填寫提案資料，並提交相關證明文件。</p>
+            </div>
+
+            <div class="review-section">
+                <h3>STEP 2 | 專案審核</h3>
+                <p>審查以書面為主，過程最長為「5個工作天」，必要時亦將安排電話聯繫、視訊或實體會面。</p>
+            </div>
+
+            <div class="review-section">
+                <h3>STEP 3 | 初審結果</h3>
+                <div class="mb-4">
+                    <h4>初審通過</h4>
+                    <p>計劃內容已通過官方初審，取得後台權限以填寫詳細提案資料與專案資料表單。</p>
+                </div>
+                <div class="mb-4">
+                    <h4>專案諮詢</h4>
+                    <p>為維持對專案品質把關，如計畫內容仍未符合直接上架標準，我們將與提案團隊進行諮詢討論，協助完善專案資料。</p>
+                </div>
+                <div>
+                    <h4>婉拒上架</h4>
+                    <p>提案內容未符合上架標準，或內容尚不足以判斷是否能夠上架，建議於產品狀態或計畫準備更為充分後，再開始進行集資。</p>
+                </div>
+            </div>
+
+            <div class="review-section">
+                <h3>STEP 4 | 提交完整提案資料</h3>
+                <p>於後台填寫完整的專案內容與填寫專案資料表單，包含專案企劃書與身份證明等資料。</p>
+            </div>
+
+            <div class="review-section">
+                <h3>STEP 5 | 審核終審資料</h3>
+                <p>審查以書面為主，過程最長為「5個工作天」，必要時亦將安排電話聯繫、視訊或實體會面。</p>
+            </div>
+
+            <div class="review-section">
+                <h3>STEP 6 | 終審結果</h3>
+                <div class="mb-4">
+                    <h4>會議邀約</h4>
+                    <p>根據提交專案內容，確認最終募資規劃與簽訂合約。</p>
+                </div>
+                <div class="mb-4">
+                    <h4>專案諮詢</h4>
+                    <p>為維持對專案品質把關，如計畫內容仍未符合直接上架標準，我們將與提案團隊進行諮詢討論，協助完善專案資料。</p>
+                </div>
+                <div>
+                    <h4>婉拒上架</h4>
+                    <p>提案內容未符合上架標準，或內容尚不足以判斷是否能夠上架，建議於產品狀態或計畫準備更為充分後，再開始進行集資。</p>
+                </div>
+            </div>
+
+            <div class="review-section">
+                <h3>STEP 7 | 專案上線，開始集資</h3>
+                <p>您的專案已成功上線，現在可以開始進行募資。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-clipboard-check service-icon"></i>
+            <h2 class="title is-4">提案大補貼</h2>
+        </div>
+        <div class="card-body">
+            <p class="lead text-center mb-4">
+                越詳細的提案資料將越容易通過專案審核，提案前歡迎你先閱讀平台各項審核機制。
+            </p>
+
+            <div class="review-section">
+                <h3>審查項目一：身份審核</h3>
+                <table class="review-table">
+                    <tr>
+                        <th>身份類型</th>
+                        <td>須提供：真實姓名、身分證字號或護照號碼、聯絡電話、聯絡地址、E-mail。</td>
+                    </tr>
+                    <tr>
+                        <th>公司／組織</th>
+                        <td>須提供：公司／組織負責人姓名、負責人身分證字號或護照號碼、公司／組織全名、統一編號、聯絡電話、聯絡地址、E-mail。</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="review-section">
+                <h3>審查項目二：專案類型</h3>
+                <table class="review-table">
+                    <tr>
+                        <th>原創型專案 - 可運作原型階段</th>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item">可運作原型實際操作影像。＊須為實錄影像，不得採用模擬繪製（photoreallistic rendering）。</li>
+                                <li class="list-group-item">須提供依法應取得之身分或認證證明供平台留存。</li>
+                            </ul>
+                            <div class="bonus-points">
+                                <h4>加分條件：</h4>
+                                <p class="mb-0">亦可寄送一組可運作原型至 WaBay 挖貝指定地址，提供平台審核。</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>原創型專案 - 概念階段</th>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item">3-5 張概念設計圖／簡報、完整經費運用計畫、生產計畫、製造商資料、相關專利文件。</li>
+                                <li class="list-group-item">須提供依法應取得之身分或認證證明供平台留存。</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>倡議型專案</th>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item">公司／組織合法立案文件（個人則免）、完整經費運用計畫。</li>
+                                <li class="list-group-item">須提供依法應取得之身分或認證證明供平台留存。</li>
+                            </ul>
+                            <div class="bonus-points">
+                                <h4>加分條件：</h4>
+                                <p class="mb-0">過去 1-3 年之服務成果、既有服務項目資料。</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>預購型專案</th>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item">認證證書／編號（包含但不限於 NCC、BSMI、SGS），或明定上線日期前預將取得的證書或預計取得時間。</li>
+                                <li class="list-group-item">須提供依法應取得之身分或認證證明供平台留存。</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="review-section">
+                <h3>審查項目三：意外之配套</h3>
+                <table class="review-table">
+                    <tr>
+                        <th>開發失敗之配套</th>
+                        <td>須擬具遇產品開發未成功之處理方式。</td>
+                    </tr>
+                    <tr>
+                        <th>給付遲延或產品瑕疵之配套</th>
+                        <td>須擬具遇給付遲延或產品瑕疵之處理方式。</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="review-section">
+                <h3>審核加分條件</h3>
+                <div class="bonus-points">
+                    <p class="mb-0">NCC、BSMI、SGS、食藥廠商許可證、法律顧問證書、專利證書／專利字號、產險合約書／編號、退換貨計畫、製造商資料。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-exclamation-triangle service-icon"></i>
+            <h2 class="title is-4">專案中止說明</h2>
+        </div>
+        <div class="card-body">
+            <p class="lead text-center mb-4">
+                哪些情況 Give4Life將有權中止專案進行？
+            </p>
+            <p class="mb-4">
+                專案於 Give4Life集資期間，我們將每月抽查各專案執行狀況及贊助者訊息資料，並會開放用戶舉報，針對不良專案進行處置。依據專案情形，將可能採取「警示／凍結／中止」三階段：
+            </p>
+
+            <div class="review-section">
+                <h3>警示階段</h3>
+                <div class="mb-4">
+                    <p>於專案頁面展示之內容或約定交付項目涉嫌違反法律規定（包含但不限於：偽造文書、侵犯專利、侵犯著作權、仿冒、詐騙等）；且平台或具名用戶能提出任何形式的證據佐證（包含但不限於：影片、照片、檢驗報告）。經提醒後，仍未於期限內回覆或調整專案內容，如情節符合以下任一條件，即將被列為「警示」階段。</p>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">平台於第一次告知提案者後 3 天內提案者未以任何形式回覆。</li>
+                        <li class="list-group-item">平台收到提案者回覆後，14 天內提案者未以任何形式調整專案。</li>
+                    </ul>
+                </div>
+                <div class="bonus-points">
+                    <h4>經「警示」查驗後，專案處置內容如下：</h4>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">中止款項交付，直到情況釐清。</li>
+                        <li class="list-group-item">於專案頁面顯示「警示」。</li>
+                        <li class="list-group-item">平台發布警示聲明說明專案現況與後續作法。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="review-section">
+                <h3>凍結階段</h3>
+                <div class="mb-4">
+                    <p>當專案（1）已進入警示階段、或（2）發生個人／公司／組織層級之公開爭議或約定交付項目發生公開爭議，且爭議內容與專案頁面展示相互抵觸，且經由平台、贊助者或任何第三人提出任何形式的證據佐證（包含但不限於：影片、照片、檢驗報告），但仍未積極處理爭議，情節符合以下任一條件，即將被列為「凍結」階段。</p>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">專案當下總計之 5% 贊助者提出舉報。</li>
+                        <li class="list-group-item">爭議內容已被公開於社群平台、媒體、網路論壇等任何公開管道，且 3 天內提案者未以任何形式公開說明並調整專案。</li>
+                        <li class="list-group-item">平台發布警示聲明後 14 天內提案者未以任何形式公開說明並調整專案。</li>
+                        <li class="list-group-item">平台與提案者協商未果。</li>
+                    </ul>
+                </div>
+                <div class="bonus-points">
+                    <h4>經「凍結」查驗後，專案處置內容如下：</h4>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">中止款項交付，直到情況釐清。</li>
+                        <li class="list-group-item">於專案頁面顯示「凍結」。</li>
+                        <li class="list-group-item">中止贊助者贊助專案，但維持開放贊助者退款。</li>
+                        <li class="list-group-item">平台發布凍結聲明說明專案現況與後續作法。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="review-section">
+                <h3>中止階段</h3>
+                <div class="mb-4">
+                    <p>當專案（1）已進入凍結階段、或（2）已立案進入司法程序；或是經平台查證，發現有惡意灌單、非常理灌單之專案。並符合以下任一條件，即將立即「中止」專案。</p>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">平台於第一次告知提案者後 3 天內，提案者未以任何形式回覆。</li>
+                        <li class="list-group-item">平台發布凍結聲明後 14 天內，提案者未以任何形式公開說明並調整專案。</li>
+                        <li class="list-group-item">平台與提案者協商未果。</li>
+                    </ul>
+                </div>
+                <div class="bonus-points">
+                    <h4>經「中止」查驗後，專案處置內容如下：</h4>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">中止款項交付，全面退還給贊助者。</li>
+                        <li class="list-group-item">於贊助頁面顯示「中止」。</li>
+                        <li class="list-group-item">中止贊助者贊助專案。</li>
+                        <li class="list-group-item">平台發布中止聲明說明專案現況與應對方式。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-star service-icon"></i>
+            <h2 class="title is-4">服務優勢</h2>
+        </div>
+        <div class="card-body">
+            <div class="columns is-multiline">
+                <div class="column is-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fa fa-users mb-3" style="font-size: 2rem; color: #007bff;"></i>
+                            <h5 class="title is-5">專業團隊</h5>
+                            <p class="text-muted">擁有豐富經驗的專業人員</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fa fa-cogs mb-3" style="font-size: 2rem; color: #007bff;"></i>
+                            <h5 class="title is-5">客製化方案</h5>
+                            <p class="text-muted">根據需求提供量身定制的解決方案</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fa fa-check-circle mb-3" style="font-size: 2rem; color: #007bff;"></i>
+                            <h5 class="title is-5">品質保證</h5>
+                            <p class="text-muted">確保專案品質符合標準</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fa fa-headset mb-3" style="font-size: 2rem; color: #007bff;"></i>
+                            <h5 class="title is-5">售後服務</h5>
+                            <p class="text-muted">提供完善的售後支援</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-phone service-icon"></i>
+            <h2 class="title is-4">聯絡方式</h2>
+        </div>
+        <div class="card-body">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa fa-phone"></i>
+                    <div>
+                        <h5 class="title is-5">電話</h5>
+                        <p class="text-muted">(02) 1234-5678</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa fa-envelope"></i>
+                    <div>
+                        <h5 class="title is-5">電子郵件</h5>
+                        <p class="text-muted">service@example.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa fa-clock-o"></i>
+                    <div>
+                        <h5 class="title is-5">服務時間</h5>
+                        <p class="text-muted">週一至週五 9:00-18:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // 添加滾動動畫效果
+            $('.card').each(function(index) {
+                $(this).delay(index * 200).animate({
+                    opacity: 1,
+                    top: 0
+                }, 500);
+            });
+        });
+    </script>
+} 

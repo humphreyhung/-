@@ -576,6 +576,21 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+
+        public IActionResult project2()
+        {
+            return View();
+        }
+
+        public IActionResult ProposalService()
+        {
+            return View();
+        }
+
+        public IActionResult ProposalService2()
+        {
+            return View();
+        }
     }
 }
 

@@ -347,7 +347,7 @@
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
-
+            answer.style.display = 'none';
             question.addEventListener('click', () => {
                 // 關閉其他已展開的項目
                 faqItems.forEach(otherItem => {
