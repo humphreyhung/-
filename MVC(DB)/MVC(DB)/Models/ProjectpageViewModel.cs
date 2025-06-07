@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace MVC_DB_.Models
 {
-    public class ProjectViewModel
+    public class ProjectpageViewModel
     {
-        public List<Project> Projects { get; set; } = new List<Project>();
+        public List<Projectpage> Projects { get; set; } = new List<Projectpage>();
     }
 
-    public class Project
+    public class Projectpage
     {
         public int Id { get; set; }
         public string Title { get; set; }

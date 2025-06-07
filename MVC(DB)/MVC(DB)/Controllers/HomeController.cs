@@ -97,13 +97,13 @@ namespace MVC_DB_.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Project()
+        public IActionResult Projectpage()
         {
-            var viewModel = new ProjectViewModel
+            var viewModel = new ProjectpageViewModel
             {
-                Projects = new List<Project>
+                Projects = new List<Projectpage>
                 {
-                    new Project
+                    new Projectpage
                     {
                         Id = 1,
                         Title = "地方的孩子需要吃飯",
@@ -113,7 +113,7 @@ namespace MVC_DB_.Controllers
                         TargetAmount = 500000,
                         RemainingDays = 15
                     },
-                    new Project
+                    new Projectpage
                     {
                         Id = 2,
                         Title = "地方的孩子需要教材",
@@ -123,7 +123,7 @@ namespace MVC_DB_.Controllers
                         TargetAmount = 800000,
                         RemainingDays = 20
                     },
-                    new Project
+                    new Projectpage
                     {
                         Id = 3,
                         Title = "地方的孩子需要家",
@@ -140,11 +140,11 @@ namespace MVC_DB_.Controllers
 
         public IActionResult Project2()
         {
-            var viewModel = new ProjectViewModel
+            var viewModel = new ProjectpageViewModel
             {
-                Projects = new List<Project>
+                Projects = new List<Projectpage>
                 {
-                    new Project
+                    new Projectpage
                     {
                         Id = 2,
                         Title = "讓愛酥進心裡，用餅乾陪他們走過抗癌旅程",
@@ -577,7 +577,7 @@ namespace MVC_DB_.Controllers
             return View();
         }
 
-        public IActionResult project2()
+        public IActionResult project2page()
         {
             return View();
         }
