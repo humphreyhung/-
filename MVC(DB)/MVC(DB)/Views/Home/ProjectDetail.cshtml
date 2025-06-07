@@ -4,8 +4,8 @@
 
 <div class="project-detail-container">
     <div class="project-header">
-        <h1 id="projectTitle"></h1>
-        <p class="project-category" id="projectCategory"></p>
+        <h1 id="projectTitleDisplay"><span contenteditable="false" class="editable-field" id="projectTitle"></span></h1>
+        <p class="project-category" id="projectCategoryDisplay"><span contenteditable="false" class="editable-field" id="projectCategory"></span></p>
     </div>
 
     <div class="project-content">
@@ -16,7 +16,7 @@
         <div class="project-info">
             <div class="info-section">
                 <h2>專案簡介</h2>
-                <p id="projectDescription"></p>
+                <p id="projectDescriptionDisplay"><span contenteditable="false" class="editable-field" id="projectDescription"></span></p>
             </div>
 
             <div class="info-section">
@@ -25,35 +25,39 @@
                     <div class="progress" id="progressBar"></div>
                 </div>
                 <div class="progress-info">
-                    <span class="current-amount" id="currentAmount"></span>
-                    <span class="target-amount" id="targetAmount"></span>
+                    <span class="current-amount" id="currentAmountDisplay">NT$ <span contenteditable="false" class="editable-field" id="currentAmount"></span></span>
+                    <span class="target-amount" id="targetAmountDisplay">目標 NT$ <span contenteditable="false" class="editable-field" id="targetAmount"></span></span>
                 </div>
             </div>
 
             <div class="info-section">
                 <h2>專案時程</h2>
-                <p>開始日期：<span id="startDate"></span></p>
-                <p>結束日期：<span id="endDate"></span></p>
+                <p>開始日期：<span contenteditable="false" class="editable-field" id="startDateDisplay"></span></p>
+                <p>結束日期：<span contenteditable="false" class="editable-field" id="endDateDisplay"></span></p>
             </div>
 
             <div class="info-section">
                 <h2>提案者資訊</h2>
-                <p>姓名：<span id="proposerName"></span></p>
-                <p>聯絡信箱：<span id="proposerEmail"></span></p>
-                <p>聯絡電話：<span id="proposerPhone"></span></p>
+                <p>姓名：<span contenteditable="false" class="editable-field" id="proposerName"></span></p>
+                <p>聯絡信箱：<span contenteditable="false" class="editable-field" id="proposerEmail"></span></p>
+                <p>聯絡電話：<span contenteditable="false" class="editable-field" id="proposerPhone"></span></p>
             </div>
 
             <div class="info-section">
                 <h2>專案內容</h2>
-                <div class="project-description" id="projectContent"></div>
+                <div class="project-description" id="projectContentDisplay"><span contenteditable="false" class="editable-field" id="projectContent"></span></div>
             </div>
 
             <div class="info-section">
                 <h2>相關連結</h2>
-                <p><a id="relatedWebsite" href="" target="_blank">相關網頁</a></p>
-                <p><a id="videoUrl" href="" target="_blank">專案影片</a></p>
+                <p><a id="relatedWebsiteLink" href="" target="_blank"><span contenteditable="false" class="editable-field" id="relatedWebsite"></span></a></p>
+                <p><a id="videoUrlLink" href="" target="_blank"><span contenteditable="false" class="editable-field" id="videoUrl"></span></a></p>
             </div>
         </div>
+    </div>
+    <div class="edit-actions">
+        <button id="editButton" class="edit-btn">編輯內容</button>
+        <button id="saveButton" class="save-btn" style="display:none;">儲存更改</button>
     </div>
 </div>
 
@@ -178,45 +182,142 @@
             font-size: 2rem;
         }
     }
+
+    .edit-actions {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .edit-btn, .save-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        margin: 0 0.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-btn {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .edit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .save-btn {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .save-btn:hover {
+        background-color: #218838;
+    }
+
+    .editable-field {
+        border: 1px solid transparent;
+        padding: 2px;
+        transition: border-color 0.3s ease;
+    }
+
+    .editable-field[contenteditable="true"] {
+        border-color: #ccc;
+        background-color: #f9f9f9;
+    }
 </style>
 
 <script>
+    let projectData = {}; // 全局變數，用於儲存當前專案資料
+
     document.addEventListener('DOMContentLoaded', function() {
         const projectDataJson = sessionStorage.getItem('newProjectData');
         if (projectDataJson) {
-            const projectData = JSON.parse(projectDataJson);
+            projectData = JSON.parse(projectDataJson); // 載入資料到全局變數
+            renderProjectDetails(projectData);
 
-            document.getElementById('projectTitle').textContent = projectData.title;
-            document.getElementById('projectCategory').textContent = projectData.category;
-            document.getElementById('projectImage').src = projectData.imageUrl;
-            document.getElementById('projectDescription').textContent = projectData.description;
-            
-            document.getElementById('currentAmount').textContent = 'NT$ ' + projectData.currentAmount.toLocaleString();
-            document.getElementById('targetAmount').textContent = '目標 NT$ ' + projectData.targetAmount.toLocaleString();
-            const progress = (projectData.currentAmount / projectData.targetAmount) * 100;
-            document.getElementById('progressBar').style.width = progress.toFixed(0) + '%';
-
-            document.getElementById('startDate').textContent = new Date(projectData.startDate).toLocaleDateString();
-            document.getElementById('endDate').textContent = new Date(projectData.endDate).toLocaleDateString();
-            
-            document.getElementById('proposerName').textContent = projectData.proposerName;
-            document.getElementById('proposerEmail').textContent = projectData.proposerEmail;
-            document.getElementById('proposerPhone').textContent = projectData.proposerPhone;
-            document.getElementById('projectContent').textContent = projectData.projectContent;
-
-            const relatedWebsiteLink = document.getElementById('relatedWebsite');
-            relatedWebsiteLink.href = projectData.relatedWebsite;
-            relatedWebsiteLink.textContent = '相關網頁'; // 可以根據需求顯示不同的文字
-
-            const videoUrlLink = document.getElementById('videoUrl');
-            videoUrlLink.href = projectData.videoUrl;
-            videoUrlLink.textContent = '專案影片'; // 可以根據需求顯示不同的文字
+            // 清除 sessionStorage 中的資料，因為已經顯示了
+            // sessionStorage.removeItem('newProjectData'); // 移除此行，讓資料保留
         } else {
-            // 如果 sessionStorage 中沒有資料，可以重定向到其他頁面或顯示錯誤訊息
             console.error('未找到專案資料');
-            // window.location.href = '/Home/CreateProject'; // 例如，重定向回創建提案頁面
+            // window.location.href = '/Home/CreateProject'; 
         }
     });
+
+    function renderProjectDetails(data) {
+        document.getElementById('projectTitle').textContent = data.title;
+        document.getElementById('projectCategory').textContent = data.category;
+        document.getElementById('projectImage').src = data.imageUrl;
+        document.getElementById('projectDescription').textContent = data.description;
+        
+        document.getElementById('currentAmount').textContent = data.currentAmount.toLocaleString();
+        document.getElementById('targetAmount').textContent = data.targetAmount.toLocaleString();
+        const progress = (data.currentAmount / data.targetAmount) * 100;
+        document.getElementById('progressBar').style.width = progress.toFixed(0) + '%';
+
+        document.getElementById('startDateDisplay').textContent = new Date(data.startDate).toLocaleDateString();
+        document.getElementById('endDateDisplay').textContent = new Date(data.endDate).toLocaleDateString();
+        
+        document.getElementById('proposerName').textContent = data.proposerName;
+        document.getElementById('proposerEmail').textContent = data.proposerEmail;
+        document.getElementById('proposerPhone').textContent = data.proposerPhone;
+        document.getElementById('projectContent').textContent = data.projectContent;
+
+        const relatedWebsiteLink = document.getElementById('relatedWebsiteLink');
+        relatedWebsiteLink.href = data.relatedWebsite;
+        document.getElementById('relatedWebsite').textContent = data.relatedWebsite; // 顯示實際網址
+
+        const videoUrlLink = document.getElementById('videoUrlLink');
+        videoUrlLink.href = data.videoUrl;
+        document.getElementById('videoUrl').textContent = data.videoUrl; // 顯示實際網址
+    }
+
+    // 編輯模式切換
+    document.getElementById('editButton').addEventListener('click', function() {
+        toggleEditMode(true);
+    });
+
+    document.getElementById('saveButton').addEventListener('click', function() {
+        saveChanges();
+        toggleEditMode(false);
+    });
+
+    function toggleEditMode(isEditing) {
+        const editableFields = document.querySelectorAll('.editable-field');
+        editableFields.forEach(field => {
+            field.contentEditable = isEditing;
+            field.style.border = isEditing ? '1px solid #ccc' : '1px solid transparent';
+            field.style.backgroundColor = isEditing ? '#f9f9f9' : 'transparent';
+        });
+
+        document.getElementById('editButton').style.display = isEditing ? 'none' : 'inline-block';
+        document.getElementById('saveButton').style.display = isEditing ? 'inline-block' : 'none';
+    }
+
+    function saveChanges() {
+        // 從可編輯欄位獲取新值
+        projectData.title = document.getElementById('projectTitle').textContent;
+        projectData.category = document.getElementById('projectCategory').textContent;
+        projectData.description = document.getElementById('projectDescription').textContent;
+        projectData.targetAmount = parseFloat(document.getElementById('targetAmount').textContent.replace(/[^0-9.-]+/g,""));
+        projectData.currentAmount = parseFloat(document.getElementById('currentAmount').textContent.replace(/[^0-9.-]+/g,""));
+        projectData.startDate = new Date(document.getElementById('startDateDisplay').textContent);
+        projectData.endDate = new Date(document.getElementById('endDateDisplay').textContent);
+        projectData.proposerName = document.getElementById('proposerName').textContent;
+        projectData.proposerEmail = document.getElementById('proposerEmail').textContent;
+        projectData.proposerPhone = document.getElementById('proposerPhone').textContent;
+        projectData.projectContent = document.getElementById('projectContent').textContent;
+        projectData.relatedWebsite = document.getElementById('relatedWebsite').textContent;
+        projectData.videoUrl = document.getElementById('videoUrl').textContent;
+
+        // 更新 sessionStorage
+        sessionStorage.setItem('newProjectData', JSON.stringify(projectData));
+
+        // 重新渲染顯示（以防有格式化需求）
+        renderProjectDetails(projectData);
+        alert('更改已儲存！');
+    }
 
     function shareProject() {
         const projectDataJson = sessionStorage.getItem('newProjectData');
@@ -234,7 +335,6 @@
             })
             .catch(error => console.log('Error sharing:', error));
         } else {
-            // 複製連結到剪貼簿
             const dummy = document.createElement('input');
             document.body.appendChild(dummy);
             dummy.value = window.location.href;
@@ -252,8 +352,6 @@
             return;
         }
         const projectData = JSON.parse(projectDataJson);
-        // 這裡需要根據您的贊助流程，將 projectData.id 和 rewardId 傳遞到贊助頁面
-        // 由於目前專案ID不是從資料庫來的，這裡的 URL Action 可能需要調整或提供模擬ID
-        window.location.href = '/Home/Sponsor?id=' + (projectData.id || 0) + '&rewardId=' + rewardId; // 如果 id 不存在，使用 0 或其他預設值
+        window.location.href = '/Home/Sponsor?id=' + (projectData.id || 0) + '&rewardId=' + rewardId; 
     }
 </script> 
