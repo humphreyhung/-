@@ -25,7 +25,7 @@ namespace MVC_DB_.Controllers
             return View();
         }
 
-        string connectionString = "Server=tcp:finalprojectmvcdbserver20250520dbserver.database.windows.net,1433;Initial Catalog=finalProjectMVCDBserver20250520;Persist Security Info=False;User ID=humphreyhung;Password=Hum921026~;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=account;User Id=don1;Password=qw669668";
         public IActionResult login(string username, string password, bool rememberMe)
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
@@ -92,8 +92,8 @@ namespace MVC_DB_.Controllers
                 return BadRequest("帳號需介於 8 至 20 字元");
             if (password.Length < 8 || password.Length > 20)
                 return BadRequest("密碼需介於 8 至 20 字元");
-            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                return BadRequest("Email 格式不正確");
+            /*if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                return BadRequest("Email 格式不正確");*/
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email))
                 return BadRequest("欄位不能空白");
 

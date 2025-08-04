@@ -14,7 +14,7 @@ using MVC_DB_.Models; // Assuming you have a Campaign model in your Models folde
 namespace MVC_DB_.Controllers
 //namespace Campaign.Controllers
 {
-    [Authorize] // Require authentication for all actions
+    //[Authorize] // Require authentication for all actions
     public class CampaignController : Controller
     {
         private readonly ICampaignService _service;
@@ -50,9 +50,16 @@ namespace MVC_DB_.Controllers
 
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("role") != "Admin")
+            {
+                _logger.LogWarning("Unauthorized user attempting to access campaign creation form.");
+                return Forbid();
+            }
+
             _logger.LogInformation($"User {User.Identity?.Name} accessing campaign creation form");
             return View(new Campaign { Status = "Draft" });
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -60,20 +67,19 @@ namespace MVC_DB_.Controllers
         {
             try
             {
-                _logger.LogInformation("Starting campaign creation process");
-                var user = await _userManager.GetUserAsync(User);
-                if (user == null)
+                if (HttpContext.Session.GetString("role") != "Admin")
                 {
-                    _logger.LogWarning("User not found when creating campaign");
-                    ModelState.AddModelError("", "找不到使用者資料，請重新登入。");
-                    return View(model);
+                    _logger.LogWarning("Unauthorized user attempting to access campaign creation form.");
+                    return Forbid();
                 }
 
-                _logger.LogInformation($"User found: {user.Id}, {user.UserName}");
+                _logger.LogInformation("Starting campaign creation process");
 
-                // Set the OwnerId before model validation
-                model.OwnerId = user.Id;
-                // Remove OwnerId from ModelState so it won't be validated
+                // 若你不再用 _userManager，可使用 claim 或直接設定 dummy OwnerId
+                var userId = User.FindFirst("sub")?.Value ?? "Unknown"; // 或用 "nameidentifier"
+                var userName = User.Identity?.Name ?? "Unknown";
+
+                model.OwnerId = userId;
                 ModelState.Remove("OwnerId");
                 ModelState.Remove("Owner");
 
@@ -90,22 +96,18 @@ namespace MVC_DB_.Controllers
                     return View(model);
                 }
 
-                _logger.LogInformation($"Model validation passed. Creating campaign with Title: {model.Title}, OwnerId: {model.OwnerId}");
-                _logger.LogDebug($"Campaign details - Title: {model.Title}, Description: {model.Description}, " +
-                              $"TargetAmount: {model.TargetAmount}, Status: {model.Status}");
-
                 model.CreatedAt = DateTime.UtcNow;
-                model.CollectedAmount = 0; // 确保初始募集金额为0
-                model.Owner = user; // Set the Owner navigation property
+                model.CollectedAmount = 0;
+                model.Owner = null; // 或保留 null，看你 DB 設計是否允許
 
-                _logger.LogInformation("Calling CreateCampaignAsync");
                 var createdCampaign = await _service.CreateCampaignAsync(model);
                 _logger.LogInformation($"Campaign created successfully. ID: {createdCampaign.Id}, Title: {createdCampaign.Title}");
+
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error creating campaign: {model.Title}. Exception details: {ex.Message}");
+                _logger.LogError(ex, $"Error creating campaign: {model.Title}. Exception: {ex.Message}");
                 if (ex.InnerException != null)
                 {
                     _logger.LogError($"Inner exception: {ex.InnerException.Message}");
@@ -114,6 +116,8 @@ namespace MVC_DB_.Controllers
                 return View(model);
             }
         }
+
+
 
         public async Task<IActionResult> Details(int id)
         {
