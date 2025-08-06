@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "關於我們";
+}
+
+<div class="privacy-container">
+    <div class="privacy-header">
+        <h1>關於我們</h1>
+        <p class="last-updated">最後更新日期：@DateTime.Now.ToString("yyyy年MM月dd日")</p>
+    </div>
+
+    <div class="privacy-content">
+        <section class="privacy-section">
+            <h2>我們的使命</h2>
+            <p>本平台致力於協助弱勢團體發聲與實現夢想，透過群眾募資的力量，讓每一份善意都能被看見，讓社會每一個角落都能感受到溫暖與希望。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>我們的故事</h2>
+            <p>我們相信，每個人都值得被支持。許多非營利組織、偏鄉教育、身心障礙者、自立青年等團體，長期在資源有限的情況下努力奮鬥。我們希望透過一個友善的平台，連結社會大眾與這些團體，讓改變成真。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>我們的核心價值</h2>
+            <ul>
+                <li>誠信透明：每一筆募資的流向都公開可查，保障贊助者的信任。</li>
+                <li>公益為本：我們只支持對社會有正向影響的專案與團體。</li>
+                <li>社群連結：讓更多人參與其中，打造團結而有愛的社會。</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>我們支持的對象</h2>
+            <ul>
+                <li>偏鄉學童與教育資源不足的學校</li>
+                <li>身心障礙者、自閉症、唐氏症等特殊需求族群</li>
+                <li>長期照顧家庭、低收入戶</li>
+                <li>致力於社會服務的非營利組織</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>一起成為改變的力量</h2>
+            <p>我們邀請您，一同加入這場愛與希望的行動。不論是小額贊助、分享理念，還是發起專案，每一份投入都可能改變一個人的人生。</p>
+            <p>謝謝您與我們同行。</p>
+        </section>
+    </div>
+</div>
+
+@section Styles {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head>
+
+    <style>
+        .privacy-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .privacy-content {
+            flex: 1;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+            .privacy-header h1 {
+                color: #2c3e50;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+        .last-updated {
+            color: #718355;
+            font-size: 0.9rem;
+        }
+
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+
+            .privacy-section h2 {
+                color: #6A994E;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid #f0f0f0;
+            }
+
+            .privacy-section p,
+            .privacy-section ul li {
+                color: #4a4a4a;
+                line-height: 1.6;
+            }
+
+            .privacy-section ul {
+                list-style-type: none;
+                padding-left: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+                .privacy-section ul li {
+                    margin-bottom: 0.5rem;
+                    position: relative;
+                }
+
+                    .privacy-section ul li::before {
+                        content: "•";
+                        color: #6A994E;
+                        font-weight: bold;
+                        position: absolute;
+                        left: -1.5rem;
+                    }
+
+        @@media (max-width: 768px) {
+            .privacy-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+}
+

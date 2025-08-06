@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "聯繫我們";
+}
+
+<div class="privacy-container">
+    <div class="privacy-header">
+        <h1>聯繫我們</h1>
+        <p class="last-updated">最後更新日期：@DateTime.Now.ToString("yyyy年MM月dd日")</p>
+    </div>
+
+    <div class="privacy-content">
+        <section class="privacy-section">
+            <h2>聯絡資訊</h2>
+            <ul>
+                <li>手機：0912-345-678</li>
+                <li>市話：(02) 1234-5678</li>
+                <li>Email：support@example.com</li>
+                <li>傳真：(02) 8765-4321</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>服務時間</h2>
+            <p>週一至週五：09:00 - 18:00</p>
+            <p>例假日與國定假日暫停服務</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>其他方式</h2>
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/" target="_blank">Facebook 粉絲專頁</a>
+                </li>
+                <li>
+                    <a href="https://line.me/" target="_blank">LINE 官方帳號</a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/" target="_blank">Instagram 專頁</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+@section Styles {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head>
+
+    <style>
+        /* 延用你隱私權政策的CSS */
+        .privacy-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .privacy-content {
+            flex: 1;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+            .privacy-header h1 {
+                color: #2c3e50;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+        .last-updated {
+            color: #718355;
+            font-size: 0.9rem;
+        }
+
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+
+            .privacy-section h2 {
+                color: #6A994E;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid #f0f0f0;
+            }
+
+            .privacy-section p,
+            .privacy-section ul li,
+            .privacy-section a {
+                color: #4a4a4a;
+                line-height: 1.6;
+            }
+
+            .privacy-section ul {
+                list-style-type: none;
+                padding-left: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+                .privacy-section ul li {
+                    margin-bottom: 0.5rem;
+                    position: relative;
+                }
+
+                    .privacy-section ul li::before {
+                        content: "•";
+                        color: #6A994E;
+                        font-weight: bold;
+                        position: absolute;
+                        left: -1.5rem;
+                    }
+
+            .privacy-section a {
+                text-decoration: underline;
+            }
+
+        @@media (max-width: 768px) {
+            .privacy-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+}

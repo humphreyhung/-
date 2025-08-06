@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "服務條款";
+}
+
+<div class="privacy-container">
+    <div class="privacy-header">
+        <h1>服務條款</h1>
+        <p class="last-updated">最後更新日期：@DateTime.Now.ToString("yyyy年MM月dd日")</p>
+    </div>
+
+    <div class="privacy-content">
+        <section class="privacy-section">
+            <h2>1. 條款接受</h2>
+            <p>當您使用本平台時，即表示您已閱讀、理解並同意本服務條款的所有內容。如您不同意本條款，請勿使用本服務。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>2. 服務內容</h2>
+            <p>本平台提供線上募資、專案瀏覽、會員註冊等功能，並保留隨時修改、中止或終止服務的權利，恕不另行通知。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>3. 使用者義務</h2>
+            <ul>
+                <li>不得冒用他人身份註冊帳號。</li>
+                <li>不得從事違法、侵權或破壞平台運作的行為。</li>
+                <li>應妥善保管個人帳號與密碼。</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>4. 智慧財產權</h2>
+            <p>平台上所有內容，包括文字、圖片、標誌等，除非另有註明，均為本站或其授權人所有，未經授權不得使用或轉載。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>5. 責任限制</h2>
+            <p>本平台對於因使用服務所造成的任何直接或間接損害不負任何賠償責任，亦不保證服務不中斷或無錯誤。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>6. 條款修改</h2>
+            <p>我們有權隨時更新本條款，修改後將公告於本頁面，並立即生效。建議您定期查閱以掌握最新資訊。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>7. 準據法與管轄</h2>
+            <p>本條款之解釋與適用，以及與本條款有關之爭議，均應依據中華民國法律處理，並以台灣台北地方法院為第一審管轄法院。</p>
+        </section>
+    </div>
+</div>
+
+@section Styles {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head>
+
+    <style>
+        .privacy-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .privacy-content {
+            flex: 1;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+            .privacy-header h1 {
+                color: #2c3e50;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+        .last-updated {
+            color: #718355;
+            font-size: 0.9rem;
+        }
+
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+
+            .privacy-section h2 {
+                color: #6A994E;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid #f0f0f0;
+            }
+
+            .privacy-section p,
+            .privacy-section ul li {
+                color: #4a4a4a;
+                line-height: 1.6;
+            }
+
+            .privacy-section ul {
+                list-style-type: none;
+                padding-left: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+                .privacy-section ul li {
+                    margin-bottom: 0.5rem;
+                    position: relative;
+                }
+
+                    .privacy-section ul li::before {
+                        content: "•";
+                        color: #6A994E;
+                        font-weight: bold;
+                        position: absolute;
+                        left: -1.5rem;
+                    }
+
+        @@media (max-width: 768px) {
+            .privacy-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+}

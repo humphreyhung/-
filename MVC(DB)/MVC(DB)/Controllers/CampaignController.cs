@@ -14,7 +14,7 @@ using MVC_DB_.Models; // Assuming you have a Campaign model in your Models folde
 namespace MVC_DB_.Controllers
 //namespace Campaign.Controllers
 {
-    //[Authorize] // Require authentication for all actions
+    [Authorize(Roles = "Admin")] // Require authentication for all actions
     public class CampaignController : Controller
     {
         private readonly ICampaignService _service;
@@ -34,32 +34,27 @@ namespace MVC_DB_.Controllers
         [AllowAnonymous] // Allow anyone to view the list
         public async Task<IActionResult> Index()
         {
-            try
-            {
-                _logger.LogInformation("User accessing campaign list");
-                var campaigns = await _service.GetAllCampaignsAsync();
-                _logger.LogInformation($"Retrieved {campaigns.Count} campaigns");
-                return View(campaigns);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while fetching campaigns");
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            }
+            return View();
+
+            //try
+            //{
+            //    _logger.loginformation("user accessing campaign list");
+            //    var campaigns = await _service.getallcampaignsasync();
+            //    _logger.loginformation($"retrieved {campaigns.count} campaigns");
+            //    return view(campaigns);
+            //}
+            //catch (exception ex)
+            //{
+            //    _logger.logerror(ex, "error occurred while fetching campaigns");
+            //    return view("error", new errorviewmodel { requestid = activity.current?.id ?? httpcontext.traceidentifier });
+            //}
         }
 
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("role") != "Admin")
-            {
-                _logger.LogWarning("Unauthorized user attempting to access campaign creation form.");
-                return Forbid();
-            }
-
             _logger.LogInformation($"User {User.Identity?.Name} accessing campaign creation form");
             return View(new Campaign { Status = "Draft" });
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -67,19 +62,20 @@ namespace MVC_DB_.Controllers
         {
             try
             {
-                if (HttpContext.Session.GetString("role") != "Admin")
+                _logger.LogInformation("Starting campaign creation process");
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
                 {
-                    _logger.LogWarning("Unauthorized user attempting to access campaign creation form.");
-                    return Forbid();
+                    _logger.LogWarning("User not found when creating campaign");
+                    ModelState.AddModelError("", "找不到使用者資料，請重新登入。");
+                    return View(model);
                 }
 
-                _logger.LogInformation("Starting campaign creation process");
+                _logger.LogInformation($"User found: {user.Id}, {user.UserName}");
 
-                // 若你不再用 _userManager，可使用 claim 或直接設定 dummy OwnerId
-                var userId = User.FindFirst("sub")?.Value ?? "Unknown"; // 或用 "nameidentifier"
-                var userName = User.Identity?.Name ?? "Unknown";
-
-                model.OwnerId = userId;
+                // Set the OwnerId before model validation
+                model.OwnerId = user.Id;
+                // Remove OwnerId from ModelState so it won't be validated
                 ModelState.Remove("OwnerId");
                 ModelState.Remove("Owner");
 
@@ -96,18 +92,22 @@ namespace MVC_DB_.Controllers
                     return View(model);
                 }
 
-                model.CreatedAt = DateTime.UtcNow;
-                model.CollectedAmount = 0;
-                model.Owner = null; // 或保留 null，看你 DB 設計是否允許
+                _logger.LogInformation($"Model validation passed. Creating campaign with Title: {model.Title}, OwnerId: {model.OwnerId}");
+                _logger.LogDebug($"Campaign details - Title: {model.Title}, Description: {model.Description}, " +
+                              $"TargetAmount: {model.TargetAmount}, Status: {model.Status}");
 
+                model.CreatedAt = DateTime.UtcNow;
+                model.CollectedAmount = 0; // 确保初始募集金额为0
+                model.Owner = user; // Set the Owner navigation property
+
+                _logger.LogInformation("Calling CreateCampaignAsync");
                 var createdCampaign = await _service.CreateCampaignAsync(model);
                 _logger.LogInformation($"Campaign created successfully. ID: {createdCampaign.Id}, Title: {createdCampaign.Title}");
-
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error creating campaign: {model.Title}. Exception: {ex.Message}");
+                _logger.LogError(ex, $"Error creating campaign: {model.Title}. Exception details: {ex.Message}");
                 if (ex.InnerException != null)
                 {
                     _logger.LogError($"Inner exception: {ex.InnerException.Message}");
@@ -116,8 +116,6 @@ namespace MVC_DB_.Controllers
                 return View(model);
             }
         }
-
-
 
         public async Task<IActionResult> Details(int id)
         {
@@ -255,6 +253,6 @@ namespace MVC_DB_.Controllers
             }
         }
 
-     
+
     }
 }

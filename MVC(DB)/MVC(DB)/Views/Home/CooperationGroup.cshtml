@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "合作團體";
+}
+
+<div class="privacy-container">
+    <div class="privacy-header">
+        <h1>合作團體</h1>
+        <p class="last-updated">最後更新日期：@DateTime.Now.ToString("yyyy年MM月dd日")</p>
+    </div>
+
+    <div class="privacy-content">
+        <section class="privacy-section">
+            <h2>我們的合作夥伴</h2>
+            <p>感謝以下團體與機構長期以來的支持與合作，讓更多弱勢族群能獲得幫助與資源。這些合作夥伴來自不同領域，卻有著共同的信念：讓社會更有愛、更有希望。</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>主要合作單位</h2>
+            <ul>
+                <li>陽光社會福利基金會 — 支持燒燙傷者重建生活</li>
+                <li>伊甸基金會 — 協助身障者就業與生活重建</li>
+                <li>孩子的書屋 — 提供偏鄉兒童教育與陪伴資源</li>
+                <li>財團法人癌症希望基金會 — 關懷癌友與家庭</li>
+                <li>喜憨兒基金會 — 提供心智障礙者職能訓練與就業機會</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>我們歡迎更多合作</h2>
+            <p>若您是非營利組織、社福團體或公益計畫推動者，歡迎與我們聯繫。我們提供募資平台、專案曝光、技術支援等資源，與您一起打造更美好的社會。</p>
+            <ul>
+                <li>Email：partnership@example.com</li>
+                <li>聯絡電話：(02) 1234-5678</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>過往合作成果</h2>
+            <ul>
+                <li>2024年「偏鄉送書計畫」成功募資超過 200,000 元，為 300 位學童送書到校。</li>
+                <li>與喜憨兒合作之「幸福烘焙」專案，幫助 20 位憨兒就業。</li>
+                <li>與癌症希望基金會合作的「暖心關懷包」募資計畫，送出超過 1,000 份醫療支持包。</li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+@section Styles {
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+    </head>
+
+    <style>
+        .privacy-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .privacy-content {
+            flex: 1;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+            .privacy-header h1 {
+                color: #2c3e50;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+        .last-updated {
+            color: #718355;
+            font-size: 0.9rem;
+        }
+
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+
+            .privacy-section h2 {
+                color: #6A994E;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid #f0f0f0;
+            }
+
+            .privacy-section p,
+            .privacy-section ul li {
+                color: #4a4a4a;
+                line-height: 1.6;
+            }
+
+            .privacy-section ul {
+                list-style-type: none;
+                padding-left: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+                .privacy-section ul li {
+                    margin-bottom: 0.5rem;
+                    position: relative;
+                }
+
+                    .privacy-section ul li::before {
+                        content: "•";
+                        color: #6A994E;
+                        font-weight: bold;
+                        position: absolute;
+                        left: -1.5rem;
+                    }
+
+        @@media (max-width: 768px) {
+            .privacy-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+}

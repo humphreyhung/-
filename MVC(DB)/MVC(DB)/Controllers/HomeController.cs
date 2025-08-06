@@ -90,6 +90,25 @@ namespace MVC_DB_.Controllers
         {
             return View();
         }
+        
+        public IActionResult CallUs()
+        {
+            return View();
+        }
+        public IActionResult ServiceTerms()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult CooperationGroup()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

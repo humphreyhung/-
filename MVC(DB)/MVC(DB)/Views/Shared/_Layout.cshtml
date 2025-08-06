@@ -586,11 +586,11 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
                                 
-                                <li>
+                                @* <li>
                                         <a class="dropdown-item" asp-controller="Campaign" asp-action="Index" style="background-color: #dad7cd; color: white;">
                                         <i class="fas fa-project-diagram me-2"></i>專案
                                     </a>
-                                </li>
+                                </li> *@
                               
                                     <li>
                                         <a class="dropdown-item" asp-controller="Account" asp-action="AllAccounts" style="background-color: #dad7cd; color: white;">
@@ -695,16 +695,33 @@
         <div class="footer-column">
             <h4>關於</h4>
             <ul>
-                <li><a href="#">關於我們</a></li>
-                <li><a href="#">合作團體</a></li>
-                <li><a href="#">合作商家</a></li>
+                <li>
+                    <a class="project-link"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="AboutUs">關於我們</a>
+                </li>
+                <li>
+                    <a class="project-link"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="CooperationGroup">合作團體</a>
+                </li>
+               
+                
             </ul>
         </div>
 
         <div class="footer-column">
             <h4>支援</h4>
             <ul>
-                <li><a href="#">服務條款</a></li>
+                <li>
+                    <a class="project-link"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="ServiceTerms">服務條款</a>
+                </li>
+                
                 <li>
                     <a class="project-link"
                        asp-area=""
@@ -717,18 +734,25 @@
         <div class="footer-column">
             <h4>聯繫</h4>
             <ul>
-                <li><a href="#">聯繫我們</a></li>
+                
+                <li>
+                    <a class="project-link"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="CallUs">聯繫我們</a>
+                </li>
             </ul>
         </div>
 
         <div class="footer-column social">
             <h4>追蹤</h4>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-line"></i></a>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://line.me/" target="_blank"><i class="fab fa-line"></i></a>
             </div>
+
         </div>
     </div>
 </footer>
